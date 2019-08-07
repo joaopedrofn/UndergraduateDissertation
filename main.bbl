@@ -1,0 +1,204 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.6 }
+
+\bibitem[Adeodato et al. 2009]{adeodato2009role}
+\abntrefinfo{Adeodato et al.}{ADEODATO et al.}{2009}
+{ADEODATO, P.~J. et al. The role of temporal feature extraction and bagging of
+  mlp neural networks for solving the wcci 2008 ford classification challenge.
+IEEE, 2009.}
+
+\bibitem[Adeodato et al. 2008]{adeodato2008power}
+\abntrefinfo{Adeodato et al.}{ADEODATO et al.}{2008}
+{ADEODATO, P.~J. et al. The power of sampling and stacking for the pakdd-2007
+  cross-selling problem.
+\textbf{International Journal of Data Warehousing and Mining (IJDWM)}, IGI
+  Global, v.~4, n.~2, p. 22--31, 2008.}
+
+\bibitem[Bianchi e Mantaras 2010]{bianchi2010case}
+\abntrefinfo{Bianchi e Mantaras}{BIANCHI; MANTARAS}{2010}
+{BIANCHI, R.~A.; MANTARAS, R.~L. de. Case-based multiagent reinforcement
+  learning: Cases as heuristics for selection of actions. In:  \textbf{ECAI}.
+  [S.l.: s.n.], 2010. p. 355--360.}
+
+\bibitem[Carvalho e Oliveira 2011]{carvalho2011reinforcement}
+\abntrefinfo{Carvalho e Oliveira}{CARVALHO; OLIVEIRA}{2011}
+{CARVALHO, A.; OLIVEIRA, R. Reinforcement learning for the soccer dribbling
+  task. In:  IEEE. \textbf{Computational Intelligence and Games (CIG), 2011
+  IEEE Conference on}. [S.l.], 2011. p. 95--101.}
+
+\bibitem[Celiberto et al. 2007]{celiberto2007heuristic}
+\abntrefinfo{Celiberto et al.}{CELIBERTO et al.}{2007}
+{CELIBERTO, L.~A. et al. Heuristic reinforcement learning applied to robocup
+  simulation agents. In:  SPRINGER. \textbf{Robot Soccer World Cup}. [S.l.],
+  2007. p. 220--227.}
+
+\bibitem[Chan e Asgarpoor 2006]{chan2006optimum}
+\abntrefinfo{Chan e Asgarpoor}{CHAN; ASGARPOOR}{2006}
+{CHAN, G.; ASGARPOOR, S. Optimum maintenance policy with markov processes.
+\textbf{Electric power systems research}, Elsevier, v.~76, n.~6-7, p. 452--456,
+  2006.}
+
+\bibitem[Fayyad, Piatetsky-Shapiro e Smyth 1996]{Fayyad:1996:DMK:257938.257942}
+\abntrefinfo{Fayyad, Piatetsky-Shapiro e Smyth}{FAYYAD; PIATETSKY-SHAPIRO;
+  SMYTH}{1996}
+{FAYYAD, U.~M.; PIATETSKY-SHAPIRO, G.; SMYTH, P. Advances in knowledge
+  discovery and data mining. In:  FAYYAD, U.~M. et al. (Ed.). Menlo Park, CA,
+  USA: American Association for Artificial Intelligence, 1996. cap. From Data
+  Mining to Knowledge Discovery: An Overview, p. 1--34.
+ISBN 0-262-56097-6.
+Dispon{\'\i}vel em: \url{http://dl.acm.org/citation.cfm?id=257938.257942}.}
+
+\bibitem[Franklin e Graesser 1996]{franklin1996agent}
+\abntrefinfo{Franklin e Graesser}{FRANKLIN; GRAESSER}{1996}
+{FRANKLIN, S.; GRAESSER, A. Is it an agent, or just a program?: A taxonomy for
+  autonomous agents. In:  SPRINGER. \textbf{International Workshop on Agent
+  Theories, Architectures, and Languages}. [S.l.], 1996. p. 21--35.}
+
+\bibitem[Gabel, Riedmiller e Trost 2008]{gabel2008case}
+\abntrefinfo{Gabel, Riedmiller e Trost}{GABEL; RIEDMILLER; TROST}{2008}
+{GABEL, T.; RIEDMILLER, M.; TROST, F. A case study on improving defense
+  behavior in soccer simulation 2d: The neurohassle approach. In:  SPRINGER.
+  \textbf{Robot Soccer World Cup}. [S.l.], 2008. p. 61--72.}
+
+\bibitem[Gao et al. 2008]{gao2008wavelet}
+\abntrefinfo{Gao et al.}{GAO et al.}{2008}
+{GAO, X. et al. Wavelet-based contourlet in quality evaluation of digital
+  images.
+\textbf{Neurocomputing}, Elsevier, v.~72, n.~1-3, p. 378--385, 2008.}
+
+\bibitem[Hastie, Friedman e Tibshirani 2009]{friedman2001elements}
+\abntrefinfo{Hastie, Friedman e Tibshirani}{HASTIE; FRIEDMAN; TIBSHIRANI}{2009}
+{HASTIE, T.; FRIEDMAN, J.; TIBSHIRANI, R. \textbf{The elements of statistical
+  learning}. 2. ed. [S.l.]: Springer series in statistics New York, NY, USA:,
+  2009.}
+
+\bibitem[Hayes-Roth 1995]{hayes1995architecture}
+\abntrefinfo{Hayes-Roth}{HAYES-ROTH}{1995}
+{HAYES-ROTH, B. An architecture for adaptive intelligent systems.
+\textbf{Artificial Intelligence}, Elsevier, v.~72, n.~1-2, p. 329--365, 1995.}
+
+\bibitem[Henn, Henrio e Nakashima 2017]{henn2017optimizing}
+\abntrefinfo{Henn, Henrio e Nakashima}{HENN; HENRIO; NAKASHIMA}{2017}
+{HENN, T.; HENRIO, J.; NAKASHIMA, T. Optimizing player’s formations for
+  corner-kick situations in robocup soccer 2d simulation.
+\textbf{Artificial Life and Robotics}, Springer, v.~22, n.~3, p. 296--300,
+  2017.}
+
+\bibitem[Homem et al. 2017]{homem2017improving}
+\abntrefinfo{Homem et al.}{HOMEM et al.}{2017}
+{HOMEM, T. P.~D. et al. Improving reinforcement learning results with
+  qualitative spatial representation. In:  IEEE. \textbf{Intelligent Systems
+  (BRACIS), 2017 Brazilian Conference on}. [S.l.], 2017. p. 151--156.}
+
+\bibitem[Kitano et al. 1997]{kitano1997robocup}
+\abntrefinfo{Kitano et al.}{KITANO et al.}{1997}
+{KITANO, H. et al. Robocup: A challenge problem for ai and robotics. In:
+  SPRINGER. \textbf{Robot Soccer World Cup}. [S.l.], 1997. p. 1--19.}
+
+\bibitem[Liu e Li 2008]{liu2008regional}
+\abntrefinfo{Liu e Li}{LIU; LI}{2008}
+{LIU, L.; LI, L. Regional cooperative multi-agent q-learning based on potential
+  field. In:  IEEE. \textbf{Natural Computation, 2008. ICNC'08. Fourth
+  International Conference on}. [S.l.], 2008. v.~6, p. 535--539.}
+
+\bibitem[Liu e Li 2009]{liu2009sparse}
+\abntrefinfo{Liu e Li}{LIU; LI}{2009}
+{LIU, L.; LI, L. Sparse cooperative multi-agent q-learning based on vector
+  potential field. In:  IEEE. \textbf{Global Congress on Intelligent Systems}.
+  [S.l.], 2009. p. 99--103.}
+
+\bibitem[Nascimento 2018]{nascimento_2018}
+\abntrefinfo{Nascimento}{NASCIMENTO}{2018}
+{NASCIMENTO, J. P.~F. \textbf{joaopedrofn/learnToWalk}. 2018.
+Dispon{\'\i}vel em: \url{https://github.com/joaopedrofn/learnToWalk}.}
+
+\bibitem[Neri et al. 2012]{neriteam}
+\abntrefinfo{Neri et al.}{NERI et al.}{2012a}
+{NERI, J. R.~F. et al. Team description paper gpr-2d 2012.
+2012.}
+
+\bibitem[Neri et al. 2012]{neri2012proposal}
+\abntrefinfo{Neri et al.}{NERI et al.}{2012b}
+{NERI, J. R.~F. et al. A proposal of qlearning to control the attack of a 2d
+  robot soccer simulation team. In:  IEEE. \textbf{Robotics Symposium and Latin
+  American Robotics Symposium (SBR-LARS), 2012 Brazilian}. [S.l.], 2012. p.
+  174--178.}
+
+\bibitem[Oliveira et al. 2009]{oliveira2009data}
+\abntrefinfo{Oliveira et al.}{OLIVEIRA et al.}{2009}
+{OLIVEIRA, R. et al. A data mining approach to solve the goal scoring problem.
+  In:  IEEE. \textbf{Neural Networks, 2009. IJCNN 2009. International Joint
+  Conference on}. [S.l.], 2009. p. 2347--2352.}
+
+\bibitem[Poggi e Adorni 1996]{poggi1996multi}
+\abntrefinfo{Poggi e Adorni}{POGGI; ADORNI}{1996}
+{POGGI, A.; ADORNI, G. A multi language environment to develop multi agent
+  applications. In:  SPRINGER. \textbf{International Workshop on Agent
+  Theories, Architectures, and Languages}. [S.l.], 1996. p. 325--339.}
+
+\bibitem[Riedmiller e Gabel 2005]{Riedmiller2005Brainstormers2D}
+\abntrefinfo{Riedmiller e Gabel}{RIEDMILLER; GABEL}{2005}
+{RIEDMILLER, M.; GABEL, T. Brainstormers 2 d team description 2007. In:  .
+  [S.l.: s.n.], 2005.}
+
+\bibitem[RoboCup 2019]{robocupfederationofficialwebsite}
+\abntrefinfo{RoboCup}{ROBOCUP}{2019}
+{ROBOCUP. \textbf{RoboCupSoccer - Simulation 2D}. 2019.
+Dispon{\'\i}vel em: \url{https://www.robocup.org/leagues/24}.}
+
+\bibitem[Russell e Norvig 2016]{russell2016artificial}
+\abntrefinfo{Russell e Norvig}{RUSSELL; NORVIG}{2016}
+{RUSSELL, S.~J.; NORVIG, P. \textbf{Artificial intelligence: a modern
+  approach}. [S.l.]: Malaysia; Pearson Education Limited,, 2016.}
+
+\bibitem[Schmill, Oates e Cohen 2000]{schmill2000learning}
+\abntrefinfo{Schmill, Oates e Cohen}{SCHMILL; OATES; COHEN}{2000}
+{SCHMILL, M.~D.; OATES, T.; COHEN, P.~R. Learning planning operators in
+  real-world, partially observable environments. In:  \textbf{AIPS}. [S.l.:
+  s.n.], 2000. p. 246--253.}
+
+\bibitem[Shalev-Shwartz e Ben-David 2014]{shalev2014understanding}
+\abntrefinfo{Shalev-Shwartz e Ben-David}{SHALEV-SHWARTZ; BEN-DAVID}{2014}
+{SHALEV-SHWARTZ, S.; BEN-DAVID, S. \textbf{Understanding machine learning: From
+  theory to algorithms}. [S.l.]: Cambridge university press, 2014.}
+
+\bibitem[Simonini 2018]{simonini_2018}
+\abntrefinfo{Simonini}{SIMONINI}{2018}
+{SIMONINI, T. \textbf{Diving deeper into Reinforcement Learning with
+  Q-Learning}. freeCodeCamp.org, 2018.
+Dispon{\'\i}vel em:
+  \url{https://medium.freecodecamp.org/diving-deeper-into-reinforcement-learning-with-q-learning-c18d0db58efe}.}
+
+\bibitem[Sutton e Barto 2018]{sutton2018reinforcement}
+\abntrefinfo{Sutton e Barto}{SUTTON; BARTO}{2018}
+{SUTTON, R.~S.; BARTO, A.~G. \textbf{Reinforcement learning: An introduction}.
+  [S.l.]: MIT press, 2018.}
+
+\bibitem[Watkins e Dayan 1992]{watkins1992q}
+\abntrefinfo{Watkins e Dayan}{WATKINS; DAYAN}{1992}
+{WATKINS, C.~J.; DAYAN, P. Q-learning.
+\textbf{Machine learning}, Springer, v.~8, n.~3-4, p. 279--292, 1992.}
+
+\bibitem[Witten et al. 2016]{witten2016data}
+\abntrefinfo{Witten et al.}{WITTEN et al.}{2016}
+{WITTEN, I.~H. et al. \textbf{Data Mining: Practical machine learning tools and
+  techniques}. [S.l.]: Morgan Kaufmann, 2016.}
+
+\bibitem[Wooldridge 2001]{wooldridge2001intelligent}
+\abntrefinfo{Wooldridge}{WOOLDRIDGE}{2001}
+{WOOLDRIDGE, M. Intelligent agents: The key concepts. In:  SPRINGER.
+  \textbf{ECCAI Advanced Course on Artificial Intelligence}. [S.l.], 2001. p.
+  3--43.}
+
+\bibitem[Zhao, Sinha e Ge 2009]{zhao2009effects}
+\abntrefinfo{Zhao, Sinha e Ge}{ZHAO; SINHA; GE}{2009}
+{ZHAO, H.; SINHA, A.~P.; GE, W. Effects of feature construction on
+  classification performance: An empirical study in bank failure prediction.
+\textbf{Expert Systems with Applications}, Elsevier, v.~36, n.~2, p.
+  2633--2644, 2009.}
+
+\end{thebibliography}

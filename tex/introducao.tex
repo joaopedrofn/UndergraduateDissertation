@@ -1,0 +1,172 @@
+%--------------------------------------------------------------------------------------
+% Este arquivo contém a sua introdução, objetivos e organização do trabalho
+%--------------------------------------------------------------------------------------
+\chapter{Introdução}
+
+Como descrito por \citeonline{kitano1997robocup}, a \textit{RoboCup}, a copa do mundo de futebol de
+robôs, procura fomentar as pesquisas acerca de robótica e inteligência artificial fornecendo um
+problema padrão capaz de avaliar teorias, algoritmos e arquiteturas de agentes. O projeto da
+\textit{RoboCup} é dividido em várias ligas, desde robôs humanoides até a liga de simulação 2D.
+Proporcionando assim, um ambiente criativo e desafiador para que novas tecnologias sejam criadas e
+aplicadas por alunos de graduação.
+
+Segundo \citeonline{henn2017optimizing}, a liga de simulação 2D representa um jogo de futebol, em um
+\textit{framework} multiagente, no qual o ambiente é um campo de futebol em duas dimensões e os
+agentes são os jogadores, criando a vantagem de livrar os pesquisadores de toda a parte mecânica e
+eletrônica para que o foco se volte à análise de dados e construção da estratégia.
+\citeonline{henn2017optimizing} ainda afirmam que a principal parte da liga é a modelagem de uma
+estratégia ou método efetivo o suficiente para obter performance superior aos adversários. Por fim,
+os autores relatam que uma das estratégias com melhores resultados é a utilização de agentes
+inteligêntes.
+
+De acordo com \citeonline{russell2016artificial}, um agente inteligente é tudo o que pode ser
+considerado capaz de perceber seu ambiente por meio de sensores e de agir sobre seu ambiente por
+intermédio de atuadores. A Figura \ref{img:agent} ilustra a arquitetura clássica de um agente, onde
+é possível perceber que o agente interage com o ambiente por meio de sensores e atuadores.
+
+\imagem{0.5}{agent}{Arquitetura geral de um agente.}{\cite{russell2016artificial}}
+
+No domínio da liga de simulação 2D da \textit{RoboCup}, o ambiente é composto pela representação 2D
+do campo, as traves, a bola e os jogadores. Esse ambiente é captado pelos agentes através dos seus
+sensores classificados como físicos, visuais ou acústicos, que, respectivamente, servem para
+perceber o estado do agente, referente ao vigor, velocidade e posição; as posições e velocidades dos
+demais objetos no ambiente, incluindo jogadores e mensagens oriundas dos aliados. Os atuadores dos
+agentes correspondem aos mecanismos de movimento, rotação e chute
+\cite{robocupfederationofficialwebsite}. Um dos aspectos que torna o desenvolvimento de agentes
+inteligentes para jogos de futebol de robôs desafiador é a  característica de seu ambiente:
+
+\begin{itemize}
+    \item \textbf{Parcialmente observável}: O ambiente para um agente jogador de futebol de robôs é
+    parcialmente observável, pois os seus sensores são imprecisos e também porque partes do estado
+    estão simplesmente ausentes nos dados do sensor \cite{schmill2000learning};
+    
+    \item \textbf{Estocástico}: De acordo com \citeonline{hayes1995architecture}, se o próximo
+    estado do ambiente é completamente determinado pelo estado atual e pela ação executada pelo
+    agente, dizemos que o ambiente é determinístico; caso contrário, ele é estocástico. Desta forma,
+    o ambiente para um agente jogador de futebol de robôs é estocástico, pois o próximo estado não
+    depende apenas da sua ação;
+    
+    \item \textbf{Episódico}: Em um ambiente de tarefa episódico, a experiência do agente é dividida
+    em episódios atômicos \cite{wooldridge2001intelligent}. Cada episódio consiste na percepção do
+    agente, e depois na execução de uma única ação. É crucial que o episódio seguinte não dependa
+    das ações executadas em episódios anteriores. Desta forma, o ambiente de tarefa para o agente
+    jogador de futebol de robôs é episódico;
+    
+    \item \textbf{Dinâmico}: Ambientes estáticos são fáceis de manipular, porque o agente não
+    precisa continuar a observar o mundo enquanto está decidindo sobre a realização de uma ação, nem
+    precisa se preocupar com a passagem do tempo. No entanto, o ambiente de tarefa para o agente
+    jogador de futebol de robôs é dinâmico, pois o ambiente pode ser alterado enquanto o agente está
+    deliberando \cite{franklin1996agent};
+    
+    \item \textbf{Multiagente}: Um ambiente ainda pode ser classificado como agente único e
+    multiagente. Agente único não existem outros agentes que utilizam a mesma medida de performance,
+    como exemplo podemos citar: um agente que resolve um jogo de palavras cruzadas sozinho está
+    claramente em um ambiente de agente único, enquanto que um agente jogador de futebol de robôs
+    está em ambiente multiagente, tanto cooperativo (agentes do mesmo time) como também competitivos
+    (agentes do time adversário) \cite{poggi1996multi}. 
+
+\end{itemize}
+
+\section{Motivação}
+
+FutVasf2D é um projeto que nasceu em 2017 com auxílio do Programa Institucional de Bolsas de
+Iniciação Científica (PIBIC) para o desenvolvimento de um time oficial de futebol robôs para
+Universidade Federal do Vale do São Francisco (UNIVASF) na categoria de simulação 2D. O primeiro
+trabalho do projeto teve como objetivo o desenvolvimento de um módulo de decisão para o momento do
+chute a gol. O projeto está tendo continuidade com, além do presente trabalho, outro PIBIC que visa
+o desenvolvimento de um módulo de passes.
+
+Durante o processo de desenvolvimento deste trabalho almeja-se por em prática conhecimentos tratados
+ forma téorica na área de aprendizado de máquinas enfrentando o desafio da aplicação das técnicas
+ tratadas em um ambiente complexo e prático. A técnica de aprendizado por reforço aplicada neste
+ trabalho é a \textit{Q-Learning} devido ao fato desta ser uma técnica comum e já utilizada por
+ diversos trabalhos na área.
+
+Com o término deste trabalho espera-se a participação do time desenvolvido na Competição
+Brasileira de Robótica (CBR) como meio de divulgar o projeto e angariar interessados no
+desenvolvimento de novas estratégias e melhoramento das já desenvolvidas no meio acadêmico da
+UNIVASF.
+
+\section{Definição do Problema}
+
+De acordo com \citeonline{oliveira2009data}, uma partida de futebol apresenta situações que exigem
+dos jogadores a tomada de decisão acerca da ação a ser tomada. Quando um jogador está com a bola,
+por exemplo, ele deve decidir se deve passar a bola para um aliado, driblar um adversário ou chutar
+a bola para o gol. Todas essas ações são decididas através de avaliações do conhecimento acerca da
+situação atual do jogo. O mesmo pode ser afirmado para situações onde o time adversário está com
+posse de bola, neste caso, os jogadores devem sempre tomar a melhor decisão com base no estado atual
+para evitar sofrer gol e recuperar a posse de bola do adversário.
+
+Alguns times que competem ou competiram em campeonatos da liga fornecem código-fonte de times,
+chamados de times bases, a fim de facilitar o desenvolvimento de novos times para novos competidores. É
+o caso dos times HELIOS, do Japão, que fornece o time base Agent2D\footnote{http://rctools.osdn.jp/pukiwiki/} ou o WrightEagle, da China,
+que fornece o WrightEagleBASE\footnote{https://wrighteagle2d.github.io/}, utilizado neste projeto. Tais times são desenvolvidos com estratégias
+simples para que possam ser melhoradas pelas novas equipes.
+
+\citeonline{gabel2008case} afirmam que o uso de técnicas de aprendizagem para o desenvolvimento da
+capacidade defensiva de um time vêm sendo quase negligenciadas, de forma que as pesquisas focam, em
+sua maioria, em tarefas como a de passe, chute a gol ou posicionamento do jogador com posse de bola.
+
+Ainda segundo \citeonline{gabel2008case}, estratégias de defesa são divididas em 2 partes, o
+posicionamento dos jogadores de forma a melhor interceptar passes ou tentativas de chute ou marcar
+oponentes, e o de atacar o jogador com posse de bola a fim de obtê-la.
+
+Neste trabalho, serão levadas em conta ambas as facetas das estratégias de defesa, de forma que o
+problema proposto pode ser definido como a identificação de melhor ação a ser tomada, utilizando
+dados obtidos do ambiente através de seus sensores, entre:
+
+\begin{itemize}
+    \item Mover-se para uma melhor posição;
+    \item Marcar um jogador adversário; 
+    \item Interceptar a bola e
+    \item Bloquear avanço do jogador com posse de bola.
+\end{itemize}
+
+\section{Objetivos}
+
+\subsection{Objetivo Geral}
+
+Investigar performance de modelos no desenvolvimento de módulo responsável por tomar decisões
+voltadas para defesa para o time de futebol de robôs da liga de simulação 2D FutVasf2D utilizando a
+técnica de aprendizado por reforço \textit{Q-Learning}.
+
+\subsection{Objetivos Específicos}
+
+\begin{enumerate}
+    \item Desenvolver modelos aptos a representar o ambiente do futebol de robôs da liga de
+    simulação 2D em algoritmos de aprendizado por reforço aplicados na solução do problema proposto;
+    
+    \item Implementar os modelos propostos no algoritmo \textit{Q-Learning} no time
+    \textit{WrightEagleBASE}, usado como base para o FutVasf2D;
+    
+    \item Treinar os times implementados através da execução de partidas com situações controladas;
+    
+    \item Comparar resultados e identificar e falhas e melhorias.
+\end{enumerate}
+
+\section{Organização do Trabalho}
+
+Além do presente capítulo, Introdução, estão presentes neste trabalho 3 capítulos, Fundamentação
+Teórica (\ref{sec:fundamentation}), Materiais e Métodos (\ref{sec:newModule}), Resultados
+(\ref{sec:results}), Conclusão (\ref{sec:conclusion}) e Trabalhos Futuros (\ref{sec:future}).
+
+O Capítulo \ref{sec:fundamentation} fundamenta teoricamente o trabalho apresentando na Seção
+\ref{trabalhosRelacionados} trabalhos relacionados que reforçam a metodologia por trás da execução
+deste, a Seção \ref{aprendizado} explana o conceito e funcionamento do aprendizado por reforço e, na
+Subseção \ref{qlearning}, faz o mesmo com o algoritmo \textit{Q-Learning}, ponto fundamental para o
+desenvolvimento deste trabalho.
+
+O Capítulo \ref{sec:newModule} explica o processo proposto para o desenvolvimento dos modelos e
+coleta de resultados. Na Seção \ref{modelagem} é exposto o conceito de modelagem do ambiente e seus
+desafios. A Seção \ref{implementacao} explica o processo de implementação e as
+variações aplicadas, enquanto a Seção \ref{meotodologia}, é acerca da metodologia
+experimental, como o treinamento e a forma de avaliação.
+
+O Capítulo \ref{sec:results} apresenta a descrição dos modelos desenvolvidos, a fundamentação de
+cada um e os resultados obtidos em seus respectivos treinamentos.
+
+No Capítulo final \ref{sec:conclusion} constam as devidas conclusões tomadas a partir do processo de
+desenvolvimento deste trabalho e dos resultados obtidos pelos experimentos, procurando responder
+indagações oriundas da análise dos dados do capítulo anterior. Também é
+trabalhado na Seção \ref{sec:future}, o traçado de uma continuidade
+para o projeto iniciado apresentando propostas de novas investigações e o caminho a ser tomado.

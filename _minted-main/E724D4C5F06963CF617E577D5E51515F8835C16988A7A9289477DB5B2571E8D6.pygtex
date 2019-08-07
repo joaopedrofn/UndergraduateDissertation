@@ -1,0 +1,112 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//QTable AREA}
+\PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{++}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{generalCycleCounter} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{3000}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{generalCycleCounter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+        \PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Block of cycles \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{o}{++}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{countDone} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{goalCounter} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} Goals\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+        \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{goalCounter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{stringstream} \PYG{n}{qTableString}\PYG{p}{;}
+    \PYG{n}{qTableString} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}qTable\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{GetSelfUnum}\PYG{p}{();}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{ifstream} \PYG{n}{qTableFileIn}\PYG{p}{(}\PYG{n}{qTableString}\PYG{p}{.}\PYG{n}{str}\PYG{p}{(),} \PYG{n}{std}\PYG{o}{::}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{binary}\PYG{p}{);}
+    \PYG{k+kt}{double} \PYG{n}{qTable}\PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{][}\PYG{l+m+mi}{9}\PYG{p}{];}
+    \PYG{n}{qTableFileIn}\PYG{p}{.}\PYG{n}{read}\PYG{p}{((}\PYG{k+kt}{char} \PYG{o}{*}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{n}{qTable}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{qTable}\PYG{p}{));}
+    \PYG{n}{qTableFileIn}\PYG{p}{.}\PYG{n}{close}\PYG{p}{();}
+
+    \PYG{k+kt}{int} \PYG{n}{curState} \PYG{o}{=} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastStateOccurred}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{actionToTake} \PYG{o}{=} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionTaken}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{curState} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{double} \PYG{n}{reward} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{k+kt}{int} \PYG{n}{thatState} \PYG{o}{=} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o}{?} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsState}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{k+kt}{int} \PYG{n}{thatAction} \PYG{o}{=} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o}{?} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActions}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{n}{ServerPlayMode} \PYG{n}{thatPM} \PYG{o}{=} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsPM}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o}{?} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsPM}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{:} \PYG{n}{SPM\PYGZus{}Null}\PYG{p}{;}
+        \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}} \PYG{n}{actionSpace}\PYG{p}{\PYGZob{}}\PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{3}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{4}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{5}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{6}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{7}\PYG{p}{]\PYGZcb{};}
+        \PYG{k+kt}{int} \PYG{n}{maxFromCurrent} \PYG{o}{=} \PYG{n}{greedySelection}\PYG{p}{(}\PYG{n}{actionSpace}\PYG{p}{);}
+        \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{8}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}
+        \PYG{k}{switch} \PYG{p}{(}\PYG{n}{mpObserver}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{GetServerPlayMode}\PYG{p}{())}
+        \PYG{p}{\PYGZob{}}
+        \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}Captured}\PYG{p}{:}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cycleCounter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsPM}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{reward} \PYG{o}{=} \PYG{l+m+mi}{20}\PYG{p}{;}
+            \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{thatState}\PYG{p}{][}\PYG{n}{thatAction}\PYG{p}{]} \PYG{o}{=} \PYG{n}{learn}\PYG{p}{(}\PYG{n}{qTable}\PYG{p}{[}\PYG{n}{thatState}\PYG{p}{][}\PYG{n}{thatAction}\PYG{p}{],} \PYG{n}{maxFromCurrent}\PYG{p}{,} \PYG{n}{reward}\PYG{p}{);}
+            \PYG{k}{break}\PYG{p}{;}
+        \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}OutOfBounds}\PYG{p}{:}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cycleCounter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsPM}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+
+            \PYG{n}{reward} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{p}{;}
+            \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{thatState}\PYG{p}{][}\PYG{n}{thatAction}\PYG{p}{]} \PYG{o}{=} \PYG{n}{learn}\PYG{p}{(}\PYG{n}{qTable}\PYG{p}{[}\PYG{n}{thatState}\PYG{p}{][}\PYG{n}{thatAction}\PYG{p}{],} \PYG{n}{maxFromCurrent}\PYG{p}{,} \PYG{n}{reward}\PYG{p}{);}
+            \PYG{k}{break}\PYG{p}{;}
+        \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}Goal\PYGZus{}Train}\PYG{p}{:}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{goalCounter}\PYG{o}{++}\PYG{p}{;}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cycleCounter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsPM}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{reward} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{;}
+            \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{thatState}\PYG{p}{][}\PYG{n}{thatAction}\PYG{p}{]} \PYG{o}{=} \PYG{n}{learn}\PYG{p}{(}\PYG{n}{qTable}\PYG{p}{[}\PYG{n}{thatState}\PYG{p}{][}\PYG{n}{thatAction}\PYG{p}{],} \PYG{n}{maxFromCurrent}\PYG{p}{,} \PYG{n}{reward}\PYG{p}{);}
+            \PYG{k}{break}\PYG{p}{;}
+        \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}TimeOut}\PYG{p}{:}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cycleCounter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsPM}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+            \PYG{k}{break}\PYG{p}{;}
+        \PYG{k}{default}\PYG{o}{:}
+            \PYG{k}{break}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k+kt}{char} \PYG{n}{side} \PYG{o}{=} \PYG{n}{mpObserver}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{OurInitSide}\PYG{p}{();}
+        \PYG{n}{Vector} \PYG{n+nf}{goal}\PYG{p}{(}\PYG{n}{side} \PYG{o}{==} \PYG{l+s+sc}{\PYGZsq{}l\PYGZsq{}} \PYG{o}{?} \PYG{l+m+mf}{51.162} \PYG{o}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{51.162}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cycleCounter} \PYG{o}{==} \PYG{l+m+mi}{5}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cycleCounter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{erase}\PYG{p}{(}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{());}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{erase}\PYG{p}{(}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{());}
+            \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsPM}\PYG{p}{.}\PYG{n}{erase}\PYG{p}{(}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastActionsPM}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{());}
+            \PYG{k}{switch} \PYG{p}{(}\PYG{n}{mpObserver}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{GetServerPlayMode}\PYG{p}{())}
+            \PYG{p}{\PYGZob{}}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}11}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}10}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}9}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}8}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}7}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}6}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}5}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}4}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}3}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}2}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nl}{SPM\PYGZus{}PlayOn\PYGZus{}1}\PYG{p}{:}
+                \PYG{k}{if} \PYG{p}{(}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastBallPosition}\PYG{p}{.}\PYG{n}{Dist}\PYG{p}{(}\PYG{n}{goal}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastGoalDist}\PYG{p}{)}
+                \PYG{p}{\PYGZob{}}
+                    \PYG{k}{if} \PYG{p}{(}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastBallPosition}\PYG{p}{.}\PYG{n}{Dist}\PYG{p}{(}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastPosition}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastPlayerDist}\PYG{p}{)}
+                        \PYG{n}{reward} \PYG{o}{=} \PYG{l+m+mi}{5}\PYG{p}{;}
+                    \PYG{k}{else}
+                        \PYG{n}{reward} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;}
+                \PYG{p}{\PYGZcb{}}
+                \PYG{k}{break}\PYG{p}{;}
+            \PYG{k}{default}\PYG{o}{:}
+                \PYG{k}{break}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+
+            \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{thatState}\PYG{p}{][}\PYG{n}{thatAction}\PYG{p}{]} \PYG{o}{=} \PYG{n}{learn}\PYG{p}{(}\PYG{n}{qTable}\PYG{p}{[}\PYG{n}{thatState}\PYG{p}{][}\PYG{n}{thatAction}\PYG{p}{],} \PYG{n}{maxFromCurrent}\PYG{p}{,} \PYG{n}{reward}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+
+        \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastGoalDist} \PYG{o}{=} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastBallPosition}\PYG{p}{.}\PYG{n}{Dist}\PYG{p}{(}\PYG{n}{goal}\PYG{p}{);}
+        \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastPlayerDist} \PYG{o}{=} \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastBallPosition}\PYG{p}{.}\PYG{n}{Dist}\PYG{p}{(}\PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{lastPosition}\PYG{p}{);}
+
+        \PYG{n}{std}\PYG{o}{::}\PYG{n}{ofstream} \PYG{n}{qTableFileOut}\PYG{p}{(}\PYG{n}{qTableString}\PYG{p}{.}\PYG{n}{str}\PYG{p}{(),} \PYG{n}{std}\PYG{o}{::}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{binary}\PYG{p}{);}
+        \PYG{n}{qTableFileOut}\PYG{p}{.}\PYG{n}{write}\PYG{p}{((}\PYG{k+kt}{char} \PYG{o}{*}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{n}{qTable}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{qTable}\PYG{p}{));}
+        \PYG{n}{qTableFileOut}\PYG{p}{.}\PYG{n}{close}\PYG{p}{();}
+        \PYG{n}{mpAgent}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cycleCounter}\PYG{o}{++}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{//END OF QTable AREA}
+\end{Verbatim}

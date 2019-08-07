@@ -1,0 +1,148 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n}{BehaviorDefensePlanner}\PYG{o}{::}\PYG{n}{Plan}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{n}{ActiveBehavior}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{behavior\PYGZus{}list}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{stringstream} \PYG{n}{qTableString}\PYG{p}{;}
+	\PYG{n}{qTableString} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}qTable\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetUnum}\PYG{p}{();}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{ifstream} \PYG{n}{qTableFileIn}\PYG{p}{(}\PYG{n}{qTableString}\PYG{p}{.}\PYG{n}{str}\PYG{p}{(),} \PYG{n}{std}\PYG{o}{::}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{binary}\PYG{p}{);}
+	\PYG{k+kt}{double} \PYG{n}{qTable}\PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{][}\PYG{l+m+mi}{9}\PYG{p}{];}
+	\PYG{n}{qTableFileIn}\PYG{p}{.}\PYG{n}{read}\PYG{p}{((}\PYG{k+kt}{char} \PYG{o}{*}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{n}{qTable}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{qTable}\PYG{p}{));}
+	\PYG{n}{qTableFileIn}\PYG{p}{.}\PYG{n}{close}\PYG{p}{();}
+	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastPosition} \PYG{o}{=} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{();}
+	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastBallPosition} \PYG{o}{=} \PYG{n}{mWorldState}\PYG{p}{.}\PYG{n}{GetBall}\PYG{p}{().}\PYG{n}{GetPos}\PYG{p}{();}
+
+	\PYG{c+c1}{//GETTING VARIABLES}
+	\PYG{k+kt}{double} \PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{];}
+	\PYG{k+kt}{int} \PYG{n}{index} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{avgDist} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{11}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{n}{mWorldState}\PYG{p}{.}\PYG{n}{GetTeammateGoalieUnum}\PYG{p}{())}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k+kt}{double} \PYG{n}{aux} \PYG{o}{=} \PYG{n}{mPositionInfo}\PYG{p}{.}\PYG{n}{GetBallDistToTeammate}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+			\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{n}{index}\PYG{o}{++}\PYG{p}{]} \PYG{o}{=} \PYG{n}{aux}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{)} \PYG{o}{/} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{,} \PYG{n}{teammatesDistToOpp} \PYG{o}{+} \PYG{p}{(}\PYG{n}{n}\PYG{p}{));}
+	\PYG{n}{avgDist} \PYG{o}{=} \PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o}{+} \PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]} \PYG{o}{+} \PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]} \PYG{o}{+} \PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]} \PYG{o}{+} \PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]} \PYG{o}{+} \PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]} \PYG{o}{+} \PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{9}\PYG{p}{];}
+	\PYG{n}{avgDist} \PYG{o}{/=} \PYG{l+m+mi}{7}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{sum} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{3}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{10}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{sum} \PYG{o}{+=} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{avgDist}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{avgDist}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{double} \PYG{n}{density} \PYG{o}{=} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{sum} \PYG{o}{/} \PYG{l+m+mi}{7}\PYG{p}{);}
+    \PYG{c+c1}{//END OF VARIABLES}
+
+	\PYG{k+kt}{int} \PYG{n}{curState}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{n}{mPositionInfo}\PYG{p}{.}\PYG{n}{GetBallDistToTeammate}\PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetUnum}\PYG{p}{()))}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{5}\PYG{p}{)}
+			\PYG{n}{curState} \PYG{o}{=} \PYG{n}{FirstDefenderRealClose}\PYG{p}{;}
+		\PYG{k}{else}
+			\PYG{n}{curState} \PYG{o}{=} \PYG{n}{FirstDefender}\PYG{p}{;}
+	\PYG{k}{else} \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{==} \PYG{n}{mPositionInfo}\PYG{p}{.}\PYG{n}{GetBallDistToTeammate}\PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetUnum}\PYG{p}{()))}
+		\PYG{n}{curState} \PYG{o}{=} \PYG{n}{SecondDefender}\PYG{p}{;}
+	\PYG{k}{else} \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{==} \PYG{n}{mPositionInfo}\PYG{p}{.}\PYG{n}{GetBallDistToTeammate}\PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetUnum}\PYG{p}{()))}
+		\PYG{n}{curState} \PYG{o}{=} \PYG{n}{ThirdDefender}\PYG{p}{;}
+	\PYG{k}{else} \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{density} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{7}\PYG{p}{)}
+		\PYG{n}{curState} \PYG{o}{=} \PYG{n}{Together}\PYG{p}{;}
+	\PYG{k}{else} \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{density} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{14}\PYG{p}{)}
+		\PYG{n}{curState} \PYG{o}{=} \PYG{n}{MidRanged}\PYG{p}{;}
+	\PYG{k}{else}
+		\PYG{n}{curState} \PYG{o}{=} \PYG{n}{Away}\PYG{p}{;}
+	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastStateOccurred} \PYG{o}{=} \PYG{n}{curState}\PYG{p}{;}
+	\PYG{n}{Vector} \PYG{n}{ballPosition} \PYG{o}{=} \PYG{n}{mWorldState}\PYG{p}{.}\PYG{n}{GetBall}\PYG{p}{().}\PYG{n}{GetPos}\PYG{p}{();}
+	\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}} \PYG{n}{actionSpace}\PYG{p}{\PYGZob{}}\PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{3}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{4}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{5}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{6}\PYG{p}{],} \PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{7}\PYG{p}{]\PYGZcb{};}
+	\PYG{k+kt}{double} \PYG{n}{epsilon} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{8}\PYG{p}{]} \PYG{o}{/} \PYG{l+m+mi}{50000}\PYG{p}{));}
+	\PYG{k+kt}{int} \PYG{n}{actionToTake} \PYG{o}{=} \PYG{n}{greedyEpSelection}\PYG{p}{(}\PYG{n}{actionSpace}\PYG{p}{,} \PYG{n}{epsilon} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{o}{?} \PYG{n+nl}{epsilon} \PYG{p}{:} \PYG{l+m+mf}{0.1}\PYG{p}{);}
+	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastActionTaken} \PYG{o}{=} \PYG{n}{actionToTake}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{power} \PYG{o}{=} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{CorrectDashPowerForStamina}\PYG{p}{(}\PYG{n}{ServerParam}\PYG{o}{::}\PYG{n}{instance}\PYG{p}{().}\PYG{n}{maxDashPower}\PYG{p}{());}
+	\PYG{k}{switch} \PYG{p}{(}\PYG{n}{actionToTake}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+	\PYG{k}{case} \PYG{n+nl}{MoveNorth}\PYG{p}{:}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{Y}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{2} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{25}\PYG{p}{)}
+			\PYG{n}{Dasher}\PYG{o}{::}\PYG{n}{instance}\PYG{p}{().}\PYG{n}{GoToPoint}\PYG{p}{(}\PYG{n}{mAgent}\PYG{p}{,} \PYG{n}{Vector}\PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{X}\PYG{p}{(),} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{Y}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{10}\PYG{p}{),} \PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{power}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{n+nb}{true}\PYG{p}{);}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{MoveSouth}\PYG{p}{:}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{Y}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2} \PYG{o}{\PYGZgt{}=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{25}\PYG{p}{)}
+			\PYG{n}{Dasher}\PYG{o}{::}\PYG{n}{instance}\PYG{p}{().}\PYG{n}{GoToPoint}\PYG{p}{(}\PYG{n}{mAgent}\PYG{p}{,} \PYG{n}{Vector}\PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{X}\PYG{p}{(),} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{Y}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{10}\PYG{p}{),} \PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{power}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{n+nb}{true}\PYG{p}{);}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{MoveWest}\PYG{p}{:}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{X}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2} \PYG{o}{\PYGZgt{}=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{51}\PYG{p}{)}
+			\PYG{n}{Dasher}\PYG{o}{::}\PYG{n}{instance}\PYG{p}{().}\PYG{n}{GoToPoint}\PYG{p}{(}\PYG{n}{mAgent}\PYG{p}{,} \PYG{n}{Vector}\PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{X}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{Y}\PYG{p}{()),} \PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{power}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{n+nb}{true}\PYG{p}{);}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{MoveEast}\PYG{p}{:}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{X}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{2} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{51}\PYG{p}{)}
+			\PYG{n}{Dasher}\PYG{o}{::}\PYG{n}{instance}\PYG{p}{().}\PYG{n}{GoToPoint}\PYG{p}{(}\PYG{n}{mAgent}\PYG{p}{,} \PYG{n}{Vector}\PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{X}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetPos}\PYG{p}{().}\PYG{n}{Y}\PYG{p}{()),} \PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{power}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{n+nb}{true}\PYG{p}{);}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{MoveToBall}\PYG{p}{:}
+		\PYG{n}{Dasher}\PYG{o}{::}\PYG{n}{instance}\PYG{p}{().}\PYG{n}{GoToPoint}\PYG{p}{(}\PYG{n}{mAgent}\PYG{p}{,} \PYG{n}{ballPosition}\PYG{p}{,} \PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{power}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{n+nb}{true}\PYG{p}{);}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{InterceptAction}\PYG{p}{:}
+		\PYG{n}{BehaviorInterceptPlanner}\PYG{p}{(}\PYG{n}{mAgent}\PYG{p}{).}\PYG{n}{Plan}\PYG{p}{(}\PYG{n}{behavior\PYGZus{}list}\PYG{p}{);}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{BlockAction}\PYG{p}{:}
+		\PYG{n}{BehaviorBlockPlanner}\PYG{p}{(}\PYG{n}{mAgent}\PYG{p}{).}\PYG{n}{Plan}\PYG{p}{(}\PYG{n}{behavior\PYGZus{}list}\PYG{p}{);}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{MarkAction}\PYG{p}{:}
+		\PYG{n}{BehaviorMarkPlanner}\PYG{p}{(}\PYG{n}{mAgent}\PYG{p}{).}\PYG{n}{Plan}\PYG{p}{(}\PYG{n}{behavior\PYGZus{}list}\PYG{p}{);}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{StayStill}\PYG{p}{:}
+	\PYG{k}{default}\PYG{o}{:}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+    
+	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{actionToTake}\PYG{p}{);}
+	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{curState}\PYG{p}{);}
+	\PYG{n}{PlayMode} \PYG{n}{pm} \PYG{o}{=} \PYG{n}{mWorldState}\PYG{p}{.}\PYG{n}{GetPlayMode}\PYG{p}{();}
+	\PYG{n}{ServerPlayMode} \PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}Null}\PYG{p}{;}
+	\PYG{k}{switch} \PYG{p}{(}\PYG{n}{pm}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Goal\PYGZus{}Opps}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}Goal\PYGZus{}Train}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Captured}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}Captured}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}OutOfBounds}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}OutOfBounds}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}11}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}11}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}10}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}1}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}9}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}9}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}8}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}8}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}7}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}7}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}6}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}6}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}5}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}5}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}4}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}4}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}3}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}3}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}2}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}2}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{case} \PYG{n+nl}{PM\PYGZus{}Play\PYGZus{}On\PYGZus{}1}\PYG{p}{:}
+		\PYG{n}{spm} \PYG{o}{=} \PYG{n}{SPM\PYGZus{}PlayOn\PYGZus{}1}\PYG{p}{;}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{k}{default}\PYG{o}{:}
+		\PYG{k}{break}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastActionsPM}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{spm}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

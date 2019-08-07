@@ -1,0 +1,23 @@
+\babel@toc {brazil}{}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces Arquitetura geral de um agente.\relax }}{9}{figure.caption.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2}{\ignorespaces Representa\IeC {\c c}\IeC {\~a}o do tabuleiro de jogo-da-velha.\relax }}{14}{figure.caption.8}
+\contentsline {figure}{\numberline {3}{\ignorespaces Aprendizado por refor\IeC {\c c}o.\relax }}{19}{figure.caption.9}
+\contentsline {figure}{\numberline {4}{\ignorespaces Tabuleiro do problema exemplo.\relax }}{23}{figure.caption.12}
+\contentsline {figure}{\numberline {5}{\ignorespaces Representa\IeC {\c c}\IeC {\~a}o dos estados e solu\IeC {\c c}\IeC {\~a}o encontrada pelo \textit {Q-Learning}\relax }}{23}{figure.caption.13}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6}{\ignorespaces Etapas de KDD.\relax }}{26}{figure.caption.15}
+\contentsline {figure}{\numberline {7}{\ignorespaces Diagrama de classes simplificado para mecanismo de defesa.\relax }}{32}{figure.caption.16}
+\contentsline {figure}{\numberline {8}{\ignorespaces Algoritmo da classe \textit {BehaviorDefensePlanner}\relax }}{33}{figure.caption.17}
+\contentsline {figure}{\numberline {9}{\ignorespaces Algoritmo da classe \textit {BehaviorFormationPlanner}\relax }}{34}{figure.caption.18}
+\contentsline {figure}{\numberline {10}{\ignorespaces Algoritmo da classe \textit {BehaviorBlockPlanner}\relax }}{35}{figure.caption.19}
+\contentsline {figure}{\numberline {11}{\ignorespaces Algoritmo da classe \textit {BehaviorMarkPlanner}\relax }}{36}{figure.caption.20}
+\contentsline {figure}{\numberline {12}{\ignorespaces Algoritmo da classe \textit {BehaviorInterceptPlanner}\relax }}{37}{figure.caption.21}
+\contentsline {figure}{\numberline {13}{\ignorespaces HFO\relax }}{38}{figure.caption.22}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {14}{\ignorespaces M\IeC {\'e}dias finais em compara\IeC {\c c}\IeC {\~a}o ao original\relax }}{39}{figure.caption.24}
+\contentsline {figure}{\numberline {15}{\ignorespaces Gr\IeC {\'a}ficos de Modelos \ref {model:2cycles} e \ref {model:1cycle}\relax }}{40}{figure.caption.25}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

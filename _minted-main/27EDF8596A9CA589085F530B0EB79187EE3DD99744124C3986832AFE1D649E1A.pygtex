@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Inicializar} \PYG{n}{Q}\PYG{o}{\PYGZhy{}}\PYG{n}{table}
+\PYG{n}{Enquanto} \PYG{n}{n}\PYG{err}{ã}\PYG{n}{o} \PYG{n}{alcan}\PYG{err}{ç}\PYG{n}{ar} \PYG{n}{crit}\PYG{err}{é}\PYG{n}{rio} \PYG{n}{de} \PYG{n}{parada}
+    \PYG{n}{Escolher} \PYG{n}{a} \PYG{n}{pr}\PYG{err}{ó}\PYG{n}{xima} \PYG{n}{a}\PYG{err}{çã}\PYG{n}{o} \PYG{n}{a}
+    \PYG{n}{Executar} \PYG{n}{a}
+    \PYG{n}{Medir} \PYG{n}{recompensa}
+    \PYG{n}{Atualizar} \PYG{n}{Q}
+\end{Verbatim}

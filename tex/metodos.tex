@@ -1,0 +1,423 @@
+%--------------------------------------------------------------------------------------
+% Este arquivo contém a sua metodologia
+%--------------------------------------------------------------------------------------
+\chapter{Materiais e Métodos} \label{sec:newModule} %Uma label é como você referencia uma seção no texto com a tag \ref{}
+
+Como já especificado, o trabalho tem como objetivo a investigação de modelos a
+serem utilizados no desenvolvimento de um módulo de defesa para o time de
+Futebol de Robôs na categoria de simulação 2D, FutVasf2D. O processo de
+modelagem de um mundo em um MDP exige a discretização do mesmo de forma que
+sejam obtidos um número finito de ações e de estados com os quais o algoritmo de
+aprendizado de reforço possa trabalhar, sendo assim, a próxima etapa é definir
+como o algoritmo escrito pode ser implementado no time base escolhido
+(\textit{WrightEagleBASE}).
+
+\section{Modelagem do Mundo}\label{modelagem}
+
+Os trabalhos apresentados na Seção \ref{trabalhosRelacionados} oferecem várias
+possibilidades de como adaptar o ambiente da partida para um problema que se
+encaixe às definições de MDP. Algumas das variáveis destacadas por
+\citeonline{gabel2008case}, \citeonline{celiberto2007heuristic},
+\citeonline{bianchi2010case} e \citeonline{homem2017improving} estão descritos a
+seguir:
+
+\begin{itemize}
+    \item Posição do jogador;
+    \item Posição da bola;
+    \item Orientação do corpo do jogador;
+    \item Distância entre o jogador e a bola;
+    \item Velocidade do jogador;
+    \item Distância entre jogador e adversário mais próximo;
+    \item Ângulos diversos, como ângulo entre jogador e adversário, ângulo
+    formado entre bola, jogador e gol adversário.
+\end{itemize}
+
+Segundo \citeonline{Fayyad:1996:DMK:257938.257942}, a Descoberta de Conhecimento
+em Base de Dados (do inglês \textit{Knowledge Discovery in Databases} - KDD) é o
+processo de identificar padrões válidos, novos, potencialmente uteis, e
+inteligível em dados. O KDD é composto de 5 etapas, seleção, pré-processamento,
+transformação, mineração de dados e avaliação, como mostrado na Figura
+\ref{img:kdd}, junto com cada artefato gerado. Na etapa de pré-processamento são
+realizadas manipulação de variáveis pré-existentes e identificações de novas.
+
+\imagem{0.25}{kdd}{Etapas de KDD.}{\cite{Fayyad:1996:DMK:257938.257942}}
+
+A construção de novas variáveis é uma forma sistemática de incorporar
+conhecimento em um projeto de KDD. Essas variáveis serão úteis na etapa de
+mineração de dados, que no caso de aprendizado por reforço, acontece no momento
+do treinamento. Segundo \citeonline{friedman2001elements}, apesar de ser um dos
+mais antigos, o processo de construção de novas variáveis é um dos mais
+desafiadores. De acordo com \citeonline{witten2016data}, a melhor forma de
+construir variáveis é a manual, baseando-se no entendimento do problema e
+significado de cada atributo. No geral, essa tarefa depende muito mais do
+conhecimento sobre o domínio do que da construção do algoritmo, por tanto, o
+conhecimento sobre o domínio é essencial \cite{zhao2009effects}. O uso de
+conhecimento de domínio para construção de variáveis aumenta o poder preditivo
+do modelo \cite{zhao2009effects}. A estratégia de enriquecimento de dados para
+alcançar uma maior capacidade descriminatória é ainda maior em áreas como as de
+reconhecimento de som e imagem, de acordo com \citeonline{gao2008wavelet}. As
+soluções de melhor performance em competições internacionais utilizaram a
+estratégia de construção de novas variáveis a fim de incorporar conhecimento do
+domínio, segundo \citeauthoronline{adeodato2009role}
+(\citeyear{adeodato2008power}, \citeyear{adeodato2009role}).
+
+Partindo das informações e exemplos obtidos através da revisão bibliográfica,
+foram modeladas algumas variações de de formas de representar o mundo. Quatro
+componentes são importantes neste processo, os estados que podem ser alcançados
+pelo agente, as ações que o mesmo pode tomar, as recompensas e punições a serem
+atribuídas para o resultado das ações em cada estado e como será feita a
+implementação de todo o modelo no agente. Os 3 primeiros componentes são
+cobertos nas subseções abaixo enquanto a implementação é abordada na Seção
+\ref{implementacao}.
+
+\subsection{Estados}\label{states}
+
+A definição dos estados é uma etapa certamente crucial e complexa, neste
+trabalho foram tomadas duas abordagens. A primeira foi sobre a identificação de
+variáveis cujos diferentes possíveis valores formam os estados, a outra se
+baseia na identificação de possíveis papéis de função que os agentes podem tomar
+no processo de defesa e uma simplificação das possíveis situações que os mesmos
+podem estar encaixados.
+
+Especialmente, mas não exclusivamente, na primeira abordagem, é necessário um
+cuidado sobre a questão de quais serão os possíveis valores de cada variável,
+visto que esta decisão impactará na complexidade e e quantidade de estados além
+do significado de cada um. Várias das variáveis abordadas a seguir possem
+caráter contínuo e uma amplitude de possíveis valores muito grande, por conta
+disto foi feita um agrupamento de seus valores em 3 classes através da análise
+dos valores assumidos pelas variáveis na execução de várias partidas. As
+variáveis identificadas e seus possíveis valores foram as seguintes:
+
+\begin{itemize}
+    \item \textbf{Posição do jogador em relação à bola no eixo horizontal}
+    ($P_{hj}$), ou seja, se o jogador estar mais a direita ou a esquerda da
+    bola, esta variável pode assumir valores booleanos onde VERDADEIRO implica
+    que o jogador está a esquerda e FALSE a direita;
+    \item \textbf{Posição do jogador em relação à bola no eixo vertical}
+    ($P_{vj}$), se identifica se o jogador pode ser encontrado mais acima ou
+    abaixo da bola, assim como o item passado, os valores assumidos são
+    VERDADEIRO para quando o jogador está acima da bola e FALSO quando abaixo,
+    esta variável e a anterior são úteis para questão da direção de movimentação
+    do jogador;
+    \item \textbf{Distância entre o jogador e bola} ($D_{jb}$), mede o
+    afastamento do agente em relação à bola, as classes atribuídas para as
+    variáveis de distância são as mesmas (PERTO, MÉDIO e LONGE), diferindo
+    apenas nos valores atribuídos a cada classe, nesta, os valores para PERTO é
+    sempre menor ou igual a 10 (unidade de medida utilizada pelo servidor), para
+    MÉDIO os valores são entre 10 e 20 e LONGE engloba todos acima de 20;
+    \item \textbf{Distância entre o aliado mais próximo da bola e a bola}
+    ($D_{tb}$), aqui os intervalos são menores, podendo assumir PERTO quando o
+    valor da distância é menor ou igual a 5, MÉDIO quando entre 5 e 15 e LONGE
+    quando acima de 15;
+    \item \textbf{O agente é o aliado mais próximo da bola} ($F$), trata-se de
+    um valor booleano a fim de identificar se o jogador ``pensante'' é o aliado
+    mais próximo a bola;
+    \item \textbf{Distância do adversário com posse de bola do gol} ($D_{ag}$),
+    mede o afastamento do jogador com posse de bola do gol aliado, aqui os
+    valores para PERTO são todos os que forem iguais ou abaixo de 11, MÉDIO
+    quando entre 11 e 22 e LONGE quando acima de 33;
+    \item \textbf{Compactação} ($\sigma$), consiste numa variável construída a
+    partir das distâncias dos jogadores entre si, com foco no adversário com
+    posse de bola. Esta variável é importante pois serve como uma maneira de
+    reconhecer a dispersão dos jogadores no campo possibilitando o fechamento de
+    um ``cerco'' com menos brechas em torno da bola. O calculo desta variável é
+    feito como um desvio padrão com base na distância média entre os jogadores
+    aliados e o jogador com posse de bola, como na Equação \ref{eq:desvio}, onde
+    $d_i$ é a distância entre o jogador $i$ e o adversário com posse de bola e
+    $m$ é a média dessas distâncias, as classes atribuídas a essa variável foram
+    ESPARSO (valores acima de 14), COMPACTO (entre 14 e 7) e MUITO COMPACTO
+    (abaixo de 7).
+\end{itemize}
+
+\begin{equation}
+    \sigma=\sqrt{0,1\times \sum{(d_i - m)^2}}
+    \label{eq:desvio}
+\end{equation}
+
+O estado do modelo descrito, então, passa a ser representado por uma 7-tupla,
+($P_{hj}$, $P_{vj}$, $D_{jb}$, $D_{tb}$, $F$, $D_{ag}$, $\sigma$). Como
+consequência da quantidade de variáveis e de seus valores, o campo de estados
+passa a assumir 648 possibilidades.
+
+Para a segunda abordagem, o campo de estados foi mais simples, baseando-se em
+conceitos básicos de defesa no futebol real, foram atribuídos os papéis de
+Primeira Defesa, Segunda Defesa e Terceira defesa para o jogador mais próximo da
+bola, o segundo mais próximo e o terceiro mais próximo, respectivamente. Além
+disso, o valor de compactação já descrito foi reaproveitado para implementar o
+conceito de balanceamento no restante do time, resultando na modificação da
+Equação \ref{eq:desvio} para a Equação \ref{eq:desvio2} e utilizando o mesmo
+conceito de classe anterior, atribuindo-o porém a novos estados ao invés de
+valores de um estado único.
+
+\begin{equation}
+    \sigma=\sqrt{\frac{\sum{(d_i - m)^2}}{7}}
+    \label{eq:desvio2}
+\end{equation}
+
+Desta forma essa abordagem resulta num campo de 6 estados que são:
+
+\begin{itemize}
+    \item \textbf{Primeira Defesa}, se o agente pensante assume o papel de
+    primeira defesa;
+    \item \textbf{Primeira Defesa Muito Perto}, se o agente pensante assume o papel de
+    primeira defesa e está a uma distância menor oi igual a 5 da bola;
+    \item  \textbf{Segunda Defesa}, se o agente tomando a decisão assume o papel
+    de segunda defesa;
+    \item \textbf{Terceira Defesa}, se agora é assumido o papel de terceira
+    defesa;
+    \item \textbf{Esparso}, se o jogador não se encaixa nos estados anteriores e
+    os jogadores estão muito espalhados no campo;
+    \item \textbf{Compacto}, se os jogadores estão menos espalhados;
+    \item \textbf{Muito Compacto}, se os jogadores sem papel definido estão
+    juntos no campo;
+\end{itemize}
+
+Podendo esta modelagem ser considerada muito simples, em outra tentativa foram
+atribuídas variações para os jogadores com papéis definidos, resultante no
+seguinte campo de 12 estados:
+
+\begin{itemize}
+    \item \textbf{Primeira Defesa Muito Perto}, se o agente pensante assume o
+    papel de primeira defesa e está a uma distância menor que 5 da bola;
+    \item \textbf{Primeira Defesa Perto}, se o agente pensante assume o papel de
+    primeira defesa e está a uma distância menor que 6 e maior que 5 da bola;
+    \item \textbf{Primeira Defesa Médio}, se o agente pensante assume o papel de
+    primeira defesa e está a uma distância menor que 7 e maior que 6 da bola;
+    \item \textbf{Primeira Defesa Longe}, se o agente pensante assume o papel de
+    primeira defesa e está a uma distância maior que 7 da bola;
+    \item \textbf{Primeira Defesa Atrás}, se o agente pensante assume o papel de
+    primeira defesa e está atrás da bola;
+    \item  \textbf{Segunda Defesa}, se o agente tomando a decisão assume o papel
+    de segunda defesa;
+    \item  \textbf{Segunda Defesa Com Primeiro Atrás}, se o agente tomando a
+    decisão assume o papel de segunda defesa e o agente que assume o papel de
+    primeira defesa se encontra atrás da bola;
+    \item \textbf{Terceira Defesa}, se agora é assumido o papel de terceira
+    defesa;
+    \item \textbf{Terceira Defesa Com Segundo Atrás}, se agora é assumido o
+    papel de terceira defesa e o jogador que assume o papel de segunda defesa se
+    encontra atrás da bola;
+    \item \textbf{Esparso}, se o jogador não se encaixa nos estados anteriores e
+    os jogadores estão muito espalhados no campo;
+    \item \textbf{Compacto}, se os jogadores estão menos espalhados;
+    \item \textbf{Muito Compacto}, se os jogadores sem papel definido estão
+    juntos no campo;
+\end{itemize}
+
+Esses foram os estados utilizados nos experimentos descritos no decorrer deste
+trabalho, na seção seguinte será abordada a questão da escolha de possíveis
+ações para os agentes.
+
+\subsection{Ações}\label{actions}
+
+A escolha das ações foi pensando no que pode ser feito, enquanto no papel de
+defesa numa partida de futebol, a fim de capturar a bola e impedir o avanço do
+time adversário. A implementação original do time base define 3 possíveis ações
+para a situação de defesa, mover-se para uma melhor posição, bloquear o avanço
+do jogador com posse de bola e marcar adversários para impedir a recepção de
+bola. Para este trabalho foram mantidas estas ações com algumas modificações e
+adições.
+
+Primeiramente, a ação de se mover foi divida em 5 possíveis ações, mover-se para
+cima, para baixo, para esquerda, para direita ou diretamente em direção a bola, desta forma é eliminada a
+avaliação original do time base garantido que o aprendizado seja exclusivamente
+baseado no algoritmo \textit{Q-Learning}.
+
+Além dessa divisão foi adicionada a ação de interceptação e a possibilidade de
+não fazer nada. A ação de interceptação consiste na tentativa de dominar a bola
+quando a mesma está ao alcance do agente.
+
+Vale destacar que essas foram as ações levantadas para ser utilizadas, mas isto
+não implica que em todos os modelos implementados tenham sido utilizadas todas
+as ações.
+
+\subsection{Recompensas}\label{rewards}
+
+As recompensas são partes essenciais do aprendizado por reforço, visto que são
+elas as responsáveis por informar ao agente se a ação tomada obteve resultados
+positivos ou negativos e o quão positivo ou negativo foi a ação. Esta decisão
+não é fácil de ser tomada e por isso foram feitas algumas implementações a vim
+de procurar otimizar esses valores.
+
+A primeira tentativa de modelar um bom sistema de recompensas se baseou na
+ocorrência dos principais eventos na simulação, gols, bolas jogadas para fora do
+campo, captura de bola e passes. Esta modelagem adotou como recompensa para
+captura de bola +20, para gols sofridos -20 e para bolas lançadas para fora o
+valor +10, visto que implica no sucesso na tentativa de impedir possíveis ações para o
+agente adversário, convenção mantida em todas as
+modelagens seguintes, e para passe foi atribuído o valor -5 numa tentativa de
+impedir o time adversário de se articular.
+
+A segunda implementação aboliu a recompensa de passes e adicionou uma
+verificação no avanço e recuo da bola, atribuindo -5 ao avanço da bola, +5 ao
+recuo da bola somada à aproximação do agente da captura da bola e +2 ao recuo da
+bola sem avanço dos aliados. Esta modelagem se mostrou bastante falha pela
+punição excessiva no avanço da bola, visto que o avanço da bola é uma
+característica constante nas situações simuladas, desta forma a última
+implementação removeu esta punição e atribuição recompensa neutra a esta e como
+padrão para não identificação de nenhuma das situações anteriores.
+
+\section{Implementação em \textit{WrightEagleBASE}}\label{implementacao}
+
+O último ponto a ser abordado sobre a modelagem está na implementação do
+algoritmo, mas para que se possa tratar da implementação realizada, se faz
+necessário primeiro entender o funcionamento atual do time base escolhido.
+
+O time base \textit{WrightEagleBASE} conta com um mecanismo modularizado para
+tomada de decisões. A sua implementação depende do ``tipo'' de classe
+\textit{Behavior} (comportamento), que é constituído por classes mais
+especializadas, como comportamento de bloqueio ou de interceptação, e menos
+especializadas, como comportamento de defesa ou ataque. As classes menos
+especializadas, na implementação original, criam uma forma de hierarquia para
+execução das mais especializadas que irão decidir se deve tomar a ação
+correspondente a classe ou não. 
+
+Este trabalho foca em 5 dessas classes, \textit{BehaviorDefensePlanner},
+\textit{BehaviorFomationPLanner}, \textit{BehaviorBlockPlanner},
+\textit{BehaviorMarkPlanner} e \textit{BehaviorInterceptPlanner}, que são
+descritas a seguir. O diagrama representado na Figura \ref{img:classDiagram},
+mostra como é o diagrama de classes simplificado da implementação original
+focando nas classes \textit{Behavior}, mas especificamente na
+\textit{BehaviorDefensePlanner}, vale destacar que a classe
+\textit{BehaviorPlannerBase} corresponde a uma classe abstrata que é
+implementada por todas as demais.
+
+\begin{itemize}
+    \item \textbf{\textit{BehaviorDefensePlanner}} decide entre quais
+    comportamentos o agente deve decidir quando o time está sem posse de bola e
+    em qual ordem, na implementação original apenas define uma ordem de execução
+    dos testes de cada possível ação de defesa;
+    \item \textbf{\textit{BehaviorFormationPlanner}} coordena a movimentação do
+    time, decide quando o agente precisa ser realocado;
+    \item \textbf{\textit{BehaviorBlockPlanner}} é responsável por definir
+    quando o agente deve tentar bloquear o adversário;
+    \item \textbf{\textit{BehaviorMarkPlanner}} decide se há a necessidade de
+    determinado agente marcar um adversário;
+    \item \textbf{\textit{BehaviorInterceptPlanner}} busca a possibilidade de
+    interceptar a bola e se deve tentar realizar tal ação.
+\end{itemize}
+
+\imagem{0.5}{classDiagram}{Diagrama de classes simplificado para mecanismo de defesa.}{O Autor}
+
+Um exemplo de como isso é aplicado é dado pela implementação original do
+mecanismo de defesa que acontece da seguinte maneira. A classe de defesa define
+que a ordem de execução dos planejadores mais específicos é a seguinte:
+
+\begin{enumerate}
+    \item \textit{BehaviorFormationPlanner}
+    \item \textit{BehaviorBlockPlanner}
+    \item \textit{BehaviorMarkPlanner}
+\end{enumerate}
+
+Desta forma, o agente primeiro decidirá se precisa se movimentar e para que
+local e só em seguida decidirá se precisa realizar um bloqueio e apenas depois
+disso, se precisa marcar algum jogador e qual. Desta forma, se garante que o
+jogador só se preocupará com bloqueio ou marcação depois de estar na posição
+adequada. O fluxograma do algoritmo de decisão das 5 classes,
+\textit{BehaviorDefensePlanner}, \textit{BehaviorFormationPlanner},
+\textit{BehaviorBlockPlanner}, \textit{BehaviorMarkPlanner}
+e \textit{BehaviorInterceptPlanner} podem ser vistas nas
+Figuras \ref{img:BehaviorDefense}, \ref{img:BehaviorFormation},
+\ref{img:BehaviorBlock}, \ref{img:BehaviorMark} e \ref{img:BehaviorIntercept}, respectivamente.
+
+\imagem{0.8}{BehaviorDefense}{Algoritmo da classe \textit{BehaviorDefensePlanner}}{O Autor}
+\imagem{0.5}{BehaviorFormation}{Algoritmo da classe \textit{BehaviorFormationPlanner}}{O Autor}
+\imagem{0.8}{BehaviorBlock}{Algoritmo da classe \textit{BehaviorBlockPlanner}}{O Autor}
+\imagem{0.8}{BehaviorMark}{Algoritmo da classe \textit{BehaviorMarkPlanner}}{O Autor}
+\imagem{0.5}{BehaviorIntercept}{Algoritmo da classe \textit{BehaviorInterceptPlanner}}{O Autor}
+
+Na implementação dos modelos, as classes mais especializadas
+(\textit{BehaviorMarkPlanner, BehaviorBlockPlanner, BehaviorFormationPlanner} e
+\textit{BehaviorInterceptPlanner}) foram modificadas ou deixaram de ser
+utilizadas para melhor se adequar ao processo de tomada de ação proposto.
+
+Desde a primeira implementação do mecanismo de movimento a classe
+\textit{BehaviorFormationPlanner} deixou de ser utilizada para dar lugar a
+implementação direta do mecanismo de movimentação provido pelo
+\textit{framework} do time base. Em uma implementação futura o mesmo foi feito
+com as demais classes, mas a principio as classes foram apenas modificadas
+removendo as condições que decidiam se a ação deveria ou não ser executada.
+
+Além das classes \textit{Behavior}, são importantes citar duas classes
+modificadas no desenvolvimento deste trabalho, são elas \textit{Player} e
+\textit{Agent}. A primeira foi utilizada para a implementação da utilização da
+\textit{Q-Table} por se tratar de uma etapa esterna aos comportamentos
+possibilitando a detecção de eventos que encerra o episódio, como a captura de
+defesa, que fazem com que a classe \textit{BehaviorDefensePlanner} não seja
+acessada no instante devido. Já a classe \textit{Agent} foi utilizado apenas
+como meio de guardar informações sobre o agente a ser compartilhados entre as
+classes, visto que esta é a classe responsável pela descrição do agente.
+
+A classe \textit{Player}, portanto, foi tomada com uma certa preocupação devido
+ao tempo (medido em ciclos) para se considerar que a ação tomada obteve
+resultados. Para tratar desta questão, foi desenvolvido uma fila de ações e seus
+respectivos estados para que depois de um determinado número de ciclos pudessem
+ser avaliadas, com exceção de estados terminais (como gols, capturas e gols fora
+do campo) que quando ocorrem é tomada a primeira ação da fila e em seguida
+limpada novamente, tomando assim a ação mais velha que poderia ter causado o
+alcance a tal estado. O tamanho da fila foi alterado para tentar chegar ao
+melhor valor, assumindo os valores de 2 ciclos, 5 ciclos, 10 ciclos ou 1 ciclo
+(ação imediata).
+
+Vale destacar ainda a implementação da \textit{Q-Table} em si, a principio houve
+a tentativa de utilizar apenas um arquivo binário com a estrutura de dados de
+matriz de \textit{double} para guardar as informações entre todos os agentes
+aliados  em campo, porém esta abordagem se mostrou defeituosa por conta da
+concorrência do acesso.
+
+A questão é que o time base não faz utilização de \textit{threads}, utilizando
+clientes completamente idependentes entre si, em relação a processos, o que
+fazia da única forma de controlar o acesso ao arquivo a criação de exclusão de
+um arquivo de trava. O problema surgido desta abordagem é a velocidade de
+execução dos ciclos que acarretava na verificação por parte de mais de um agente
+no momento em que o arquivo de trava ainda não havia sido criado por nenhum
+outro, causando sobreposição da tabela sempre que um novo agente terminava de
+processar uma ação.
+
+A solução deste problema foi a criação de uma tabela para cada jogador, isto
+resolve  o problema da concorrência e trata cada jogador por sua função
+especifica no jogo, mas torna o aprendizado potencialmente mais
+lento, devido a falta de compartilhamento de experiência. Outra questão desta
+abordagem é que obriga a execução do treinamento de todos os jogadores ao mesmo tempo.
+
+\section{Metodologia Experimental}\label{meotodologia}
+
+Os modelos implementados foram treinados com o auxilio da subtarefa HFO,
+mostrado na Figura \ref{img:hfo}, que consiste numa especialização do
+\textit{RoboCup Simulated Soccer} onde é utilizado apenas metade do campo com
+alguns jogadores no ataque e alguns na defesa, foram experimantadas seções de
+treinamento utilizando 10 contra 10 jogadores. Com o HFO, é
+possível treinar os jogadores para defesa de forma mais objetiva focando apenas
+em situações de defesa. Seria possível a execução do treinamento utilizando
+partidas completas, no entanto, isso tornaria o treinamento mais lento, já que
+seriam encontradas muitas situações diferentes do alvo do trabalho,
+resultando em muito tempo na execução de uma partida para poucos episódios
+treinados.
+
+\imagem{0.32}{hfo}{HFO}{\url{http://www.cs.utexas.edu/~AustinVilla/sim/halffieldoffense/}}
+
+Devida necessidade de comparar vários modelos e o quão cada um evolue com o
+tempo foi utilizado o mecanismo de treinamento para também verificar o
+desempenho do modelo em execução. Para este fim foram feitas modificações no
+código-fonte com o intuito de contabilizar o número de gols sofridos em
+intervalos de 3000 ciclos (metade da quantidade de ciclos de uma partida comum
+da categoria) e foram registradas as variações destes resultados para cada
+modelo, inclusive o time original sem a técnica empregada.
+
+A partir daqui serão identificados os 4 modelos que demonstraram maior
+importância para o estudo:
+
+\begin{enumerate}
+    \item\label{model:old} O primeiro modelo testado, utilizando a primeira abordagem de estados
+    (baseada apenas em váriaveis) com o sistema de recompensas utilizando avanço
+    da bola como punição e fila de 5 ações;
+    \item\label{model:2cycles} Modelo que utiliza o mesmo sistema de estados que o anterior, mas já
+    abole a punição por avanço e diminue o tamanho da fila para 2 ações;
+    \item\label{model:1cycle} Este utiliza os mesmos estados e recompensas do anterior, porém
+    utiliza uma fila de apenas uma ação (verificação imediata) e utiliza
+    diretamente o mecanismo de ações ignorando a utilização das classes
+    decomportamento mais especializadas;
+    \item\label{model:simple} O último modelo descrito é o que utiliza o sistema mais simples de
+    papéis, além de utilizar-se da fila de 5 ações e o mesmo sistema de
+    recompensas que os dois anteriores.
+\end{enumerate}
