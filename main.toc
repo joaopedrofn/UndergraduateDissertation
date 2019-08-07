@@ -20,9 +20,8 @@
 \contentsline {section}{\numberline {3.3}Metodologia Experimental}{35}{section.3.3}
 \contentsline {chapter}{\chapternumberline {4}Resultados}{39}{chapter.4}
 \contentsline {chapter}{\chapternumberline {5}Conclus\IeC {\~a}o}{42}{chapter.5}
-\contentsline {section}{\numberline {5.1}Trabalhos Futuros}{42}{section.5.1}
+\contentsline {section}{\numberline {5.1}Trabalhos Futuros}{43}{section.5.1}
 \vspace {\cftbeforepartskip }
-\contentsline {chapter}{Refer\^encias}{43}{section*.28}
+\contentsline {chapter}{Refer\^encias}{44}{section*.28}
 \renewcommand *{\cftappendixname }{AP\^ENDICE \space }
-\contentsline {appendix}{\chapternumberline {A}\textit {Player} - Avalia\IeC {\c c}\IeC {\~a}o de A\IeC {\c c}\IeC {\~a}o e Atualiza\IeC {\c c}\IeC {\~a}o de \textit {Q-Table}}{47}{appendix.A}
-\contentsline {appendix}{\chapternumberline {B}\textit {BehaviorDefensePlanner} - Identifica\IeC {\c c}\IeC {\~a}o de Estado e Escolha de A\IeC {\c c}\IeC {\~a}o Para Model \ref {model:simple} (Mais Simples)}{49}{appendix.B}
+\contentsline {appendix}{\chapternumberline {A}C\IeC {\'o}digos-Fonte}{48}{appendix.A}

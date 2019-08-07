@@ -3,11 +3,58 @@
 % %--------------------------------------------------------------------------------------
 \chapter{Conclusão}\label{sec:conclusion}
 
+Os resultados encontrados através da execução dos experimentos são longe de
+ideais, visto que não foi alcançada uma taxa de gols que conseguisse ser menor
+que a do time original, porém, é possível tomar notas sobre o processo que pode
+ter levado a tais resultados e inferir possíveis ações que podem levar ao
+resultado desejado.
+
+Uma verdade na execução deste trabalho é de que,
+pela sua natureza, foi necessário a execução de treinamentos extensos para
+vários modelos direntes. Isto por si só não consistiria em problema, se não
+fosse uma pequena falha na projeção do time base que impedia a plena
+compatibilidade com o HFO.
+
+A falha em questão corresponde a um problema de memória e acesso à ponteiros que
+causa a interrupção dos clientes durante as seções de treinamento, a correção
+desta falha não foi possível por conta da complexidade do código-fonte do time
+base desenvolvido por anos por componentes da equipe \textit{WrightEagle}. Isto
+somado à necessidade de iniciar as seções manualmente, o que impossibilitava a
+escrita de um \textit{script} que reconhecesse a queda dos clientes e o
+executassem novamente, impediu a execução de seções de treinamento longas e
+initerruptas.
+
+Outro prolema relacionado à execução dos treinamentos é quantidade de recursos
+utilizadas pelo treinamento, já que o HFO utiliza o máximo que consegue dos
+recursos para executar ciclos rápidos agilizando o treinamento. O consumo em
+questão impossibilitou a execução de treinamento de mais modelos
+simultaneamente.
+
+Tudo isso somado a quantidade de variáveis que precisavam ser testadas para que
+se pudesse obter uma otimização do modelo e da implementação do mesmo impediu o
+avanço do projeto em tempo ábil.
+
+Mas ainda assim, é possível observar que os gráficos dos resultados dos Modelos
+\ref{model:2cycles} e \ref{model:2cycles} apresentam sinais de evolução na
+inteligência dos agentes quanto a tentativa de evitar gols.
+
+Levando em conta todos os modelos testados e os valores obtidos, é possível
+comparar e observar que a tentativa de avaliar a ação tomada após alguns ciclos
+de sua execução não apresentou os frutos esperados, pelo contrários, os dois
+modelos em destaque foram aqueles com menor número de ações na fila. Também é
+possível observar que a abordagem de estados por variáveis se mostrou mais
+eficiente que aquela por papéis situacionais.
+
+Estes resultados, embora não o que se esperava ao se iniciar o projeto, são útei
+para execução de novas pesquisas na área, principalmente dando continuidade a
+esta pesquisa e ao projeto FutVasf2D.
+
 \section{Trabalhos Futuros}\label{sec:future}
 
 O resultado deste trabalho serve para apontar novos caminhos a serem tomados
 para melhoria de mecanismos de defesa, como o refino dos modelos aqui indicados
-ou a especialização em subtarefas da defesa. 
+ou a especialização em subtarefas da defesa. Vale a pena focar nos modelos com
+melhores resultados deste trabalhos a fim de reproduzi-los e melhora-los.
 
 Também se faz interessante a realização de pesquisas de aplicação do
 \textit{Q-Learning} em outros tipos de mecanismos, como no drible ou passe de

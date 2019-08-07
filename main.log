@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.28)  7 AUG 2019 11:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.28)  7 AUG 2019 14:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2247,7 +2247,7 @@ LaTeX Font Warning: Font shape `T1/lmr/b/it' in size <12> not available
 ) [8
 
 ]) (./tex/introducao.tex
-<img/agent.png, id=212, 774.895pt x 241.90375pt>
+<img/agent.png, id=209, 774.895pt x 241.90375pt>
 File: img/agent.png Graphic file (type png)
 <use img/agent.png>
 Package pdftex.def Info: img/agent.png  used on input line 27.
@@ -2263,7 +2263,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 102.
  [11] [12]) (./tex/desenvolvimento.tex [13]
-<img/ticTacToeNumbers.png, id=299, 295.85532pt x 295.85532pt>
+<img/ticTacToeNumbers.png, id=296, 295.85532pt x 295.85532pt>
 File: img/ticTacToeNumbers.png Graphic file (type png)
 <use img/ticTacToeNumbers.png>
 Package pdftex.def Info: img/ticTacToeNumbers.png  used on input line 27.
@@ -2271,7 +2271,7 @@ Package pdftex.def Info: img/ticTacToeNumbers.png  used on input line 27.
  [14
 
  <./img/ticTacToeNumbers.png>] [15] [16] [17] [18]
-<img/reinforcement.png, id=367, 344.28625pt x 149.55875pt>
+<img/reinforcement.png, id=364, 344.28625pt x 149.55875pt>
 File: img/reinforcement.png Graphic file (type png)
 <use img/reinforcement.png>
 Package pdftex.def Info: img/reinforcement.png  used on input line 213.
@@ -2288,23 +2288,23 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 ) [21]
-<img/problemEx.png, id=413, 516.93124pt x 512.91624pt>
+<img/problemEx.png, id=410, 516.93124pt x 512.91624pt>
 File: img/problemEx.png Graphic file (type png)
 <use img/problemEx.png>
 Package pdftex.def Info: img/problemEx.png  used on input line 326.
 (pdftex.def)             Requested size: 258.46498pt x 256.45749pt.
-<img/problemStateEx.png, id=416, 387.69844pt x 384.6872pt>
+<img/problemStateEx.png, id=413, 387.69844pt x 384.6872pt>
 File: img/problemStateEx.png Graphic file (type png)
 <use img/problemStateEx.png>
 Package pdftex.def Info: img/problemStateEx.png  used on input line 341.
 (pdftex.def)             Requested size: 155.07661pt x 153.87215pt.
-<img/problemSolutionEx.png, id=417, 387.69844pt x 384.6872pt>
+<img/problemSolutionEx.png, id=414, 387.69844pt x 384.6872pt>
 File: img/problemSolutionEx.png Graphic file (type png)
 <use img/problemSolutionEx.png>
 Package pdftex.def Info: img/problemSolutionEx.png  used on input line 342.
 (pdftex.def)             Requested size: 155.07661pt x 153.87215pt.
 ) (./tex/metodos.tex [22] [23 <./img/problemEx.png> <./img/problemStateEx.png> <./img/problemSolutionEx.png>] [24]
-<img/kdd.png, id=453, 1660.2025pt x 621.32124pt>
+<img/kdd.png, id=450, 1660.2025pt x 621.32124pt>
 File: img/kdd.png Graphic file (type png)
 <use img/kdd.png>
 Package pdftex.def Info: img/kdd.png  used on input line 43.
@@ -2312,39 +2312,39 @@ Package pdftex.def Info: img/kdd.png  used on input line 43.
  [25
 
 ] [26 <./img/kdd.png>] [27] [28] [29] [30]
-<img/classDiagram.png, id=515, 824.07875pt x 307.1475pt>
+<img/classDiagram.png, id=512, 824.07875pt x 307.1475pt>
 File: img/classDiagram.png Graphic file (type png)
 <use img/classDiagram.png>
 Package pdftex.def Info: img/classDiagram.png  used on input line 300.
 (pdftex.def)             Requested size: 412.03836pt x 153.57336pt.
  [31]
-<img/BehaviorDefense.png, id=526, 121.45375pt x 312.16624pt>
+<img/BehaviorDefense.png, id=524, 121.45375pt x 312.16624pt>
 File: img/BehaviorDefense.png Graphic file (type png)
 <use img/BehaviorDefense.png>
 Package pdftex.def Info: img/BehaviorDefense.png  used on input line 323.
 (pdftex.def)             Requested size: 97.1631pt x 249.73334pt.
-<img/BehaviorFormation.png, id=527, 854.19125pt x 804.00375pt>
+<img/BehaviorFormation.png, id=525, 854.19125pt x 804.00375pt>
 File: img/BehaviorFormation.png Graphic file (type png)
 <use img/BehaviorFormation.png>
 Package pdftex.def Info: img/BehaviorFormation.png  used on input line 324.
 (pdftex.def)             Requested size: 427.09459pt x 402.0009pt.
-<img/BehaviorBlock.png, id=528, 220.825pt x 452.69125pt>
+<img/BehaviorBlock.png, id=526, 220.825pt x 452.69125pt>
 File: img/BehaviorBlock.png Graphic file (type png)
 <use img/BehaviorBlock.png>
 Package pdftex.def Info: img/BehaviorBlock.png  used on input line 325.
 (pdftex.def)             Requested size: 176.66022pt x 362.15349pt.
-<img/BehaviorMark.png, id=529, 206.7725pt x 402.50375pt>
+<img/BehaviorMark.png, id=527, 206.7725pt x 402.50375pt>
 File: img/BehaviorMark.png Graphic file (type png)
 <use img/BehaviorMark.png>
 Package pdftex.def Info: img/BehaviorMark.png  used on input line 326.
 (pdftex.def)             Requested size: 165.41821pt x 322.00343pt.
-<img/BehaviorIntercept.png, id=530, 471.7625pt x 703.62875pt>
+<img/BehaviorIntercept.png, id=528, 471.7625pt x 703.62875pt>
 File: img/BehaviorIntercept.png Graphic file (type png)
 <use img/BehaviorIntercept.png>
 Package pdftex.def Info: img/BehaviorIntercept.png  used on input line 327.
 (pdftex.def)             Requested size: 235.88066pt x 351.8135pt.
  [32 <./img/classDiagram.png>] [33 <./img/BehaviorDefense.png>] [34 <./img/BehaviorFormation.png>]
-<img/hfo.png, id=549, 1034.86626pt x 869.2475pt>
+<img/hfo.png, id=547, 1034.86626pt x 869.2475pt>
 File: img/hfo.png Graphic file (type png)
 <use img/hfo.png>
 Package pdftex.def Info: img/hfo.png  used on input line 397.
@@ -2358,7 +2358,7 @@ Overfull \hbox (18.63596pt too wide) in paragraph at lines 16--24
  [][] 
  []
 
-<img/averages.pdf, id=579, 1156.32pt x 766.865pt>
+<img/averages.pdf, id=577, 1156.32pt x 766.865pt>
 File: img/averages.pdf Graphic file (type pdf)
 <use img/averages.pdf>
 Package pdftex.def Info: img/averages.pdf  used on input line 28.
@@ -2368,32 +2368,32 @@ Overfull \hbox (7.5198pt too wide) in paragraph at lines 28--28
  [] 
  []
 
-<img/2cycles.pdf, id=588, 1910.13625pt x 763.85374pt>
+<img/2cycles.pdf, id=586, 1910.13625pt x 763.85374pt>
 File: img/2cycles.pdf Graphic file (type pdf)
 <use img/2cycles.pdf>
-Package pdftex.def Info: img/2cycles.pdf  used on input line 41.
+Package pdftex.def Info: img/2cycles.pdf  used on input line 42.
 (pdftex.def)             Requested size: 448.88208pt x 179.50565pt.
-<img/1cycle.pdf, id=591, 1810.765pt x 769.87625pt>
+<img/1cycle.pdf, id=589, 1810.765pt x 769.87625pt>
 File: img/1cycle.pdf Graphic file (type pdf)
 <use img/1cycle.pdf>
-Package pdftex.def Info: img/1cycle.pdf  used on input line 42.
+Package pdftex.def Info: img/1cycle.pdf  used on input line 43.
 (pdftex.def)             Requested size: 452.69014pt x 192.46858pt.
 ) (./tex/conclusao.tex [39
 
 ] [40 <./img/averages.pdf>] [41 <./img/2cycles.pdf> <./img/1cycle.pdf
 
 pdfTeX warning: pdflatex (file ./img/1cycle.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]) (./main.bbl (./main.brf)
+>] [42
+
+]) (./main.bbl (./main.brf)
 \tf@brf=\write11
 \openout11 = `main.brf'.
 
- [42
-
-]
+ [43]
 bibitemlist
-[43
+[44
 
-] [44]) (./tex/anexos.tex [45] (./_minted-main/E724D4C5F06963CF617E577D5E51515F8835C16988A7A9289477DB5B2571E8D6.pygtex
+] [45]) (./tex/anexos.tex [46] (./_minted-main/E724D4C5F06963CF617E577D5E51515F8835C16988A7A9289477DB5B2571E8D6.pygtex
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 4.
 LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 67.
@@ -2422,20 +2422,18 @@ Overfull \hbox (30.79773pt too wide) in paragraph at lines 89--89
 \T1/lmtt/m/n/12 (mpAgent[]->[]lastBallPosition.Dist(mpAgent[]->[]lastPosition) 
  []
 
-) [46
+) [47
 
 ]
-Overfull \vbox (1389.67612pt too high) has occurred while \output is active []
+Overfull \vbox (1369.34834pt too high) has occurred while \output is active []
 
- [47] (./_minted-main/A36C1EEBC4CD57C4A1CD80E0C76A344EADAF4BEE87FBEC9F4B328FCF9EB14269.pygtex
+ [48] (./_minted-main/A36C1EEBC4CD57C4A1CD80E0C76A344EADAF4BEE87FBEC9F4B328FCF9EB14269.pygtex
 Overfull \hbox (82.05026pt too wide) in paragraph at lines 59--59
 \T1/lmtt/m/n/12 mSelfState.CorrectDashPowerForStamina(ServerParam[]::[]instance().maxDashPower());|  
  []
 
-)) [48
-
-]
-Overfull \vbox (1883.34225pt too high) has occurred while \output is active []
+))
+Overfull \vbox (1813.8478pt too high) has occurred while \output is active []
 
  [49]
 \tf@lof=\write12
@@ -2467,20 +2465,20 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
  ) 
 Here is how much of TeX's memory you used:
- 47157 strings out of 492982
- 930005 string characters out of 6134896
- 1233999 words of memory out of 5000000
- 49603 multiletter control sequences out of 15000+600000
- 631181 words of font info for 163 fonts, out of 8000000 for 9000
+ 47159 strings out of 492982
+ 930035 string characters out of 6134896
+ 1232822 words of memory out of 5000000
+ 49602 multiletter control sequences out of 15000+600000
+ 631439 words of font info for 165 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,12n,101p,10509b,1032s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{cite.nascimento_2018++TEXT} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/fonts/type1/public/lm/lmb10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main.pdf (50 pages, 1377062 bytes).
+Output written on main.pdf (50 pages, 1375871 bytes).
 PDF statistics:
- 938 PDF objects out of 1000 (max. 8388607)
- 787 compressed objects within 8 object streams
- 167 named destinations out of 1000 (max. 500000)
- 36847 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 936 PDF objects out of 1000 (max. 8388607)
+ 784 compressed objects within 8 object streams
+ 166 named destinations out of 1000 (max. 500000)
+ 36839 words of extra memory for PDF output out of 42996 (max. 10000000)
 
