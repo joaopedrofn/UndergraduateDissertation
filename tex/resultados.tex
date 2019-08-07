@@ -25,7 +25,7 @@ ilustrada pela Figura \ref{fig:averages}.
     \label{tab:results}
 \end{table}
 
-\imagem{.5}{averages}{Médias finais em comparação ao original}{O Autor}
+\imagem{.4}{averages}{Médias finais em comparação ao original}{O Autor}
 
 A observação da Tabela \ref{tab:results} faz com que seja possível perceber que
 os modelos com melhor evolução, ou alguma evolução, são os Modelos
@@ -38,14 +38,13 @@ do melhoramento dos mesmos.
 \begin{figure}[!htb]
 \centering
     \caption{\label{img:graph} Gráficos de Modelos \ref{model:2cycles} e \ref{model:1cycle}}
-    \subcaptionbox{\label{img:2cycles} Modelo \ref{model:2cycles}}{\includegraphics[scale=.25]{img/2cycles}}\qquad
+    \subcaptionbox{\label{img:2cycles} Modelo \ref{model:2cycles}}{\includegraphics[scale=.235]{img/2cycles}}\qquad
     \subcaptionbox{\label{img:1cycle} Model \ref{model:1cycle}}{\includegraphics[scale=.25]{img/1cycle}}
     \vspace{1.5em}
     \legend{\textbf{Fonte:} O Autor}
 \end{figure}
 
-Os gráficos foram traçados com auxílio da ferramenta de planilhas do pacote de
-escritório Google Docs\footnote{https://docs.google.com/spreadsheets} que
+Os gráficos foram traçados com auxílio da ferramenta de planilhas Google Sheets\footnote{https://docs.google.com/spreadsheets} que
 permitiu a captura da equação da curva de tendência traçada. O Modelo
 \ref{model:2cycles} é representado pela equação \ref{eq:2cycles} e o Modelo
 \ref{model:1cycle} é representado pela Equação \ref{eq:1cycle}, onde $G$
@@ -53,10 +52,10 @@ representa a média de gols sofridos por bloco e $b$ o número de blocos executa
 
 \begin{equation}
     \label{eq:2cycles}
-    G=-3,03\times 10^{-3}+42,4
+    G=-3,03\times 10^{-3}\times b+42,4
 \end{equation}
 
 \begin{equation}
     \label{eq:1cycle}
-    G=-3,67\times 10^{-3}+42,1
+    G=-3,67\times 10^{-3} \times b+42,1
 \end{equation}

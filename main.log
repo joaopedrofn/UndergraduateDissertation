@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.28)  7 AUG 2019 01:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.28)  7 AUG 2019 11:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2358,25 +2358,32 @@ Overfull \hbox (18.63596pt too wide) in paragraph at lines 16--24
  [][] 
  []
 
-<img/averages.png, id=579, 910.15031pt x 562.35094pt>
-File: img/averages.png Graphic file (type png)
-<use img/averages.png>
-Package pdftex.def Info: img/averages.png  used on input line 28.
-(pdftex.def)             Requested size: 455.07405pt x 281.17477pt.
-[39
+<img/averages.pdf, id=579, 1156.32pt x 766.865pt>
+File: img/averages.pdf Graphic file (type pdf)
+<use img/averages.pdf>
+Package pdftex.def Info: img/averages.pdf  used on input line 28.
+(pdftex.def)             Requested size: 462.5198pt x 306.74057pt.
 
- <./img/averages.png>]
-<img/2cycles.png, id=594, 1810.765pt x 724.7075pt>
-File: img/2cycles.png Graphic file (type png)
-<use img/2cycles.png>
-Package pdftex.def Info: img/2cycles.png  used on input line 41.
-(pdftex.def)             Requested size: 452.69014pt x 181.17642pt.
-<img/1cycle.png, id=597, 1810.765pt x 769.87625pt>
-File: img/1cycle.png Graphic file (type png)
-<use img/1cycle.png>
-Package pdftex.def Info: img/1cycle.png  used on input line 42.
+Overfull \hbox (7.5198pt too wide) in paragraph at lines 28--28
+ [] 
+ []
+
+<img/2cycles.pdf, id=588, 1910.13625pt x 763.85374pt>
+File: img/2cycles.pdf Graphic file (type pdf)
+<use img/2cycles.pdf>
+Package pdftex.def Info: img/2cycles.pdf  used on input line 41.
+(pdftex.def)             Requested size: 448.88208pt x 179.50565pt.
+<img/1cycle.pdf, id=591, 1810.765pt x 769.87625pt>
+File: img/1cycle.pdf Graphic file (type pdf)
+<use img/1cycle.pdf>
+Package pdftex.def Info: img/1cycle.pdf  used on input line 42.
 (pdftex.def)             Requested size: 452.69014pt x 192.46858pt.
- [40 <./img/2cycles.png> <./img/1cycle.png>]) (./tex/conclusao.tex [41]) (./main.bbl (./main.brf)
+) (./tex/conclusao.tex [39
+
+] [40 <./img/averages.pdf>] [41 <./img/2cycles.pdf> <./img/1cycle.pdf
+
+pdfTeX warning: pdflatex (file ./img/1cycle.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]) (./main.bbl (./main.brf)
 \tf@brf=\write11
 \openout11 = `main.brf'.
 
@@ -2461,7 +2468,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
  ) 
 Here is how much of TeX's memory you used:
  47157 strings out of 492982
- 929933 string characters out of 6134896
+ 930005 string characters out of 6134896
  1233999 words of memory out of 5000000
  49603 multiletter control sequences out of 15000+600000
  631181 words of font info for 163 fonts, out of 8000000 for 9000
@@ -2470,10 +2477,10 @@ Here is how much of TeX's memory you used:
 pdfTeX warning (dest): name{cite.nascimento_2018++TEXT} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/fonts/type1/public/lm/lmb10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb>
-Output written on main.pdf (50 pages, 1321785 bytes).
+Output written on main.pdf (50 pages, 1377062 bytes).
 PDF statistics:
- 912 PDF objects out of 1000 (max. 8388607)
- 764 compressed objects within 8 object streams
+ 938 PDF objects out of 1000 (max. 8388607)
+ 787 compressed objects within 8 object streams
  167 named destinations out of 1000 (max. 500000)
  36847 words of extra memory for PDF output out of 42996 (max. 10000000)
 
