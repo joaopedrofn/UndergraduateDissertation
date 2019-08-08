@@ -32,7 +32,7 @@
 		\PYG{n}{sum} \PYG{o}{+=} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{avgDist}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{avgDist}\PYG{p}{);}
 	\PYG{p}{\PYGZcb{}}
 	\PYG{k+kt}{double} \PYG{n}{density} \PYG{o}{=} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{sum} \PYG{o}{/} \PYG{l+m+mi}{7}\PYG{p}{);}
-    \PYG{c+c1}{//END OF VARIABLES}
+	\PYG{c+c1}{//END OF VARIABLES}
 
 	\PYG{k+kt}{int} \PYG{n}{curState}\PYG{p}{;}
 	\PYG{k}{if} \PYG{p}{(}\PYG{n}{teammatesDistToOpp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{n}{mPositionInfo}\PYG{p}{.}\PYG{n}{GetBallDistToTeammate}\PYG{p}{(}\PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{GetUnum}\PYG{p}{()))}
@@ -56,7 +56,8 @@
 	\PYG{k+kt}{double} \PYG{n}{epsilon} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{qTable}\PYG{p}{[}\PYG{n}{curState}\PYG{p}{][}\PYG{l+m+mi}{8}\PYG{p}{]} \PYG{o}{/} \PYG{l+m+mi}{50000}\PYG{p}{));}
 	\PYG{k+kt}{int} \PYG{n}{actionToTake} \PYG{o}{=} \PYG{n}{greedyEpSelection}\PYG{p}{(}\PYG{n}{actionSpace}\PYG{p}{,} \PYG{n}{epsilon} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{o}{?} \PYG{n+nl}{epsilon} \PYG{p}{:} \PYG{l+m+mf}{0.1}\PYG{p}{);}
 	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastActionTaken} \PYG{o}{=} \PYG{n}{actionToTake}\PYG{p}{;}
-	\PYG{k+kt}{double} \PYG{n}{power} \PYG{o}{=} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{CorrectDashPowerForStamina}\PYG{p}{(}\PYG{n}{ServerParam}\PYG{o}{::}\PYG{n}{instance}\PYG{p}{().}\PYG{n}{maxDashPower}\PYG{p}{());}
+	\PYG{k+kt}{double} \PYG{n}{power} \PYG{o}{=} \PYG{n}{mSelfState}\PYG{p}{.}\PYG{n}{CorrectDashPowerForStamina}\PYG{p}{(}
+		\PYG{n}{ServerParam}\PYG{o}{::}\PYG{n}{instance}\PYG{p}{().}\PYG{n}{maxDashPower}\PYG{p}{());}
 	\PYG{k}{switch} \PYG{p}{(}\PYG{n}{actionToTake}\PYG{p}{)}
 	\PYG{p}{\PYGZob{}}
 	\PYG{k}{case} \PYG{n+nl}{MoveNorth}\PYG{p}{:}
@@ -91,7 +92,7 @@
 	\PYG{k}{default}\PYG{o}{:}
 		\PYG{k}{break}\PYG{p}{;}
 	\PYG{p}{\PYGZcb{}}
-    
+
 	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastActions}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{actionToTake}\PYG{p}{);}
 	\PYG{n}{mAgent}\PYG{p}{.}\PYG{n}{lastActionsState}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{curState}\PYG{p}{);}
 	\PYG{n}{PlayMode} \PYG{n}{pm} \PYG{o}{=} \PYG{n}{mWorldState}\PYG{p}{.}\PYG{n}{GetPlayMode}\PYG{p}{();}

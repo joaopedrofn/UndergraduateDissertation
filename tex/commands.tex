@@ -228,19 +228,26 @@
 %--------------------------------------------------------------------------------
 % Comando para inserir códigos - by @ruanmed
 %--------------------------------------------------------------------------------
+\newcommand{\Wedidthis}{%   \legend{\textbf{Fonte:} O autor (\the\year).}
+    \legend{\textbf{Fonte:} Os autores.}
+}
+ 
+%--------------------------------------------------------------------------------
+% Comando para inserir códigos - by @ruanmed
+%--------------------------------------------------------------------------------
 \usepackage{caption}
-
+ 
 \newenvironment{code}{\captionsetup{type=listing}}{}
 \SetupFloatingEnvironment{listing}{name=Código}
-
+ 
 \newcommand{\sourcecodenolist}[4]{
-	\begin{code}
-	    \refstepcounter{sourcecode}
-        \captionof{listing}{#1 }
-        \label{code:#2}
-        \inputminted[linenos, bgcolor=bg, tabsize=4,breaklines]{#3}{codes/#4}
-        \Wedidthis
-    \end{code}
+    \begin{code}
+        \refstepcounter{sourcecode}
+       \caption[]{#1}
+       \label{code:#2}
+       \inputminted[linenos, bgcolor=bg, tabsize=4,breaklines]{#3}{codes/#4}
+       \Wedidthis
+   \end{code}
 }
 
 % \newcommand{\sourcecodenolist}[4]{
@@ -261,3 +268,29 @@
 \newcommand{\sourcecodeinline}[2]{
 	\mintinline[linenos, bgcolor=bg, tabsize=4,breaklines]{#1}{#2}
 }
+% CONFIGURACAO DO SUMARIO
+%-------------------------------------------------------------------------------
+% Modifica o espaçamento no sumário
+% Nao ha espacos, exceto para as entradas de capitulos
+\setlength{\cftbeforeparagraphskip}{0pt}
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforechapterskip}{\onelineskip}
+
+% Alteração da indentação dos itens do sumário
+\cftsetindents{chapter}{0pt}{42pt}
+\cftsetindents{section}{0pt}{42pt}
+\cftsetindents{subsection}{0pt}{42pt}
+\cftsetindents{subsubsection}{0pt}{42pt}
+
+% Modifica a formatacao dos textos
+
+% Secao Primaria (Chapter): Caixa alta, Negrito, tamanho 12
+\makeatletter
+\settocpreprocessor{chapter}{%
+  \let\tempf@rtoc\f@rtoc%
+  \def\f@rtoc{%
+  \texorpdfstring{\bfseries\MakeTextUppercase{\tempf@rtoc}}{\tempf@rtoc}}%
+}
+\makeatother

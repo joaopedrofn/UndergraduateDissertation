@@ -31,7 +31,7 @@ void BehaviorDefensePlanner::Plan(std::list<ActiveBehavior> &behavior_list)
 		sum += (teammatesDistToOpp[i] - avgDist) * (teammatesDistToOpp[i] - avgDist);
 	}
 	double density = sqrt(sum / 7);
-    //END OF VARIABLES
+	//END OF VARIABLES
 
 	int curState;
 	if (teammatesDistToOpp[0] == mPositionInfo.GetBallDistToTeammate(mSelfState.GetUnum()))
@@ -55,7 +55,8 @@ void BehaviorDefensePlanner::Plan(std::list<ActiveBehavior> &behavior_list)
 	double epsilon = (1 - (qTable[curState][8] / 50000));
 	int actionToTake = greedyEpSelection(actionSpace, epsilon > 0 ? epsilon : 0.1);
 	mAgent.lastActionTaken = actionToTake;
-	double power = mSelfState.CorrectDashPowerForStamina(ServerParam::instance().maxDashPower());
+	double power = mSelfState.CorrectDashPowerForStamina(
+		ServerParam::instance().maxDashPower());
 	switch (actionToTake)
 	{
 	case MoveNorth:
@@ -90,7 +91,7 @@ void BehaviorDefensePlanner::Plan(std::list<ActiveBehavior> &behavior_list)
 	default:
 		break;
 	}
-    
+
 	mAgent.lastActions.push_back(actionToTake);
 	mAgent.lastActionsState.push_back(curState);
 	PlayMode pm = mWorldState.GetPlayMode();

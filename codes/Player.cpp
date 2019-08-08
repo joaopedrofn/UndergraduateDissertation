@@ -68,8 +68,10 @@
         {
             mpAgent->cycleCounter = 0;
             mpAgent->lastActions.erase(mpAgent->lastActions.begin());
-            mpAgent->lastActionsState.erase(mpAgent->lastActionsState.begin());
-            mpAgent->lastActionsPM.erase(mpAgent->lastActionsPM.begin());
+            mpAgent->lastActionsState
+                .erase(mpAgent->lastActionsState.begin());
+            mpAgent->lastActionsPM
+                .erase(mpAgent->lastActionsPM.begin());
             switch (mpObserver->GetServerPlayMode())
             {
             case SPM_PlayOn_11:
@@ -85,7 +87,9 @@
             case SPM_PlayOn_1:
                 if (mpAgent->lastBallPosition.Dist(goal) > mpAgent->lastGoalDist)
                 {
-                    if (mpAgent->lastBallPosition.Dist(mpAgent->lastPosition) < mpAgent->lastPlayerDist)
+                    if (
+                        mpAgent->lastBallPosition
+                            .Dist(mpAgent->lastPosition) < mpAgent->lastPlayerDist)
                         reward = 5;
                     else
                         reward = 2;
