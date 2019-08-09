@@ -3,8 +3,8 @@
 %--------------------------------------------------------------------------------------
 \chapter{Materiais e Métodos} \label{sec:newModule} %Uma label é como você referencia uma seção no texto com a tag \ref{}
 
-Como já especificado, o trabalho tem como objetivo a investigação de modelos a
-serem utilizados no desenvolvimento de um módulo de defesa para o time de
+Como já especificado, o trabalho tem como objetivo a investigação de modelos de
+mundo a serem utilizados no desenvolvimento de um módulo de defesa para o time de
 Futebol de Robôs na categoria de simulação 2D, FutVasf2D. O processo de
 modelagem de um mundo em um MDP exige a discretização do mesmo de forma que
 sejam obtidos um número finito de ações e de estados com os quais o algoritmo de
@@ -32,76 +32,50 @@ seguir:
     formado entre bola, jogador e gol adversário.
 \end{itemize}
 
-Segundo \citeonline{Fayyad:1996:DMK:257938.257942}, a Descoberta de Conhecimento
-em Base de Dados (do inglês \textit{Knowledge Discovery in Databases} - KDD) é o
-processo de identificar padrões válidos, novos, potencialmente uteis, e
-inteligível em dados. O KDD é composto de 5 etapas, seleção, pré-processamento,
-transformação, mineração de dados e avaliação, como mostrado na Figura
-\ref{img:kdd}, junto com cada artefato gerado. Na etapa de pré-processamento são
-realizadas manipulação de variáveis pré-existentes e identificações de novas.
-
-\imagem{0.25}{kdd}{Etapas de KDD.}{\cite{Fayyad:1996:DMK:257938.257942}}
-
-A construção de novas variáveis é uma forma sistemática de incorporar
-conhecimento em um projeto de KDD. Essas variáveis serão úteis na etapa de
-mineração de dados, que no caso de aprendizado por reforço, acontece no momento
-do treinamento. Segundo \citeonline{friedman2001elements}, apesar de ser um dos
-mais antigos, o processo de construção de novas variáveis é um dos mais
-desafiadores. De acordo com \citeonline{witten2016data}, a melhor forma de
-construir variáveis é a manual, baseando-se no entendimento do problema e
-significado de cada atributo. No geral, essa tarefa depende muito mais do
-conhecimento sobre o domínio do que da construção do algoritmo, por tanto, o
-conhecimento sobre o domínio é essencial \cite{zhao2009effects}. O uso de
-conhecimento de domínio para construção de variáveis aumenta o poder preditivo
-do modelo \cite{zhao2009effects}. A estratégia de enriquecimento de dados para
-alcançar uma maior capacidade descriminatória é ainda maior em áreas como as de
-reconhecimento de som e imagem, de acordo com \citeonline{gao2008wavelet}. As
-soluções de melhor performance em competições internacionais utilizaram a
-estratégia de construção de novas variáveis a fim de incorporar conhecimento do
-domínio, segundo \citeauthoronline{adeodato2009role}
-(\citeyear{adeodato2008power}, \citeyear{adeodato2009role}).
-
 Partindo das informações e exemplos obtidos através da revisão bibliográfica,
 foram modeladas algumas variações de de formas de representar o mundo. Quatro
 componentes são importantes neste processo, os estados que podem ser alcançados
 pelo agente, as ações que o mesmo pode tomar, as recompensas e punições a serem
 atribuídas para o resultado das ações em cada estado e como será feita a
-implementação de todo o modelo no agente. Os 3 primeiros componentes são
+implementação de todo o modelo de mundo no agente. Os 3 primeiros componentes são
 cobertos nas subseções abaixo enquanto a implementação é abordada na Seção
 \ref{implementacao}.
 
 \subsection{Estados}\label{states}
 
-A definição dos estados é uma etapa certamente crucial e complexa, neste
-trabalho foram tomadas duas abordagens. A primeira foi sobre a identificação de
-variáveis cujos diferentes possíveis valores formam os estados, a outra se
-baseia na identificação de possíveis papéis de função que os agentes podem tomar
-no processo de defesa e uma simplificação das possíveis situações que os mesmos
-podem estar encaixados.
+A definição dos estados é uma etapa certamente crucial e complexa.
+É necessário um cuidado sobre a questão de quais serão os possíveis valores
+de cada variável, visto que esta decisão impactará na complexidade e
+quantidade de estados além do significado de cada um.
 
-Especialmente, mas não exclusivamente, na primeira abordagem, é necessário um
-cuidado sobre a questão de quais serão os possíveis valores de cada variável,
-visto que esta decisão impactará na complexidade e quantidade de estados além
-do significado de cada um. Várias das variáveis abordadas a seguir possem
+Várias das variáveis abordadas a seguir possem
 caráter contínuo e uma amplitude de possíveis valores muito grande, por conta
-disto foi feita um agrupamento de seus valores em 3 classes através da análise
-dos valores assumidos pelas variáveis na execução de várias partidas. As
-variáveis identificadas e seus possíveis valores foram as seguintes:
+disto foi feita a discretização do domínio em 3 classes através da análise
+dos valores assumidos pelas variáveis na execução de várias partidas.
+
+Neste trabalho foram tomados dois conjuntos de estados que serão tratados nas
+subseções seguintes.
+
+\subsubsection{Conjunto 1}
+
+Este conjunto define 7 variáveis escolhidas a partir da revisão dos estados
+adotados pelos trabalhos visitados no Capítulo \ref{sec:fundamentation} e estudo
+do problema proposto. As variáveis e seus respectivos domínios são:
 
 \begin{itemize}
     \item \textbf{Posição do jogador em relação à bola no eixo horizontal}
     ($P_{hj}$), ou seja, se o jogador está mais a direita ou a esquerda da
-    bola, esta variável pode assumir valores booleanos onde VERDADEIRO implica
+    bola, esta é uma variável booleana onde VERDADEIRO implica
     que o jogador está a esquerda e FALSO a direita;
     \item \textbf{Posição do jogador em relação à bola no eixo vertical}
     ($P_{vj}$), se identifica se o jogador pode ser encontrado mais acima ou
-    abaixo da bola, assim como o item passado, os valores assumidos são
-    VERDADEIRO para quando o jogador está acima da bola e FALSO quando abaixo,
+    abaixo da bola, assim como o item passado, trata-se de uma variável
+    booleana, onde VERDADEIRO significa que o jogador está acima da bola e FALSO, abaixo,
     esta variável e a anterior são úteis para questão da direção de movimentação
     do jogador;
     \item \textbf{Distância entre o jogador e bola} ($D_{jb}$), mede o
-    afastamento do agente em relação à bola, as classes atribuídas para as
-    variáveis de distância são as mesmas (PERTO, MÉDIO e LONGE), diferindo
+    afastamento do agente em relação à bola, o domínio das
+    variáveis de distância é o mesmo (PERTO, MÉDIO e LONGE), diferindo
     apenas nos valores atribuídos a cada classe, nesta, os valores para PERTO é
     sempre menor ou igual a 10 (unidade de medida utilizada pelo servidor), para
     MÉDIO os valores são entre 10 e 20 e LONGE engloba todos acima de 20;
@@ -110,7 +84,7 @@ variáveis identificadas e seus possíveis valores foram as seguintes:
     valor da distância é menor ou igual a 5, MÉDIO quando entre 5 e 15 e LONGE
     quando acima de 15;
     \item \textbf{O agente é o aliado mais próximo da bola} ($F$), trata-se de
-    um valor booleano a fim de identificar se o jogador ``pensante'' é o aliado
+    uma variável booleana que identifica se o jogador ``pensante'' é o aliado
     mais próximo à bola;
     \item \textbf{Distância do adversário com posse de bola do gol} ($D_{ag}$),
     mede o afastamento do jogador com posse de bola do gol aliado, aqui os
@@ -124,7 +98,7 @@ variáveis identificadas e seus possíveis valores foram as seguintes:
     feito como um desvio padrão com base na distância média entre os jogadores
     aliados e o jogador com posse de bola, como na Equação \ref{eq:desvio}, onde
     $d_i$ é a distância entre o jogador $i$ e o adversário com posse de bola e
-    $m$ é a média dessas distâncias, as classes atribuídas a essa variável foram
+    $m$ é a média dessas distâncias, o domínio desta variável é dado por
     ESPARSO (valores acima de 14), COMPACTO (entre 14 e 7) e MUITO COMPACTO
     (abaixo de 7).
 \end{itemize}
@@ -134,20 +108,68 @@ variáveis identificadas e seus possíveis valores foram as seguintes:
     \label{eq:desvio}
 \end{equation}
 
-O estado do modelo descrito, então, passa a ser representado por uma 7-tupla,
+O estado do modelo de mundo descrito, então, passa a ser representado por uma 7-tupla,
 ($P_{hj}$, $P_{vj}$, $D_{jb}$, $D_{tb}$, $F$, $D_{ag}$, $\sigma$). Como
 consequência da quantidade de variáveis e de seus valores, o campo de estados
-passa a assumir 648 possibilidades.
+passa a assumir 648 possibilidades, de acordo com a Equação
+\ref{eq:stateNumber}, onde $N$ é o número de estados, $n$ a quantidade de
+variáveis e $V_i$ é tamanho do domínio da variável $i$.
 
-Para a segunda abordagem, o campo de estados foi mais simples, baseando-se em
-conceitos básicos de defesa no futebol real, foram atribuídos os papéis de
-Primeira Defesa, Segunda Defesa e Terceira defesa para o jogador mais próximo da
-bola, o segundo mais próximo e o terceiro mais próximo, respectivamente. Além
-disso, o valor de compactação já descrito foi reaproveitado para implementar o
-conceito de balanceamento no restante do time, resultando na modificação da
-Equação \ref{eq:desvio} para a Equação \ref{eq:desvio2} e utilizando o mesmo
-conceito de classe anterior, atribuindo-o porém a novos estados ao invés de
-valores de um estado único.
+\begin{equation}\label{eq:stateNumber}
+    N=\prod\limits_{i=0}^{n}{V_i}
+\end{equation}
+
+Os 648 estados foram montados seguindo a mesma lógica aplicada à formação de uma
+tabela verdade, uma pequena amostra desta montagem está representada pela Tabela
+\ref{tab:states1}.
+
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $P_{hj}$    &   $P_{vj}$    &   $D_{jb}$    &   $D_{tb}$    &   $F$         &   $D_{ag}$    &   $\sigma$ \\ \hline
+        V  &   V  &   P       &   P       &   V  &   P       &   E \\
+        V  &   V  &   P       &   P       &   V  &   P       &   C \\
+        V  &   V  &   P       &   P       &   V  &   P       &   MC \\
+        V  &   V  &   P       &   P       &   V  &   M       &   E \\
+        V  &   V  &   P       &   P       &   V  &   M       &   C \\
+        V  &   V  &   P       &   P       &   V  &   M       &   MC \\
+        V  &   V  &   P       &   P       &   V  &   M       &   E \\
+        V  &   V  &   P       &   P       &   V  &   L       &   C \\
+        V  &   V  &   P       &   P       &   V  &   L       &   MC \\
+        V  &   V  &   P       &   P       &   F       &   L       &   E \\
+        V  &   V  &   P       &   P       &   F       &   P       &   C \\
+        V  &   V  &   P       &   P       &   F       &   P       &   MC \\
+        \dots       &   \dots       &   \dots       &   \dots       &   \dots
+        &   \dots       &   \dots \\
+        F       &   F       &   L       &   L       &   V  &   L       &   E \\
+        F       &   F       &   L       &   L       &   V  &   L       &   C \\
+        F       &   F       &   L       &   L       &   V  &   L       &   MC \\
+        F       &   F       &   L       &   L       &   F       &   P       &   E \\
+        F       &   F       &   L       &   L       &   F       &   P       &   C \\
+        F       &   F       &   L       &   L       &   F       &   P       &   MC \\
+        F       &   F       &   L       &   L       &   F       &   M       &   E \\
+        F       &   F       &   L       &   L       &   F       &   M       &   C \\
+        F       &   F       &   L       &   L       &   F       &   M       &   MC \\
+        F       &   F       &   L       &   L       &   F       &   L       &   E \\
+        F       &   F       &   L       &   L       &   F       &   L       &   C \\
+        F       &   F       &   L       &   L       &   F       &   L       &   MC \\
+    \end{tabular}
+    \caption{\textit{Montagem de Conjunto de Estados 1 (V = VERDADEIRO, F = FALSO, P = PERTO, M = MÉDIO, L = LONGE, E = ESPARSO, C = COMPACTO e MC = MUITO COMPACTO)}}
+    \label{tab:states1}
+\end{table}
+
+\subsubsection{Conjunto 2}
+
+O segundo conjunto de estados possui apenas uma váriavel que se baseia em
+conceitos básicos de defesa no futebol real.
+
+Foram identificados os papéis de Primeira Defesa, Segunda Defesa e Terceira
+defesa para o jogador mais próximo da bola, o segundo mais próximo e o terceiro
+mais próximo, respectivamente. Além disso, o valor de compactação já descrito
+foi reaproveitado para implementar o conceito de balanceamento no restante do
+time, resultando na modificação da Equação \ref{eq:desvio} para a Equação
+\ref{eq:desvio2} e utilizando o mesmo conceito de classe anterior, atribuindo-o
+como possível valor para quando o jogador não assume nenhum dos papéis anteriores.
 
 \begin{equation}
     \sigma=\sqrt{\frac{\sum{(d_i - m)^2}}{7}}
@@ -165,38 +187,6 @@ Desta forma essa abordagem resulta num campo de 7 estados que são:
     de segunda defesa;
     \item \textbf{Terceira Defesa}, se agora é assumido o papel de terceira
     defesa;
-    \item \textbf{Esparso}, se o jogador não se encaixa nos estados anteriores e
-    os jogadores estão muito espalhados no campo;
-    \item \textbf{Compacto}, se os jogadores estão menos espalhados;
-    \item \textbf{Muito Compacto}, se os jogadores sem papel definido estão
-    juntos no campo;
-\end{itemize}
-
-Podendo esta modelagem ser considerada muito simples, em outra tentativa foram
-atribuídas variações para os jogadores com papéis definidos, resultante no
-seguinte campo de 12 estados:
-
-\begin{itemize}
-    \item \textbf{Primeira Defesa Muito Perto}, se o agente pensante assume o
-    papel de primeira defesa e está a uma distância menor que 5 da bola;
-    \item \textbf{Primeira Defesa Perto}, se o agente pensante assume o papel de
-    primeira defesa e está a uma distância menor que 6 e maior que 5 da bola;
-    \item \textbf{Primeira Defesa Médio}, se o agente pensante assume o papel de
-    primeira defesa e está a uma distância menor que 7 e maior que 6 da bola;
-    \item \textbf{Primeira Defesa Longe}, se o agente pensante assume o papel de
-    primeira defesa e está a uma distância maior que 7 da bola;
-    \item \textbf{Primeira Defesa Atrás}, se o agente pensante assume o papel de
-    primeira defesa e está atrás da bola;
-    \item  \textbf{Segunda Defesa}, se o agente tomando a decisão assume o papel
-    de segunda defesa;
-    \item  \textbf{Segunda Defesa Com Primeiro Atrás}, se o agente tomando a
-    decisão assume o papel de segunda defesa e o agente que assume o papel de
-    primeira defesa se encontra atrás da bola;
-    \item \textbf{Terceira Defesa}, se agora é assumido o papel de terceira
-    defesa;
-    \item \textbf{Terceira Defesa Com Segundo Atrás}, se agora é assumido o
-    papel de terceira defesa e o jogador que assume o papel de segunda defesa se
-    encontra atrás da bola;
     \item \textbf{Esparso}, se o jogador não se encaixa nos estados anteriores e
     os jogadores estão muito espalhados no campo;
     \item \textbf{Compacto}, se os jogadores estão menos espalhados;
@@ -227,9 +217,20 @@ Além dessa divisão foi adicionada a ação de interceptação e a possibilidad
 não fazer nada. A ação de interceptação consiste na tentativa de dominar a bola
 quando a mesma está ao alcance do agente.
 
-Vale destacar que essas foram as ações levantadas para ser utilizadas, mas isto
-não implica que em todos os modelos implementados tenham sido utilizadas todas
-as ações.
+
+Desta forma, o domínio das ações passa a ser considerado:
+
+\begin{itemize}
+    \item Mover-se para cima;
+    \item Mover-se para baixo;
+    \item Mover-se para direita;
+    \item Mover-se para esquerda;
+    \item Mover-se em direção à bola;
+    \item Bloquear avanço do adversário com posse de bola;
+    \item Marcar adversários;
+    \item Interceptar bola;
+    \item Não fazer nada.
+\end{itemize}
 
 \subsection{Recompensas}\label{rewards}
 
@@ -246,16 +247,48 @@ captura de bola +20, para gols sofridos -20 e para bolas lançadas para fora o
 valor +10, visto que implica no sucesso na tentativa de impedir possíveis ações para o
 agente adversário, convenção mantida em todas as
 modelagens seguintes, e para passe foi atribuído o valor -5 numa tentativa de
-impedir o time adversário de se articular.
+impedir o time adversário de se articular. A Tabela \ref{tab:rewards1} mostra a
+relação de consequências e recompensas para esta primeira implementação.
+
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{c|c}
+        Consequência    &   Recompensa  \\ \hline
+        Captura da bola &   +20 \\
+        Gol             &   -20 \\
+        Fora            &   +10 \\
+        Passe           &   -5  \\
+    \end{tabular}
+    \caption{\textit{Consequência X Recompensa - 1}}
+    \label{tab:rewards1}
+\end{table}
 
 A segunda implementação aboliu a recompensa de passes e adicionou uma
 verificação no avanço e recuo da bola, atribuindo -5 ao avanço da bola, +5 ao
 recuo da bola somada à aproximação do agente da captura da bola e +2 ao recuo da
-bola sem avanço dos aliados. Esta modelagem se mostrou bastante falha pela
-punição excessiva no avanço da bola, visto que ele é uma
+bola sem avanço dos aliados. Esta modelagem mostrou a presença de 
+punição excessiva no avanço da bola, visto que tal avanço é uma
 característica constante nas situações simuladas, desta forma a última
 implementação removeu esta punição e atribuiu recompensa neutra a esta e como
-padrão para não identificação de nenhuma das situações anteriores.
+padrão para não identificação de nenhuma das situações anteriores. A relação
+consequência recompensa desta implementação está exposta na Tabela
+\ref{tab:rewards2}.
+
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{c|c}
+        Consequência    &   Recompensa  \\ \hline
+        Captura da bola &   +20 \\
+        Gol             &   -20 \\
+        Fora            &   +10 \\
+        Recuo da bola   &   +2  \\
+        Recuo da bola e
+        aproximação do
+        agente          &   +5 \\
+    \end{tabular}
+    \caption{\textit{Consequência X Recompensa - 2}}
+    \label{tab:rewards2}
+\end{table}
 
 \section{Implementação em \textit{WrightEagleBASE}}\label{implementacao}
 
@@ -273,7 +306,7 @@ execução das mais especializadas que irão decidir se deve tomar a ação
 correspondente a classe ou não. 
 
 Este trabalho foca em 5 dessas classes, \textit{BehaviorDefensePlanner},
-\textit{BehaviorFomationPLanner}, \textit{BehaviorBlockPlanner},
+\textit{BehaviorFomationPlanner}, \textit{BehaviorBlockPlanner},
 \textit{BehaviorMarkPlanner} e \textit{BehaviorInterceptPlanner}, que são
 descritas a seguir. O diagrama representado na Figura \ref{img:classDiagram},
 mostra como é o diagrama de classes simplificado da implementação original
@@ -382,7 +415,7 @@ abordagem é que obriga a execução do treinamento de todos os jogadores ao mes
 
 \section{Metodologia Experimental}\label{meotodologia}
 
-Os modelos implementados foram treinados com o auxilio da subtarefa HFO,
+Os modelos de mundo propostos foram treinados com o auxilio da subtarefa HFO,
 mostrado na Figura \ref{img:hfo}, que consiste numa especialização do
 \textit{RoboCup Simulated Soccer} onde é utilizado apenas metade do campo com
 alguns jogadores no ataque e alguns na defesa, foram experimantadas seções de
@@ -396,7 +429,7 @@ treinados.
 
 \imagem{0.32}{hfo}{HFO}{\url{http://www.cs.utexas.edu/~AustinVilla/sim/halffieldoffense/}}
 
-Devida necessidade de comparar vários modelos e o quão cada um evolue com o
+Devida necessidade de comparar vários modelos de mundo e o quão cada um evolue com o
 tempo foi utilizado o mecanismo de treinamento para também verificar o
 desempenho do modelo em execução. Para este fim foram feitas modificações no
 código-fonte com o intuito de contabilizar o número de gols sofridos em

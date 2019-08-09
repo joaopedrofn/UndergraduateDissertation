@@ -1,31 +1,30 @@
 \chapter{Resultados} \label{sec:results}
 
-A partir daqui serão identificados os 4 modelos que demonstraram maior
-importância para o estudo:
+Foram identificados os 4 modelos de mundo que demonstraram maior
+importância para o estudo, os mesmos estão identificados na Tabela \ref{tab:designs}
 
-\begin{enumerate}
-    \item\label{model:old} O primeiro modelo testado, utilizando a primeira abordagem de estados
-    (baseada apenas em váriaveis) com o sistema de recompensas utilizando avanço
-    da bola como punição e fila de 5 ações;
-    \item\label{model:2cycles} Modelo que utiliza o mesmo sistema de estados que o anterior, mas já
-    abole a punição por avanço e diminue o tamanho da fila para 2 ações;
-    \item\label{model:1cycle} Este utiliza os mesmos estados e recompensas do anterior, porém
-    utiliza uma fila de apenas uma ação (verificação imediata) e utiliza
-    diretamente o mecanismo de ações ignorando a utilização das classes
-    decomportamento mais especializadas;
-    \item\label{model:simple} O último modelo descrito é o que utiliza o sistema mais simples de
-    papéis, além de utilizar-se da fila de 5 ações e o mesmo sistema de
-    recompensas que os dois anteriores.
-\end{enumerate}
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Modelo & Conjunto de Estados & Conjunto de Recompensas & Tamanho da Fila \\ \hline
+        Modelo \customlabel{model:old}{1} & 1 & 1 & 5  \\
+        Modelo \customlabel{model:2cycles}{2} & 1 & 2 & 2 \\
+        Modelo \customlabel{model:1cycle}{3} & 1 & 2 & 1 \\
+        Modelo \customlabel{model:simple}{4} & 2 & 2 & 5 \\ 
+    \end{tabular}
+    \caption{Modelos de Mundo}
+    \label{tab:designs}
+\end{table}
 
 Após a execução de grande número de episódios para treinamento dos modelos
 propostos foram separados em planilhas as quantidades de gols resultantes para
-cada bloco de 3000 ciclos para cada um. Em cima desse registro foi feita uma
+cada bloco de 3000 ciclos para cada um. A partir da execução de 500 blocos
+(1.500.000 ciclos) foi feita uma
 média geral, uma média dos primeiros 100 registros e uma média de apenas os
 últimos 100 registros, levando em conta que se
 espera que tenha havido uma melhora na defesa de cada um.
 
-Na Tabela \ref{tab:results} estão listados os modelos e as médias calculadas e
+Na Tabela \ref{tab:results} estão listados os modelos de mundo e as médias calculadas e
 por fim o valor para comparação do time original. Uma comparação visual é
 ilustrada pela Figura \ref{img:averages}.
 
@@ -34,19 +33,19 @@ ilustrada pela Figura \ref{img:averages}.
     \begin{tabular}{c|c|c|c}
         Modelo & Média Geral & Média dos primeiros 100 blocos & Média dos últimos 100 blocos \\ \hline
         Modelo \ref{model:old} & 44,08 & 44,09 & 44,11  \\
-        Modelo \ref{model:2cycles} & 40,40 & 40,21 & 35,75 \\
-        Modelo \ref{model:1cycle} & 39,13 & 44,1 & 37,85 \\
-        Modelo \ref{model:simple} & 44,68 & 44,4 & 44,78 \\ \hline
+        Modelo \ref{model:2cycles} & 41,48 & 40,21 & 37,82 \\
+        Modelo \ref{model:1cycle} & 41,75 & 44,1 & 39,03 \\
+        Modelo \ref{model:simple} & 44,69 & 44,4 & 44,77 \\ \hline
         Original &  26,45\\
     \end{tabular}
-    \caption{\textit{Resultados}}
+    \caption{Resultados}
     \label{tab:results}
 \end{table}
 
 \imagem{.4}{averages}{Médias finais em comparação ao original}{O Autor}
 
 A observação da Tabela \ref{tab:results} faz com que seja possível perceber que
-os modelos com melhor evolução, ou alguma evolução, são os Modelos
+os modelos de mundo com melhor evolução, ou alguma evolução, são os Modelos
 \ref{model:2cycles} e \ref{model:1cycle}. Por conta desta observação foram
 realizados um número maior de execuções nos mesmos para que fossem 
 traçados gráficos (Figura \ref{img:graph}) cruzando o número de blocos executados no teste e o número de

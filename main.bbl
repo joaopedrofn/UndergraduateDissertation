@@ -5,19 +5,6 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.9.6 }
 
-\bibitem[Adeodato et al. 2009]{adeodato2009role}
-\abntrefinfo{Adeodato et al.}{ADEODATO et al.}{2009}
-{ADEODATO, P.~J. et al. The role of temporal feature extraction and bagging of
-  mlp neural networks for solving the wcci 2008 ford classification challenge.
-IEEE, 2009.}
-
-\bibitem[Adeodato et al. 2008]{adeodato2008power}
-\abntrefinfo{Adeodato et al.}{ADEODATO et al.}{2008}
-{ADEODATO, P.~J. et al. The power of sampling and stacking for the pakdd-2007
-  cross-selling problem.
-\textbf{International Journal of Data Warehousing and Mining (IJDWM)}, IGI
-  Global, v.~4, n.~2, p. 22--31, 2008.}
-
 \bibitem[Bianchi e Mantaras 2010]{bianchi2010case}
 \abntrefinfo{Bianchi e Mantaras}{BIANCHI; MANTARAS}{2010}
 {BIANCHI, R.~A.; MANTARAS, R.~L. de. Case-based multiagent reinforcement
@@ -42,16 +29,6 @@ IEEE, 2009.}
 \textbf{Electric power systems research}, Elsevier, v.~76, n.~6-7, p. 452--456,
   2006.}
 
-\bibitem[Fayyad, Piatetsky-Shapiro e Smyth 1996]{Fayyad:1996:DMK:257938.257942}
-\abntrefinfo{Fayyad, Piatetsky-Shapiro e Smyth}{FAYYAD; PIATETSKY-SHAPIRO;
-  SMYTH}{1996}
-{FAYYAD, U.~M.; PIATETSKY-SHAPIRO, G.; SMYTH, P. Advances in knowledge
-  discovery and data mining. In:  FAYYAD, U.~M. et al. (Ed.). Menlo Park, CA,
-  USA: American Association for Artificial Intelligence, 1996. cap. From Data
-  Mining to Knowledge Discovery: An Overview, p. 1--34.
-ISBN 0-262-56097-6.
-Dispon{\'\i}vel em: \url{http://dl.acm.org/citation.cfm?id=257938.257942}.}
-
 \bibitem[Franklin e Graesser 1996]{franklin1996agent}
 \abntrefinfo{Franklin e Graesser}{FRANKLIN; GRAESSER}{1996}
 {FRANKLIN, S.; GRAESSER, A. Is it an agent, or just a program?: A taxonomy for
@@ -63,18 +40,6 @@ Dispon{\'\i}vel em: \url{http://dl.acm.org/citation.cfm?id=257938.257942}.}
 {GABEL, T.; RIEDMILLER, M.; TROST, F. A case study on improving defense
   behavior in soccer simulation 2d: The neurohassle approach. In:  SPRINGER.
   \textbf{Robot Soccer World Cup}. [S.l.], 2008. p. 61--72.}
-
-\bibitem[Gao et al. 2008]{gao2008wavelet}
-\abntrefinfo{Gao et al.}{GAO et al.}{2008}
-{GAO, X. et al. Wavelet-based contourlet in quality evaluation of digital
-  images.
-\textbf{Neurocomputing}, Elsevier, v.~72, n.~1-3, p. 378--385, 2008.}
-
-\bibitem[Hastie, Friedman e Tibshirani 2009]{friedman2001elements}
-\abntrefinfo{Hastie, Friedman e Tibshirani}{HASTIE; FRIEDMAN; TIBSHIRANI}{2009}
-{HASTIE, T.; FRIEDMAN, J.; TIBSHIRANI, R. \textbf{The elements of statistical
-  learning}. 2. ed. [S.l.]: Springer series in statistics New York, NY, USA:,
-  2009.}
 
 \bibitem[Hayes-Roth 1995]{hayes1995architecture}
 \abntrefinfo{Hayes-Roth}{HAYES-ROTH}{1995}
@@ -183,22 +148,10 @@ Dispon{\'\i}vel em:
 {WATKINS, C.~J.; DAYAN, P. Q-learning.
 \textbf{Machine learning}, Springer, v.~8, n.~3-4, p. 279--292, 1992.}
 
-\bibitem[Witten et al. 2016]{witten2016data}
-\abntrefinfo{Witten et al.}{WITTEN et al.}{2016}
-{WITTEN, I.~H. et al. \textbf{Data Mining: Practical machine learning tools and
-  techniques}. [S.l.]: Morgan Kaufmann, 2016.}
-
 \bibitem[Wooldridge 2001]{wooldridge2001intelligent}
 \abntrefinfo{Wooldridge}{WOOLDRIDGE}{2001}
 {WOOLDRIDGE, M. Intelligent agents: The key concepts. In:  SPRINGER.
   \textbf{ECCAI Advanced Course on Artificial Intelligence}. [S.l.], 2001. p.
   3--43.}
-
-\bibitem[Zhao, Sinha e Ge 2009]{zhao2009effects}
-\abntrefinfo{Zhao, Sinha e Ge}{ZHAO; SINHA; GE}{2009}
-{ZHAO, H.; SINHA, A.~P.; GE, W. Effects of feature construction on
-  classification performance: An empirical study in bank failure prediction.
-\textbf{Expert Systems with Applications}, Elsevier, v.~36, n.~2, p.
-  2633--2644, 2009.}
 
 \end{thebibliography}
