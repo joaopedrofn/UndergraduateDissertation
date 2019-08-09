@@ -81,7 +81,7 @@ podem estar encaixados.
 
 Especialmente, mas não exclusivamente, na primeira abordagem, é necessário um
 cuidado sobre a questão de quais serão os possíveis valores de cada variável,
-visto que esta decisão impactará na complexidade e e quantidade de estados além
+visto que esta decisão impactará na complexidade e quantidade de estados além
 do significado de cada um. Várias das variáveis abordadas a seguir possem
 caráter contínuo e uma amplitude de possíveis valores muito grande, por conta
 disto foi feita um agrupamento de seus valores em 3 classes através da análise
@@ -90,7 +90,7 @@ variáveis identificadas e seus possíveis valores foram as seguintes:
 
 \begin{itemize}
     \item \textbf{Posição do jogador em relação à bola no eixo horizontal}
-    ($P_{hj}$), ou seja, se o jogador estar mais a direita ou a esquerda da
+    ($P_{hj}$), ou seja, se o jogador está mais a direita ou a esquerda da
     bola, esta variável pode assumir valores booleanos onde VERDADEIRO implica
     que o jogador está a esquerda e FALSO a direita;
     \item \textbf{Posição do jogador em relação à bola no eixo vertical}
@@ -111,7 +111,7 @@ variáveis identificadas e seus possíveis valores foram as seguintes:
     quando acima de 15;
     \item \textbf{O agente é o aliado mais próximo da bola} ($F$), trata-se de
     um valor booleano a fim de identificar se o jogador ``pensante'' é o aliado
-    mais próximo a bola;
+    mais próximo à bola;
     \item \textbf{Distância do adversário com posse de bola do gol} ($D_{ag}$),
     mede o afastamento do jogador com posse de bola do gol aliado, aqui os
     valores para PERTO são todos os que forem iguais ou abaixo de 11, MÉDIO
@@ -120,7 +120,7 @@ variáveis identificadas e seus possíveis valores foram as seguintes:
     partir das distâncias dos jogadores entre si, com foco no adversário com
     posse de bola. Esta variável é importante pois serve como uma maneira de
     reconhecer a dispersão dos jogadores no campo possibilitando o fechamento de
-    um ``cerco'' com menos brechas em torno da bola. O calculo desta variável é
+    um ``cerco'' com menos brechas em torno da bola. O cálculo desta variável é
     feito como um desvio padrão com base na distância média entre os jogadores
     aliados e o jogador com posse de bola, como na Equação \ref{eq:desvio}, onde
     $d_i$ é a distância entre o jogador $i$ e o adversário com posse de bola e
@@ -154,7 +154,7 @@ valores de um estado único.
     \label{eq:desvio2}
 \end{equation}
 
-Desta forma essa abordagem resulta num campo de 6 estados que são:
+Desta forma essa abordagem resulta num campo de 7 estados que são:
 
 \begin{itemize}
     \item \textbf{Primeira Defesa}, se o agente pensante assume o papel de
@@ -205,7 +205,7 @@ seguinte campo de 12 estados:
 \end{itemize}
 
 Esses foram os estados utilizados nos experimentos descritos no decorrer deste
-trabalho, na seção seguinte será abordada a questão da escolha de possíveis
+trabalho, na subseção seguinte será abordada a questão da escolha de possíveis
 ações para os agentes.
 
 \subsection{Ações}\label{actions}
@@ -236,7 +236,7 @@ as ações.
 As recompensas são partes essenciais do aprendizado por reforço, visto que são
 elas as responsáveis por informar ao agente se a ação tomada obteve resultados
 positivos ou negativos e o quão positivo ou negativo foi a ação. Esta decisão
-não é fácil de ser tomada e por isso foram feitas algumas implementações a vim
+não é fácil de ser tomada e por isso foram feitas algumas implementações a fim
 de procurar otimizar esses valores.
 
 A primeira tentativa de modelar um bom sistema de recompensas se baseou na
@@ -252,9 +252,9 @@ A segunda implementação aboliu a recompensa de passes e adicionou uma
 verificação no avanço e recuo da bola, atribuindo -5 ao avanço da bola, +5 ao
 recuo da bola somada à aproximação do agente da captura da bola e +2 ao recuo da
 bola sem avanço dos aliados. Esta modelagem se mostrou bastante falha pela
-punição excessiva no avanço da bola, visto que o avanço da bola é uma
+punição excessiva no avanço da bola, visto que ele é uma
 característica constante nas situações simuladas, desta forma a última
-implementação removeu esta punição e atribuição recompensa neutra a esta e como
+implementação removeu esta punição e atribuiu recompensa neutra a esta e como
 padrão para não identificação de nenhuma das situações anteriores.
 
 \section{Implementação em \textit{WrightEagleBASE}}\label{implementacao}
@@ -403,21 +403,3 @@ código-fonte com o intuito de contabilizar o número de gols sofridos em
 intervalos de 3000 ciclos (metade da quantidade de ciclos de uma partida comum
 da categoria) e foram registradas as variações destes resultados para cada
 modelo, inclusive o time original sem a técnica empregada.
-
-A partir daqui serão identificados os 4 modelos que demonstraram maior
-importância para o estudo:
-
-\begin{enumerate}
-    \item\label{model:old} O primeiro modelo testado, utilizando a primeira abordagem de estados
-    (baseada apenas em váriaveis) com o sistema de recompensas utilizando avanço
-    da bola como punição e fila de 5 ações;
-    \item\label{model:2cycles} Modelo que utiliza o mesmo sistema de estados que o anterior, mas já
-    abole a punição por avanço e diminue o tamanho da fila para 2 ações;
-    \item\label{model:1cycle} Este utiliza os mesmos estados e recompensas do anterior, porém
-    utiliza uma fila de apenas uma ação (verificação imediata) e utiliza
-    diretamente o mecanismo de ações ignorando a utilização das classes
-    decomportamento mais especializadas;
-    \item\label{model:simple} O último modelo descrito é o que utiliza o sistema mais simples de
-    papéis, além de utilizar-se da fila de 5 ações e o mesmo sistema de
-    recompensas que os dois anteriores.
-\end{enumerate}

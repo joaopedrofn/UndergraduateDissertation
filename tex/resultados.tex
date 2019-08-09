@@ -1,5 +1,23 @@
 \chapter{Resultados} \label{sec:results}
 
+A partir daqui serão identificados os 4 modelos que demonstraram maior
+importância para o estudo:
+
+\begin{enumerate}
+    \item\label{model:old} O primeiro modelo testado, utilizando a primeira abordagem de estados
+    (baseada apenas em váriaveis) com o sistema de recompensas utilizando avanço
+    da bola como punição e fila de 5 ações;
+    \item\label{model:2cycles} Modelo que utiliza o mesmo sistema de estados que o anterior, mas já
+    abole a punição por avanço e diminue o tamanho da fila para 2 ações;
+    \item\label{model:1cycle} Este utiliza os mesmos estados e recompensas do anterior, porém
+    utiliza uma fila de apenas uma ação (verificação imediata) e utiliza
+    diretamente o mecanismo de ações ignorando a utilização das classes
+    decomportamento mais especializadas;
+    \item\label{model:simple} O último modelo descrito é o que utiliza o sistema mais simples de
+    papéis, além de utilizar-se da fila de 5 ações e o mesmo sistema de
+    recompensas que os dois anteriores.
+\end{enumerate}
+
 Após a execução de grande número de episódios para treinamento dos modelos
 propostos foram separados em planilhas as quantidades de gols resultantes para
 cada bloco de 3000 ciclos para cada um. Em cima desse registro foi feita uma
