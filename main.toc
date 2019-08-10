@@ -19,11 +19,11 @@
 \contentsline {subsection}{\numberline {3.1.2}A\IeC {\c c}\IeC {\~o}es}{31}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}Recompensas}{32}{subsection.3.1.3}
 \contentsline {section}{\numberline {3.2}Implementa\IeC {\c c}\IeC {\~a}o em \textit {WrightEagleBASE}}{33}{section.3.2}
-\contentsline {section}{\numberline {3.3}Metodologia Experimental}{37}{section.3.3}
+\contentsline {section}{\numberline {3.3}Metodologia Experimental}{38}{section.3.3}
 \contentsline {chapter}{\chapternumberline {4}\bfseries \MakeTextUppercase {Resultados}}{41}{chapter.4}
 \contentsline {chapter}{\chapternumberline {5}\bfseries \MakeTextUppercase {Conclus\IeC {\~a}o}}{44}{chapter.5}
-\contentsline {section}{\numberline {5.1}Trabalhos Futuros}{45}{section.5.1}
+\contentsline {section}{\numberline {5.1}Dificuldades Encontradas}{45}{section.5.1}
 \vspace {\cftbeforepartskip }
-\contentsline {chapter}{Refer\^encias}{46}{section*.34}
+\contentsline {chapter}{Refer\^encias}{47}{section*.34}
 \renewcommand *{\cftappendixname }{AP\^ENDICE \space }
-\contentsline {appendix}{\chapternumberline {A}\bfseries \MakeTextUppercase {C\IeC {\'o}digos-Fonte}}{48}{appendix.A}
+\contentsline {appendix}{\chapternumberline {A}\bfseries \MakeTextUppercase {C\IeC {\'o}digos-Fonte}}{49}{appendix.A}

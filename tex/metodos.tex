@@ -154,7 +154,7 @@ tabela verdade, uma pequena amostra desta montagem está representada pela Tabel
         F       &   F       &   L       &   L       &   F       &   L       &   C \\
         F       &   F       &   L       &   L       &   F       &   L       &   MC \\
     \end{tabular}
-    \caption{\textit{Montagem de Conjunto de Estados 1 (V = VERDADEIRO, F = FALSO, P = PERTO, M = MÉDIO, L = LONGE, E = ESPARSO, C = COMPACTO e MC = MUITO COMPACTO)}}
+    \caption{Montagem de Conjunto de Estados 1 (V = VERDADEIRO, F = FALSO, P = PERTO, M = MÉDIO, L = LONGE, E = ESPARSO, C = COMPACTO e MC = MUITO COMPACTO)}
     \label{tab:states1}
 \end{table}
 
@@ -259,7 +259,7 @@ relação de consequências e recompensas para esta primeira implementação.
         Fora            &   +10 \\
         Passe           &   -5  \\
     \end{tabular}
-    \caption{\textit{Consequência X Recompensa - 1}}
+    \caption{Consequência X Recompensa - 1}
     \label{tab:rewards1}
 \end{table}
 
@@ -286,7 +286,7 @@ consequência recompensa desta implementação está exposta na Tabela
         aproximação do
         agente          &   +5 \\
     \end{tabular}
-    \caption{\textit{Consequência X Recompensa - 2}}
+    \caption{Consequência X Recompensa - 2}
     \label{tab:rewards2}
 \end{table}
 
@@ -411,7 +411,29 @@ A solução deste problema foi a criação de uma tabela para cada jogador, isto
 resolve  o problema da concorrência e trata cada jogador por sua função
 especifica no jogo, mas torna o aprendizado potencialmente mais
 lento, devido a falta de compartilhamento de experiência. Outra questão desta
-abordagem é que obriga a execução do treinamento de todos os jogadores ao mesmo tempo.
+abordagem é que obriga a execução do treinamento de todos os jogadores ao mesmo
+tempo.
+
+A implementação do algoritmo faz uso de um parâmetro $\epsilon$ que define a probabilidade
+de ``exploração'', ou seja, a possibilidade do agente tomar uma ação aleatória
+ao invés de consultar a \textit{Q-Table}, esta ação é importante
+por aumentar as experiências dos agentes melhorando sua percepção das
+consequências de cada ação. 
+
+O parâmetro $\epsilon$, em geral, é um valor que decai de acordo com a execução
+de novos episódios. Por conta da quantidade de estados e complexidade do
+ambiente do futebol de robôs, foi decidida a implementação deste valor de forma
+individual para cada estado, de forma que seja garantido que tenha sido
+permitida a tomada da decisão de explorar para cada estado existênte um número
+mínimo de vezes. Este valor, baseado no número de vezes que os estados são
+alcançados no decorrer do treinamento, foi definido como 50000 vezes, resultando
+na Equação \ref{eq:epsilon} para o cálculo de $\epsilon$, onde $n$ é o número de
+vezes que o estado foi acessado.
+
+\begin{equation}
+    \label{eq:epsilon}
+    \epsilon=1-\frac{n}{50000}    
+\end{equation}
 
 \section{Metodologia Experimental}\label{meotodologia}
 
