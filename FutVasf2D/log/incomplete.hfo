@@ -1,0 +1,11 @@
+# Offense: 3
+# Defense:  2
+# Description of Fields:
+# 1) Episode number
+# 2) Start time in simulator steps (100ms)
+# 3) End time in simulator steps (100ms)
+# 4) Duration in simulator steps (100ms)
+# 5) Episode result
+#
+1	0	39	39	GOAL-7
+2	40	100	60	CAPTURED_BY_DEFENSE-1
