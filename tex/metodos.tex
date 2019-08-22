@@ -6,9 +6,9 @@
 Como já especificado, o trabalho tem como objetivo a investigação de modelos de
 mundo a serem utilizados no desenvolvimento de um módulo de defesa para o time de
 Futebol de Robôs na categoria de simulação 2D, FutVasf2D. O processo de
-modelagem de um mundo em um MDP exige a discretização do mesmo de forma que
+modelagem de um mundo em um MDP, exige a discretização do mesmo de forma que
 sejam obtidos um número finito de ações e de estados com os quais o algoritmo de
-aprendizado de reforço possa trabalhar, sendo assim, a próxima etapa é definir
+aprendizado de reforço possa trabalhar. Sendo assim, a próxima etapa é definir
 como o algoritmo escrito pode ser implementado no time base escolhido
 (\textit{WrightEagleBASE}).
 
@@ -33,32 +33,32 @@ seguir:
 \end{itemize}
 
 Partindo das informações e exemplos obtidos através da revisão bibliográfica,
-foram modeladas algumas variações de de formas de representar o mundo. Quatro
-componentes são importantes neste processo, os estados que podem ser alcançados
+foram modeladas algumas variações de formas de representar o mundo. Quatro
+componentes são importantes neste processo: os estados que podem ser alcançados
 pelo agente, as ações que o mesmo pode tomar, as recompensas e punições a serem
 atribuídas para o resultado das ações em cada estado e como será feita a
-implementação de todo o modelo de mundo no agente. Os 3 primeiros componentes são
-cobertos nas subseções abaixo enquanto a implementação é abordada na Seção
+implementação de todo o modelo de mundo no agente. Os 3 primeiros componentes
+estão contemplados nas subseções abaixo, enquanto a implementação é abordada na Seção
 \ref{implementacao}.
 
 \subsection{Estados}\label{states}
 
 A definição dos estados é uma etapa certamente crucial e complexa.
-É necessário um cuidado sobre a questão de quais serão os possíveis valores
+É necessário um certo cuidado sobre a questão de quais serão os possíveis valores
 de cada variável, visto que esta decisão impactará na complexidade e
 quantidade de estados além do significado de cada um.
 
-Várias das variáveis abordadas a seguir possem
+Diversas variáveis abordadas a seguir possuem
 caráter contínuo e uma amplitude de possíveis valores muito grande, por conta
 disto foi feita a discretização do domínio em 3 classes através da análise
 dos valores assumidos pelas variáveis na execução de várias partidas.
 
-Neste trabalho foram tomados dois conjuntos de estados que serão tratados nas
+Neste trabalho, foram tomados dois conjuntos de estados que serão tratados nas
 subseções seguintes.
 
 \subsubsection{Conjunto 1}
 
-Este conjunto define 7 variáveis escolhidas a partir da revisão dos estados
+Este conjunto define 7 variáveis, escolhidas a partir da revisão dos estados
 adotados pelos trabalhos visitados no Capítulo \ref{sec:fundamentation} e estudo
 do problema proposto. As variáveis e seus respectivos domínios são:
 
@@ -68,16 +68,16 @@ do problema proposto. As variáveis e seus respectivos domínios são:
     bola, esta é uma variável booleana onde VERDADEIRO implica
     que o jogador está a esquerda e FALSO a direita;
     \item \textbf{Posição do jogador em relação à bola no eixo vertical}
-    ($P_{vj}$), se identifica se o jogador pode ser encontrado mais acima ou
+    ($P_{vj}$), identifica se o jogador pode ser encontrado mais acima ou
     abaixo da bola, assim como o item passado, trata-se de uma variável
     booleana, onde VERDADEIRO significa que o jogador está acima da bola e FALSO, abaixo,
-    esta variável e a anterior são úteis para questão da direção de movimentação
+    esta variável e a anterior são úteis para a questão da direção de movimentação
     do jogador;
     \item \textbf{Distância entre o jogador e bola} ($D_{jb}$), mede o
-    afastamento do agente em relação à bola, o domínio das
+    afastamento do agente em relação à bola. O domínio das
     variáveis de distância é o mesmo (PERTO, MÉDIO e LONGE), diferindo
-    apenas nos valores atribuídos a cada classe, nesta, os valores para PERTO é
-    sempre menor ou igual a 10 (unidade de medida utilizada pelo servidor), para
+    apenas nos valores atribuídos a cada classe, nesta, os valores para PERTO
+    são os menores ou iguais a 10 (unidade de medida utilizada pelo servidor), para
     MÉDIO os valores são entre 10 e 20 e LONGE engloba todos acima de 20;
     \item \textbf{Distância entre o aliado mais próximo da bola e a bola}
     ($D_{tb}$), aqui os intervalos são menores, podendo assumir PERTO quando o
@@ -160,11 +160,11 @@ tabela verdade, uma pequena amostra desta montagem está representada pela Tabel
 
 \subsubsection{Conjunto 2}
 
-O segundo conjunto de estados possui apenas uma váriavel que se baseia em
+O segundo conjunto de estados possui apenas uma variável que se baseia em
 conceitos básicos de defesa no futebol real.
 
 Foram identificados os papéis de Primeira Defesa, Segunda Defesa e Terceira
-defesa para o jogador mais próximo da bola, o segundo mais próximo e o terceiro
+Defesa para o jogador mais próximo da bola, o segundo mais próximo e o terceiro
 mais próximo, respectivamente. Além disso, o valor de compactação já descrito
 foi reaproveitado para implementar o conceito de balanceamento no restante do
 time, resultando na modificação da Equação \ref{eq:desvio} para a Equação
@@ -182,7 +182,7 @@ Desta forma essa abordagem resulta num campo de 7 estados que são:
     \item \textbf{Primeira Defesa}, se o agente pensante assume o papel de
     primeira defesa;
     \item \textbf{Primeira Defesa Muito Perto}, se o agente pensante assume o papel de
-    primeira defesa e está a uma distância menor oi igual a 5 da bola;
+    primeira defesa e está a uma distância menor ou igual a 5 da bola;
     \item  \textbf{Segunda Defesa}, se o agente tomando a decisão assume o papel
     de segunda defesa;
     \item \textbf{Terceira Defesa}, se agora é assumido o papel de terceira
@@ -200,13 +200,13 @@ ações para os agentes.
 
 \subsection{Ações}\label{actions}
 
-A escolha das ações foi pensando no que pode ser feito, enquanto no papel de
+A escolha das ações foi feita pensando no que pode ser feito enquanto no papel de
 defesa numa partida de futebol, a fim de capturar a bola e impedir o avanço do
 time adversário. A implementação original do time base define 3 possíveis ações
 para a situação de defesa, mover-se para uma melhor posição, bloquear o avanço
 do jogador com posse de bola e marcar adversários para impedir a recepção de
 bola. Para este trabalho foram mantidas estas ações com algumas modificações e
-adições.
+adições, destacadas a seguir:
 
 Primeiramente, a ação de se mover foi divida em 5 possíveis ações, mover-se para
 cima, para baixo, para esquerda, para direita ou diretamente em direção a bola, desta forma é eliminada a
@@ -330,7 +330,7 @@ implementada por todas as demais.
     interceptar a bola e se deve tentar realizar tal ação.
 \end{itemize}
 
-\imagem{0.5}{classDiagram}{Diagrama de classes simplificado para mecanismo de defesa.}{O Autor}
+\imagem{0.7}{classDiagram}{Diagrama de classes simplificado para mecanismo de defesa.}{O Autor}
 
 Um exemplo de como isso é aplicado é dado pela implementação original do
 mecanismo de defesa que acontece da seguinte maneira. A classe de defesa define
@@ -344,7 +344,7 @@ que a ordem de execução dos planejadores mais específicos é a seguinte:
 
 Desta forma, o agente primeiro decidirá se precisa se movimentar e para que
 local e só em seguida decidirá se precisa realizar um bloqueio e apenas depois
-disso, se precisa marcar algum jogador e qual. Desta forma, se garante que o
+disso, se precisa marcar algum jogador e qual. Garantindo assim que o
 jogador só se preocupará com bloqueio ou marcação depois de estar na posição
 adequada. O fluxograma do algoritmo de decisão das 5 classes,
 \textit{BehaviorDefensePlanner}, \textit{BehaviorFormationPlanner},
@@ -373,9 +373,9 @@ removendo as condições que decidiam se a ação deveria ou não ser executada.
 
 Além das classes \textit{Behavior}, são importantes citar duas classes
 modificadas no desenvolvimento deste trabalho, são elas \textit{Player} e
-\textit{Agent}. A primeira foi utilizada para a implementação da utilização da
-\textit{Q-Table} por se tratar de uma etapa esterna aos comportamentos
-possibilitando a detecção de eventos que encerra o episódio, como a captura de
+\textit{Agent}. A primeira foi utilizada para a implementação da atualização da
+\textit{Q-Table} por se tratar de uma etapa externa aos comportamentos
+possibilitando a detecção de eventos que encerram o episódio, como a captura pela
 defesa, que fazem com que a classe \textit{BehaviorDefensePlanner} não seja
 acessada no instante devido. Já a classe \textit{Agent} foi utilizado apenas
 como meio de guardar informações sobre o agente a ser compartilhados entre as
@@ -383,7 +383,7 @@ classes, visto que esta é a classe responsável pela descrição do agente.
 
 A classe \textit{Player}, portanto, foi tomada com uma certa preocupação devido
 ao tempo (medido em ciclos) para se considerar que a ação tomada obteve
-resultados. Para tratar desta questão, foi desenvolvido uma fila de ações e seus
+resultados. Para tratar desta questão, foi desenvolvida uma fila de ações e seus
 respectivos estados para que depois de um determinado número de ciclos pudessem
 ser avaliadas, com exceção de estados terminais (como gols, capturas e gols fora
 do campo) que quando ocorrem é tomada a primeira ação da fila e em seguida
@@ -399,8 +399,8 @@ aliados  em campo, porém esta abordagem se mostrou defeituosa por conta da
 concorrência do acesso.
 
 A questão é que o time base não faz utilização de \textit{threads}, utilizando
-clientes completamente idependentes entre si, em relação a processos, o que
-fazia da única forma de controlar o acesso ao arquivo a criação de exclusão de
+clientes completamente independentes entre si, em relação a processos, o que
+fazia da única forma de controlar o acesso ao arquivo a criação e exclusão de
 um arquivo de trava. O problema surgido desta abordagem é a velocidade de
 execução dos ciclos que acarretava na verificação por parte de mais de um agente
 no momento em que o arquivo de trava ainda não havia sido criado por nenhum
@@ -409,7 +409,7 @@ processar uma ação.
 
 A solução deste problema foi a criação de uma tabela para cada jogador, isto
 resolve  o problema da concorrência e trata cada jogador por sua função
-especifica no jogo, mas torna o aprendizado potencialmente mais
+específica no jogo, mas torna o aprendizado potencialmente mais
 lento, devido a falta de compartilhamento de experiência. Outra questão desta
 abordagem é que obriga a execução do treinamento de todos os jogadores ao mesmo
 tempo.
@@ -438,7 +438,7 @@ vezes que o estado foi acessado.
 \section{Metodologia Experimental}\label{meotodologia}
 
 Os modelos de mundo propostos foram treinados com o auxilio da subtarefa HFO,
-mostrado na Figura \ref{img:hfo}, que consiste numa especialização do
+com exemplo de instância mostrado na Figura \ref{img:hfo}, que consiste numa especialização do
 \textit{RoboCup Simulated Soccer} onde é utilizado apenas metade do campo com
 alguns jogadores no ataque e alguns na defesa, foram experimantadas seções de
 treinamento utilizando 10 contra 10 jogadores. Com o HFO, é
@@ -451,9 +451,9 @@ treinados.
 
 \imagem{0.32}{hfo}{HFO}{\url{http://www.cs.utexas.edu/~AustinVilla/sim/halffieldoffense/}}
 
-Devida necessidade de comparar vários modelos de mundo e o quão cada um evolue com o
-tempo foi utilizado o mecanismo de treinamento para também verificar o
-desempenho do modelo em execução. Para este fim foram feitas modificações no
+Devido a necessidade de comparar vários modelos de mundo e o quão cada um evolue com o
+tempo, foi utilizado o mecanismo de treinamento para também verificar o
+desempenho do modelo em execução. Para este fim, foram feitas modificações no
 código-fonte com o intuito de contabilizar o número de gols sofridos em
 intervalos de 3000 ciclos (metade da quantidade de ciclos de uma partida comum
 da categoria) e foram registradas as variações destes resultados para cada

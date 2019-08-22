@@ -1,45 +1,12 @@
 % %--------------------------------------------------------------------------------------
 % % Este arquivo contém a sua conclusão
 % %--------------------------------------------------------------------------------------
-\chapter{Conclusão}\label{sec:conclusion}
-
-Neste capítulo, primeiramente, é feita uma discussão sobre os resultados obtidos
-a fim de destacar as contribuições para o futuro do projeto FutVasf2D e o desenvolvimento
-de um módulo de defesa para um time de futebol de robôs da liga de simulação 2D.
-
-É possível observar que os gráficos dos resultados dos Modelos
-\ref{model:2cycles} e \ref{model:2cycles} apresentam sinais de evolução na
-inteligência dos agentes quanto a tentativa de evitar gols. A análise destes
-gráficos, apresentados na Figura \ref{img:graph}, mostra um comportamento
-semelhante a ruídos, o que é um comportamento espererado devido a, primeiro, a
-característica da simulação que cria ruídos nos sensores dos agentes para que o
-mesmos se assemelhem aos sensores falhos dos seres humanos e a característica
-aleatória da criação de situações do sistema de treinamento.
-
-Apesar desta observação, como demonstrado na mesma figura e nas Equações
-\ref{eq:1cycle} e \ref{eq:2cycles}, que se tratam de uma regressão lineas dos
-resultados encontrados, é possível encontrar um comportamento de melhoria nos
-modelos de mundo em questão. Se baseando em tais equações, é possível extrapolar
-um possível valor para o número de blocos a ser executados para que possa ser
-superado a média geral do time original, para o Modelo \ref{model:2cycles}, este
-número seria de 5265 blocos (mais de 15.000.000 ciclos), já para o Modelo
-\ref{model:1cycle} este número seria de 4265 blocos (mais de 12.000.000 ciclos).
-
-Diante dos resultados obtidos através das seções de treinamento, é possível
-tomar notas sobre o que pode levar a evolução do projeto e o desenvolvimento de
-um módulo de defesa ideal.
-
-Levando em conta todos os modelos de mundo testados e os valores obtidos, é possível
-comparar e observar que a tentativa de avaliar a ação tomada após alguns ciclos
-de sua execução não apresentou os frutos esperados, pelo contrário, os dois
-modelos em destaque foram aqueles com menor número de ações na fila. Também é
-possível observar que a primeira abordagem de estados se mostrou mais
-eficiente que a segunda.
+\chapter{Considerações Finais}\label{sec:conclusion}
 
 O resultado deste trabalho serve para apontar novos caminhos a serem tomados
 para melhoria de mecanismos de defesa, como o refino dos modelos de mundo aqui indicados
 ou a especialização em subtarefas da defesa. Vale a pena focar nos modelos com
-melhores resultados deste trabalhos a fim de reproduzi-los e melhora-los.
+melhores resultados deste trabalho a fim de reproduzi-los e melhorá-los.
 
 Uma abordagem interessante a ser tomada para o desenvolvimento de novos modelos
 de mundo pode ser a análise do mecanismo já utilizado pelo time original a fim
@@ -50,14 +17,14 @@ Também se faz interessante a realização de pesquisas de aplicação do
 \textit{Q-Learning} em outros tipos de mecanismos, como no drible ou passe de
 bola.
 
-Durante as seções de treinamento foi percebida a necessidade do trabalho no
+Durante a execução do treinamento foi percebida a necessidade do trabalho no
 mecanismo do goleiro, que funciona de forma separada do mecanismo de defesa dos
 jogadores comuns. A melhoria do goleiro pode inclusive afetar a forma como os
 demais jogadores aprendem, já que com um goleiro mais forte os jogadores teriam
 maior liberdade de movimento.
 
 Uma outra possibilidade de pesquisa é a de aplicação de outras técnicas de
-aprendizagem de máquina para o mecanismo aqui pesquisado como fim de comparação.
+aprendizagem de máquina para o mecanismo aqui pesquisado com o objetivo de comparação.
 
 \section{Dificuldades Encontradas}
 
@@ -67,32 +34,34 @@ prejudicaram o andamento do mesmo, entre estes pontos estão:
 \begin{itemize}
     \item \textbf{Falta de documentação detalhada do time base}, é verdade que o
     time base escolhido (\textit{WrightEagleBASE}) oferece a
-    documentação mais completa dentre os principais, mas ainda assim, não é
-    fornecido detalhes das funções e classes disponíveis no \textit{framework}
+    documentação mais completa dentre os principais, mas ainda assim, não são
+    fornecidos detalhes das funções e classes disponíveis no \textit{framework}
     do mesmo. Isto causa problemas como o desenvolvimento de recursos já
     disponíveis e por vezes menos eficazes;
     \item \textbf{Falta de consistência nos recursos do \textit{framework} do
-    time base}, ainda relacionado ao problema anterior, a falta de consistência
-    dos recursos causava a utilização de recursos que, embora perfeitamente
-    funcionais em certas áreas, não funcionam no local e momento necessários;
+    time base}, ainda relacionado ao problema anterior, foi percebida a falta de
+    consistência em alguns recursos oferecidos pelo time base, um exemplo
+    simples é a obtenção de dos valores do agente, que por vezes deveria ser
+    feito utilizando a classe \textit{Agent} enquanto em outras este valor fica
+    inacessível a partir desta e passa a ser acessível apenas através do classes
+    como \textit{WorldState};
     \item \textbf{Concorrência no acesso à \textit{Q-Table}}, este ponto já foi
-    abordado na seção \ref{implementacao} e se trata no problema ao acesso para
+    abordado na seção \ref{implementacao} e se trata do problema de acesso para
     leitura e escrita do arquivo relativo à \textit{Q-Table} que fazia com que
-    cada agente sobreescrevesse a tabela com seus próprios valores perdendo os
+    cada agente sobrescrevesse a tabela com seus próprios valores perdendo os
     valores anteriores. Este problema foi contornado através da criação de
     vários arquivos, um para cada agente;
-    \item \textbf{Falha na compatibilidade com HFO}. Uma verdade na execução deste trabalho é de que,
-    pela sua natureza, foi necessário a execução de treinamentos extensos para
+    \item \textbf{Falha na compatibilidade com HFO}. Pela natureza deste trabalho, foi necessário a execução de treinamentos extensos para
     vários modelos de mundo diferentes. Isto por si só não consistiria em problema, se não
     fosse uma pequena falha na projeção do time base que impedia a plena
     compatibilidade com o HFO. \\
-    A falha em questão corresponde a um problema de memória e acesso à ponteiros que
-    causa a interrupção dos clientes durante as seções de treinamento, a correção
+    A falha em questão corresponde a um problema de memória e acesso a ponteiros que
+    causa a interrupção dos clientes durante as sessões de treinamento, a correção
     desta falha não foi possível por conta da complexidade do código-fonte do time
     base desenvolvido por anos por componentes da equipe \textit{WrightEagle}. Isto
-    somado à necessidade de iniciar as seções manualmente, o que impossibilitava a
+    somado à necessidade de iniciar as sessões manualmente impossibilitava a
     escrita de um \textit{script} que reconhecesse a queda dos clientes e o
-    executassem novamente, impediu a execução de seções de treinamento longas e
+    executassem novamente, impedindo a execução de sessões de treinamento longas e
     initerruptas;
     \item \textbf{Quantidade de recursos exigidos}. Outro prolema relacionado à execução dos treinamentos é quantidade de recursos
     utilizadas pelo treinamento, já que o HFO utiliza o máximo que consegue dos
@@ -103,4 +72,15 @@ prejudicaram o andamento do mesmo, entre estes pontos estão:
 
 Tudo isso somado a quantidade de variáveis que precisavam ser testadas para que
 se pudesse obter uma otimização do modelo e da implementação do mesmo impediu
-exploração maior nas possibilidades levantadas.
+exploração maior nas possibilidades levantadas. Logo, a forma de tornar o time
+gerado a partir das modelagens descritas neste trabalho competitivo, é tentar
+otimizar a utilização do tempo na continuação do projeto FutVasf2D.
+
+Este trabalho surgiu como parte do já mencionado projeto FutVasf2D e o mesmo vem
+mostrando frutos. Recentemente foi aprovado um artigo para apresentação na
+Conferência Brasileira sobre Sistemas Inteligentes (BRACIS, do inglês
+\textit{Brazilian Conference on Intelligent Systems}) de 2019 e um Artigo de Descrição
+de Time (TDP, do inglês \textit{Team Description Paper}) foi aprovado para a
+Competição Latino Americana de Robótica (LARC, do inglês
+\textit{Latin American Robotics Competition})/Competição Brasileira de Robótica (CBR)
+também de 2019.

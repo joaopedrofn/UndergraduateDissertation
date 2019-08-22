@@ -1,21 +1,21 @@
 \babel@toc {brazil}{}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces Arquitetura geral de um agente.\relax }}{11}{figure.caption.10}
+\contentsline {figure}{\numberline {1}{\ignorespaces Arquitetura geral de um agente.\relax }}{13}{figure.caption.10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2}{\ignorespaces Representa\IeC {\c c}\IeC {\~a}o do tabuleiro de jogo-da-velha.\relax }}{16}{figure.caption.11}
-\contentsline {figure}{\numberline {3}{\ignorespaces Aprendizado por refor\IeC {\c c}o.\relax }}{21}{figure.caption.12}
-\contentsline {figure}{\numberline {4}{\ignorespaces Tabuleiro do problema exemplo.\relax }}{25}{figure.caption.15}
-\contentsline {figure}{\numberline {5}{\ignorespaces Representa\IeC {\c c}\IeC {\~a}o dos estados e solu\IeC {\c c}\IeC {\~a}o encontrada pelo \textit {Q-Learning}\relax }}{25}{figure.caption.16}
+\contentsline {figure}{\numberline {2}{\ignorespaces Representa\IeC {\c c}\IeC {\~a}o do tabuleiro de jogo-da-velha.\relax }}{18}{figure.caption.11}
+\contentsline {figure}{\numberline {3}{\ignorespaces Aprendizado por refor\IeC {\c c}o.\relax }}{23}{figure.caption.12}
+\contentsline {figure}{\numberline {4}{\ignorespaces Tabuleiro do problema exemplo.\relax }}{27}{figure.caption.15}
+\contentsline {figure}{\numberline {5}{\ignorespaces Representa\IeC {\c c}\IeC {\~a}o dos estados e solu\IeC {\c c}\IeC {\~a}o encontrada pelo \textit {Q-Learning}\relax }}{27}{figure.caption.16}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6}{\ignorespaces Diagrama de classes simplificado para mecanismo de defesa.\relax }}{34}{figure.caption.21}
-\contentsline {figure}{\numberline {7}{\ignorespaces Algoritmo da classe \textit {BehaviorDefensePlanner}\relax }}{35}{figure.caption.22}
-\contentsline {figure}{\numberline {8}{\ignorespaces Algoritmo da classe \textit {BehaviorFormationPlanner}\relax }}{36}{figure.caption.23}
-\contentsline {figure}{\numberline {9}{\ignorespaces Algoritmo da classe \textit {BehaviorBlockPlanner}\relax }}{37}{figure.caption.24}
-\contentsline {figure}{\numberline {10}{\ignorespaces Algoritmo da classe \textit {BehaviorMarkPlanner}\relax }}{38}{figure.caption.25}
-\contentsline {figure}{\numberline {11}{\ignorespaces Algoritmo da classe \textit {BehaviorInterceptPlanner}\relax }}{39}{figure.caption.26}
-\contentsline {figure}{\numberline {12}{\ignorespaces HFO\relax }}{40}{figure.caption.27}
+\contentsline {figure}{\numberline {6}{\ignorespaces Diagrama de classes simplificado para mecanismo de defesa.\relax }}{36}{figure.caption.21}
+\contentsline {figure}{\numberline {7}{\ignorespaces Algoritmo da classe \textit {BehaviorDefensePlanner}\relax }}{37}{figure.caption.22}
+\contentsline {figure}{\numberline {8}{\ignorespaces Algoritmo da classe \textit {BehaviorFormationPlanner}\relax }}{38}{figure.caption.23}
+\contentsline {figure}{\numberline {9}{\ignorespaces Algoritmo da classe \textit {BehaviorBlockPlanner}\relax }}{39}{figure.caption.24}
+\contentsline {figure}{\numberline {10}{\ignorespaces Algoritmo da classe \textit {BehaviorMarkPlanner}\relax }}{40}{figure.caption.25}
+\contentsline {figure}{\numberline {11}{\ignorespaces Algoritmo da classe \textit {BehaviorInterceptPlanner}\relax }}{41}{figure.caption.26}
+\contentsline {figure}{\numberline {12}{\ignorespaces HFO\relax }}{42}{figure.caption.27}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {13}{\ignorespaces M\IeC {\'e}dias finais em compara\IeC {\c c}\IeC {\~a}o ao original\relax }}{42}{figure.caption.30}
-\contentsline {figure}{\numberline {14}{\ignorespaces Gr\IeC {\'a}ficos de Modelos \ref {model:2cycles} e \ref {model:1cycle}\relax }}{43}{figure.caption.31}
+\contentsline {figure}{\numberline {13}{\ignorespaces M\IeC {\'e}dias finais em compara\IeC {\c c}\IeC {\~a}o ao original\relax }}{44}{figure.caption.30}
+\contentsline {figure}{\numberline {14}{\ignorespaces Gr\IeC {\'a}ficos de Modelos \ref {model:2cycles} e \ref {model:1cycle}\relax }}{45}{figure.caption.31}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

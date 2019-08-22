@@ -1,29 +1,29 @@
 \changetocdepth {4}
 \babel@toc {brazil}{}
-\contentsline {chapter}{\chapternumberline {1}\bfseries \MakeTextUppercase {Introdu\IeC {\c c}\IeC {\~a}o}}{11}{chapter.1}
-\contentsline {section}{\numberline {1.1}Motiva\IeC {\c c}\IeC {\~a}o}{12}{section.1.1}
-\contentsline {section}{\numberline {1.2}Defini\IeC {\c c}\IeC {\~a}o do Problema}{13}{section.1.2}
-\contentsline {section}{\numberline {1.3}Objetivos}{14}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Objetivo Geral}{14}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Objetivos Espec\IeC {\'\i }ficos}{14}{subsection.1.3.2}
-\contentsline {section}{\numberline {1.4}Organiza\IeC {\c c}\IeC {\~a}o do Trabalho}{14}{section.1.4}
-\contentsline {chapter}{\chapternumberline {2}\bfseries \MakeTextUppercase {Fundamenta\IeC {\c c}\IeC {\~a}o Te\IeC {\'o}rica}}{16}{chapter.2}
-\contentsline {section}{\numberline {2.1}Trabalhos Relacionados}{16}{section.2.1}
-\contentsline {section}{\numberline {2.2}Aprendizado por Refor\IeC {\c c}o}{20}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Q-Learning}{23}{subsection.2.2.1}
-\contentsline {chapter}{\chapternumberline {3}\bfseries \MakeTextUppercase {Materiais e M\IeC {\'e}todos}}{27}{chapter.3}
-\contentsline {section}{\numberline {3.1}Modelagem do Mundo}{27}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Estados}{28}{subsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.1.1}Conjunto 1}{28}{subsubsection.3.1.1.1}
-\contentsline {subsubsection}{\numberline {3.1.1.2}Conjunto 2}{29}{subsubsection.3.1.1.2}
-\contentsline {subsection}{\numberline {3.1.2}A\IeC {\c c}\IeC {\~o}es}{31}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Recompensas}{32}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Implementa\IeC {\c c}\IeC {\~a}o em \textit {WrightEagleBASE}}{33}{section.3.2}
-\contentsline {section}{\numberline {3.3}Metodologia Experimental}{38}{section.3.3}
-\contentsline {chapter}{\chapternumberline {4}\bfseries \MakeTextUppercase {Resultados}}{41}{chapter.4}
-\contentsline {chapter}{\chapternumberline {5}\bfseries \MakeTextUppercase {Conclus\IeC {\~a}o}}{44}{chapter.5}
-\contentsline {section}{\numberline {5.1}Dificuldades Encontradas}{45}{section.5.1}
+\contentsline {chapter}{\chapternumberline {1}\bfseries \MakeTextUppercase {Introdu\IeC {\c c}\IeC {\~a}o}}{13}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motiva\IeC {\c c}\IeC {\~a}o}{14}{section.1.1}
+\contentsline {section}{\numberline {1.2}Defini\IeC {\c c}\IeC {\~a}o do Problema}{15}{section.1.2}
+\contentsline {section}{\numberline {1.3}Objetivos}{16}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Objetivo Geral}{16}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Objetivos Espec\IeC {\'\i }ficos}{16}{subsection.1.3.2}
+\contentsline {section}{\numberline {1.4}Organiza\IeC {\c c}\IeC {\~a}o do Trabalho}{16}{section.1.4}
+\contentsline {chapter}{\chapternumberline {2}\bfseries \MakeTextUppercase {Fundamenta\IeC {\c c}\IeC {\~a}o Te\IeC {\'o}rica}}{18}{chapter.2}
+\contentsline {section}{\numberline {2.1}Trabalhos Relacionados}{18}{section.2.1}
+\contentsline {section}{\numberline {2.2}Aprendizado por Refor\IeC {\c c}o}{22}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Q-Learning}{25}{subsection.2.2.1}
+\contentsline {chapter}{\chapternumberline {3}\bfseries \MakeTextUppercase {Materiais e M\IeC {\'e}todos}}{29}{chapter.3}
+\contentsline {section}{\numberline {3.1}Modelagem do Mundo}{29}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Estados}{30}{subsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.1.1}Conjunto 1}{30}{subsubsection.3.1.1.1}
+\contentsline {subsubsection}{\numberline {3.1.1.2}Conjunto 2}{31}{subsubsection.3.1.1.2}
+\contentsline {subsection}{\numberline {3.1.2}A\IeC {\c c}\IeC {\~o}es}{33}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Recompensas}{34}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Implementa\IeC {\c c}\IeC {\~a}o em \textit {WrightEagleBASE}}{35}{section.3.2}
+\contentsline {section}{\numberline {3.3}Metodologia Experimental}{40}{section.3.3}
+\contentsline {chapter}{\chapternumberline {4}\bfseries \MakeTextUppercase {Resultado e Discuss\IeC {\~a}o}}{43}{chapter.4}
+\contentsline {chapter}{\chapternumberline {5}\bfseries \MakeTextUppercase {Considera\IeC {\c c}\IeC {\~o}es Finais}}{46}{chapter.5}
+\contentsline {section}{\numberline {5.1}Dificuldades Encontradas}{46}{section.5.1}
 \vspace {\cftbeforepartskip }
-\contentsline {chapter}{Refer\^encias}{47}{section*.34}
+\contentsline {chapter}{Refer\^encias}{48}{section*.34}
 \renewcommand *{\cftappendixname }{AP\^ENDICE \space }
-\contentsline {appendix}{\chapternumberline {A}\bfseries \MakeTextUppercase {C\IeC {\'o}digos-Fonte}}{49}{appendix.A}
+\contentsline {appendix}{\chapternumberline {A}\bfseries \MakeTextUppercase {C\IeC {\'o}digos-Fonte}}{50}{appendix.A}

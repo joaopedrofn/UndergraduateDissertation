@@ -4,20 +4,20 @@
 \chapter{Introdução}
 
 Como descrito por \citeonline{kitano1997robocup}, a \textit{RoboCup}, a copa do mundo de futebol de
-robôs, procura fomentar as pesquisas acerca de robótica e inteligência artificial fornecendo um
+robôs, procura fomentar as pesquisas acerca de robótica e inteligência artificial, fornecendo um
 problema padrão capaz de avaliar teorias, algoritmos e arquiteturas de agentes. O projeto da
-\textit{RoboCup} é dividido em várias ligas, desde robôs humanoides até a liga de simulação 2D.
-Proporcionando assim, um ambiente criativo e desafiador para que novas tecnologias sejam criadas e
+\textit{RoboCup} é dividido em várias ligas, desde robôs humanoides até a liga de simulação 2D,
+proporcionando assim, um ambiente criativo e desafiador para que novas tecnologias sejam criadas e
 aplicadas por alunos de graduação.
 
 Segundo \citeonline{henn2017optimizing}, a liga de simulação 2D representa um jogo de futebol, em um
 \textit{framework} multiagente, no qual o ambiente é um campo de futebol em duas dimensões e os
 agentes são os jogadores, criando a vantagem de livrar os pesquisadores de toda a parte mecânica e
 eletrônica para que o foco se volte à análise de dados e construção da estratégia.
-\citeonline{henn2017optimizing} ainda afirmam que a principal parte da liga é a modelagem de uma
+Esses autores ainda afirmam que a principal parte da liga é a modelagem de uma
 estratégia ou método efetivo o suficiente para obter performance superior aos adversários. Por fim,
 os autores relatam que uma das estratégias com melhores resultados é a utilização de agentes
-inteligêntes.
+inteligentes.
 
 De acordo com \citeonline{russell2016artificial}, um agente inteligente é tudo o que pode ser
 considerado capaz de perceber seu ambiente por meio de sensores e de agir sobre seu ambiente por
@@ -33,7 +33,7 @@ perceber o estado do agente, referente ao vigor, velocidade e posição; as posi
 demais objetos no ambiente, incluindo jogadores e mensagens oriundas dos aliados. Os atuadores dos
 agentes correspondem aos mecanismos de movimento, rotação e chute
 \cite{robocupfederationofficialwebsite}. Um dos aspectos que torna o desenvolvimento de agentes
-inteligentes para jogos de futebol de robôs desafiador é a  característica de seu ambiente:
+inteligentes para jogos de futebol de robôs desafiador são as  características de seu ambiente:
 
 \begin{itemize}
     \item \textbf{Parcialmente observável}: O ambiente para um agente jogador de futebol de robôs é
@@ -69,11 +69,11 @@ inteligentes para jogos de futebol de robôs desafiador é a  característica de
 
 \section{Motivação}
 
-FutVasf2D é um projeto que nasceu em 2017 com auxílio do Programa Institucional de Bolsas de
+O FutVasf2D é um projeto que nasceu em 2017 com auxílio do Programa Institucional de Bolsas de
 Iniciação Científica (PIBIC) para o desenvolvimento de um time oficial de futebol robôs para
 Universidade Federal do Vale do São Francisco (UNIVASF) na categoria de simulação 2D. O primeiro
 trabalho do projeto teve como objetivo o desenvolvimento de um módulo de decisão para o momento do
-chute a gol. O projeto está tendo continuidade com, além do presente trabalho, outro PIBIC que visa
+chute a gol. O projeto está tendo continuidade com, além do presente trabalho, outro projeto que visa
 o desenvolvimento de um módulo de passes.
 
 Durante o processo de desenvolvimento deste trabalho almeja-se por em prática conhecimentos tratados
@@ -81,11 +81,6 @@ Durante o processo de desenvolvimento deste trabalho almeja-se por em prática c
  tratadas em um ambiente complexo e prático. A técnica de aprendizado por reforço aplicada neste
  trabalho é a \textit{Q-Learning} devido ao fato desta ser uma técnica comum e já utilizada por
  diversos trabalhos na área.
-
-Com o término deste trabalho espera-se a participação do time desenvolvido na Competição
-Brasileira de Robótica (CBR) como meio de divulgar o projeto e angariar interessados no
-desenvolvimento de novas estratégias e melhoramento das já desenvolvidas no meio acadêmico da
-UNIVASF.
 
 \section{Definição do Problema}
 
@@ -107,7 +102,7 @@ simples para que possam ser melhoradas pelas novas equipes.
 capacidade defensiva de um time vêm sendo quase negligenciadas, de forma que as pesquisas focam, em
 sua maioria, em tarefas como a de passe, chute a gol ou posicionamento do jogador com posse de bola.
 
-Ainda segundo \citeonline{gabel2008case}, estratégias de defesa são divididas em 2 partes, o
+Ainda segundo \citeonline{gabel2008case}, estratégias de defesa são divididas em 2 partes: o
 posicionamento dos jogadores de forma a melhor interceptar passes ou tentativas de chute ou marcar
 oponentes, e o de atacar o jogador com posse de bola a fim de obtê-la.
 
@@ -141,14 +136,16 @@ um time da liga de simulação 2D da RoboCup.
     
     \item Treinar os times implementados através da execução de partidas com situações controladas;
     
-    \item Comparar resultados e identificar falhas e melhorias.
+    \item Comparar resultados encontrados entre si e com os resultados do time
+    original, além de identificar falhas e melhorias.
 \end{enumerate}
 
 \section{Organização do Trabalho}
 
 Além do presente capítulo, Introdução, estão presentes neste trabalho 4 capítulos, Fundamentação
-Teórica (\ref{sec:fundamentation}), Materiais e Métodos (\ref{sec:newModule}), Resultados
-(\ref{sec:results}) e Conclusão (\ref{sec:conclusion}).
+Teórica (\ref{sec:fundamentation}), Materiais e Métodos (\ref{sec:newModule}),
+Resultado e Discussão
+(\ref{sec:results}) e Considerações Finais (\ref{sec:conclusion}).
 
 O Capítulo \ref{sec:fundamentation} apresenta a fundamentação teórica do trabalho, apresentando na Seção
 \ref{trabalhosRelacionados} trabalhos relacionados que reforçam a metodologia por trás da execução
@@ -162,11 +159,11 @@ desafios. A Seção \ref{implementacao} explica o processo de implementação e 
 variações aplicadas, enquanto a Seção \ref{meotodologia} trata da metodologia
 experimental, como o treinamento e a forma de avaliação.
 
-O Capítulo \ref{sec:results} apresenta a descrição dos modelos de mundo desenvolvidos, a fundamentação de
-cada um e os resultados obtidos em seus respectivos treinamentos.
+O Capítulo \ref{sec:results} apresenta a descrição dos modelos de mundo
+desenvolvidos, os resultados obtidos em seus respectivos treinamentos e uma
+discussão acerca dos mesmos.
 
-No Capítulo final \ref{sec:conclusion} constam as devidas conclusões tomadas a partir do processo de
-desenvolvimento deste trabalho e dos resultados obtidos pelos experimentos, procurando responder
-indagações oriundas da análise dos dados do capítulo anterior. Também é
-trabalhado na Seção \ref{sec:future}, o traçado de uma continuidade
-para o projeto iniciado apresentando propostas de novas investigações e o caminho a ser tomado.
+No Capítulo final, \ref{sec:conclusion}, é traçada uma possível continuidade para
+o projeto iniciado apresentando propostas de novas investigações e o caminho a
+ser tomado. Além de considerações sobre problemas encontrados no decorrer do
+desenvolvimento deste trabalho.

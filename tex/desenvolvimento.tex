@@ -6,17 +6,17 @@
 \section{Trabalhos Relacionados}\label{trabalhosRelacionados}
 
 Diversos trabalhos foram redigidos utilizando aprendizado por reforço no domínio da \textit{RoboCup
-Soccer Simulation 2D}, cada um desses trabalhos apresentam modelagens diferentes para o mundo.
+Soccer Simulation 2D}. Cada um desses trabalhos apresentam modelagens diferentes para o mundo.
 
-A modelagem de mundo é a forma como o ambiente é representado, ou simulado. Um agente inteligente
+Segundo \citeonline{sutton2018reinforcement}, a modelagem de mundo é a forma como o ambiente é representado, ou simulado. Um agente inteligente
 precisa constantemente entender como está o ambiente no qual ele está inserido, por isso é
 importante a definição da representação do mundo de forma que melhor se adéque ao processo de
 aprendizado do agente.
 
-Um agente empregado no aprendizado do jogo-da-velha, pode ser utilizado com exemplo. O agente
+Um agente empregado no aprendizado do jogo-da-velha, pode ser utilizado como exemplo. O agente
 precisa entender como o jogo está sendo encaminhado para que o mesmo possa decidir em que posição
 jogar, porém, o agente isolado não tem acesso ao estado do jogo e precisa de uma representação do
-mesmo para que possa entende-lo. Uma abordagem válida é numerar o tabuleiro conforme a Figura
+mesmo para que possa entendê-lo. Uma abordagem válida é numerar o tabuleiro conforme a Figura
 \ref{img:ticTacToeNumbers} e atrelar a cada célula um valor que varia de acordo com o que é marcado
 na mesma, uma escolha razoável é atribuir o valor ``$-1$'' à células preenchidas pelo jogador
 adversário, ``$0$'' à células não preenchidas e ``$1$'' às preenchidas pelo próprio agente. Nota-se que com
@@ -30,7 +30,7 @@ qual o estado atual do ambiente.
 Para esses problemas é comum encontrar variáveis de valores contínuos, nesses casos é necessário
 pensar em como representar as variáveis de forma discreta para que seja possível se obter um número
 finito de estados. Alguns dos trabalhos citados adiante demonstram maneiras de interpretar os dados
-do ambiente para que possa ser aplicada técnica de aprendizado. 
+do ambiente, para que possa ser aplicada técnica de aprendizado. 
 
 \citeonline{gabel2008case} desenvolveram jogadores de defesa com comportamento agressivo, ou seja,
 jogadores que interferem e tentam tomar a bola do jogador adversário, utilizando aprendizado por
@@ -46,32 +46,32 @@ cerca de 30 tomadas de bola por partida.
 Uma variação de redes neurais com a utilização de \textit{backpropagation}, chamada de
 \textit{Backpropagation} Resiliente (RPROP, do inglês \textit{Resilient Backpropagation}), foi
 utilizada por \citeonline{Riedmiller2005Brainstormers2D} no treinamento de jogadores sem posse de
-bola, ao mesmo tempo que a escolha de ações do jogador com posse de bola. Para isto foi feita a
+bola, ao mesmo tempo que a escolha de ações do jogador com posse de bola. Para isto, foi feita a
 discretização do domínio em um Processo de Decisão Markoviano (MDP, do inglês \textit{Markovian
-Decision Process}) que destacou as variáveis posição e velocidade da bola e a posição de todos os
+Decision Process}), que destacou as variáveis posição e velocidade da bola e a posição de todos os
 atacantes aliados e defensores adversários, além das possíveis ações, que para os jogadores com
 posse de bola consistem em passar a bola diretamente para um aliado, lançar a bola de forma que um
-aliado possa interceptar a bola antes de um adversário e driblar, já para os jogadores sem posse de
+aliado possa interceptar a bola antes de um adversário e driblar. Já para os jogadores sem posse de
 bola, é possível se mover em 8 direções a partir do local atual ou a partir do local inicial ou
 mover-se para o local inicial. Este trabalho resultou no time vencedor do ano de 2007 da liga de
 simulação 2D da \textit{RoboCup Soccer}.
 
 A técnica \textit{Q-Learning} é aplicada em alguns trabalhos, como o de
 \citeonline{neri2012proposal}, que utiliza desta técnica a fim de obter um sistema de tomada de
-decisões focado no ataque. Nesse trabalho, os estados foram discretizados em 7 estados,
+decisões focado no ataque. Nesse trabalho, as variáveis foram discretizadas em 7 estados,
 caracterizados como quando é possível lançar a bola para um aliado melhor posicionado; um adversário
 mais próximo está atrás do jogador com posse de bola; o adversário mais próximo está a mais de 7
 metros; o adversário mais próximo está a uma distância entre 7 e 6 metros; o adversário mais próximo
 está a uma distância entre 6 e 5 metros; o adversário mais próximo está a uma distância menor de 4
 metros e há uma linha direta entre o jogador com posse de bola e o gol adversário. Além disso, 7
-ações podem ser tomadas, são elas, passar a bola para um jogador mais próximo do gol adversário,
+ações podem ser tomadas, são elas: passar a bola para um jogador mais próximo do gol adversário,
 avançar devagar, avançar rapidamente, passar a bola para um jogador próximo, driblar, segurar a bola
 ou chutar ao gol.
 
 O modelo foi treinado e testado através da execução de conjuntos de 10 partidas. O conjunto de
 treinamento se  deu contra o time base do Helios apenas na situação de posse de bola. Após o
 treinamento, o time foi tuilizado no primeiro conjunto de testes contra o time base do Helios, além
-disso, outro foiexecutado entre Helios e o PetSoccer, além de um entre o time treinado e o PetSoccer
+disso, outro foi executado entre Helios e o PetSoccer, além de um entre o time treinado e o PetSoccer
 para comparação, e por fim outro contra o time chinês WrightEagles. No primeiro conjunto foram
 realizados 6 gols contra o Helios, o Helios executou 47 gols contra o PetSoccer, o time treinado
 conseguiu 61  gols contra o PetSoccer e 6 contra o WrightEagles. Mostrando que a utilização do
@@ -84,7 +84,7 @@ e chegou a segunda fase do campeonato mundial da \textit{RoboCup Soccer Simulati
 \textit{Q-Learning} com uma abstração do conjunto de agentes como um grande agente e o conjunto de
 suas ações como uma ação deste grande agente chamando os dois algoritmos criados de \textit{Regional
 Cooperative Q-Learning} e \textit{Sparse Cooperative Q-Learning} (\textit{Q-Learning} Cooperativo
-Regional e \textit{Q-Learning} Cooperativo Esparso). Nesses trabalhos foram identificados estados
+Regional e \textit{Q-Learning} Cooperativo Esparso). Nesses trabalhos, foram identificados estados
 onde não é necessário que as ações sejam decididas em conjunto (não coordenados) e onde é
 (coordenados), utilizando uma abordagem baseado em campos potenciais. Na abordagem regional foram
 encontrados 5012 estados coordenados e 34390 não coordenados, já na abordagem esparsa, foram 4720
@@ -96,7 +96,7 @@ captura de 6,57 segundos para a abordagem regional e 6,49 para a esparsa, mostra
 dentre 3 métodos enquanto com 500000 episódios apresenta uma média de 6,49 segundos na abordagem
 regional e 6,40 na abordagem esparsa, maior apenas que o do método MDP que apresentou 6,23 segundos.
 
-Alguns trabalhos utilizam variações do \textit{Q-Learning}, como
+Alguns trabalhos utilizam variações do \textit{Q-Learning}, como o de 
 \citeonline{carvalho2011reinforcement}, que desenvolveu um módulo de drible unindo Computador
 Aritmético de Modelo Cerebelar (CMAC, do inglês \textit{Cerebellar Model Arithmetic Computer}) e
 Estado-Ação-Recompensa-Estado-Ação (SARSA, do inglês \textit{State-Action-Reward-State-Action}),
@@ -104,11 +104,11 @@ este último algoritmo foi concebido como \textit{Q-Learning} conexionista modif
 a tarefa de drible foi mapeada como um problema episódico adequado para o trabalho com aprendizado
 por reforço onde foram destacadas duas ações primitivas, segurar a bola e driblar (que consiste em
 girar o corpo a uma determinada angulação, chutar a bola a uma distância determinada e correr para
-interceptá-la) e as seguintes variáveis para compor um estado para o jogador que deverá driblar, o
+interceptá-la) e as seguintes variáveis para compor um estado para o jogador que deverá driblar: o
 ângulo global de um objeto, o ângulo relativo entre dois objetos, a distância entre dois objetos, a
 altura e largura do campo e se o jogador está perto do topo ou da parte mais baixa do campo. O
 treinamento do modelo criado foi feito em 5 experimentos de 50000 episódios nos quais o jogadores
-não podiam recuperar a \textit{stamina} por si só utilizando o ambiente padrão e um ambiente de
+não podiam recuperar a \textit{stamina} (uma forma de representar a energia do jogador) por si só utilizando o ambiente padrão e um ambiente de
 treino de 20 x 20. Para testar foram executados 10000 cenários com configurações aleatórias. No fim
 do treinamento foi obtido um número de vitórias de cerca de 53\% e 58\% dos testes pós-treino.
 
@@ -116,20 +116,20 @@ O SARSA também foi empregado em \citeonline{homem2017improving} em conjunto com
 Espacial Qualitativo (QSR, do inglês \textit{Qualitative Spatial Reasoning}), chamando o resultado
 de Aprendizado por Reforço Qualitativo (QRL, do inglês \textit{Qualitative Reinforcement Learning})
 e aplicou no desenvolvimento de um mecanismo de ataque para um time de simulação 2D. Para alcançar o
-objetivo foi utilizado o formalismo eOPRAm para discretizar o mundo em regiões qualitativas pelo
-qual foram identificadas um total de 14 variáveis, são elas a posição e orientação do jogador, a
+objetivo, foi utilizado o formalismo eOPRAm para discretizar o mundo em regiões qualitativas pelo
+qual foram identificadas um total de 14 variáveis, são elas: a posição e orientação do jogador, a
 distância e ângulo do jogador em relação à bola, se o jogador pode ou não chutar, distância e ângulo
 do jogador em relação ao gol adversário, maior ângulo aberto para o gol, distância entre os aliados
 e o adversário mais próximo, maior ângulo aberto para passe para cada aliado, numeração de cada
 aliado e de cada adversário.
 
-As possíveis ações foram definidas como driblar, chutar e passar a bola para um aliado especifico. O
+As possíveis ações foram definidas como driblar, chutar e passar a bola para um aliado específico. O
 treinamento foi realizado utilizando a ferramenta Ofensa de Meio Campo (HFO, do inglês
 \textit{Half-Field Offense}) 30 vezes de forma independente com 1000 episódios em 3 situações
 diferentes, a primeira com apenas um jogador atacando sem nenhuma defesa, a segunda com apenas o
 atacante e o goleiro e a terceira com o atacante, o goleiro e um zagueiro. Foi realizada uma
 comparação da técnica utilizada com a abordagem quantitativa utilizando análise de variância. Na
-primeira situação o resultado foi de uma média de 99,3\% de gols se mostrando melhor que a
+primeira situação, o resultado foi de uma média de 99,3\% de gols se mostrando melhor que a
 quantitativa com certeza de 95\%, enquanto a segunda e terceira situação se mostraram melhor com
 margem de 1\% com 81,2\% e 47,6\% contra 78,3\% e 40,6\% respectivamente.
 
@@ -139,20 +139,20 @@ caso de \citeonline{celiberto2007heuristic} e \citeonline{bianchi2010case}. O pr
 tanto, foi identificada uma heurística aplicável ao domínio e implementada no algoritmo
 \textit{Q-Learning} ao mesmo tempo que é feita a discretização do mundo. As variáveis de estado para
 o algoritmo foram a posição dos agentes e da bola numa grade e a direção para a qual o agente está
-virado definida por norte, sul, leste ou oeste. As ações que podem ser tomadas são mudar a direção
-para a qual o agente está virado para um objeto especifico, mover em direção a bola, mover-se com a
+virado definida por norte, sul, leste ou oeste. As ações que podem ser tomadas são: mudar a direção
+para a qual o agente está virado para um objeto específico, mover em direção a bola, mover-se com a
 bola, passar a bola para o goleiro, chutar a bola para longe do gol mover-se para perto de um
 oponente. Foram executadas 10 sessões de treinamento para o algoritmo criado, \textit{Q-Learning}
 puro e a função heurística pura com 100 episódios cada, onde cada episódio consiste de uma partida
 de 3000 ciclos. Foi analisada a curva de aprendizado e o número de gols sofridos para cada
-algoritmo. E utilizado o teste \textit{t-student} que validou a hipótese de que a aplicação de
+algoritmo, e utilizado o teste \textit{t-student} que validou a hipótese de que a aplicação de
 heurística no \textit{Q-Learning} acelera o aprendizado com nível de confiança de 95\% e uma taxa de
 gols sofridos menor que as demais opções testadas.
 
 Já \citeonline{bianchi2010case}, utilizam heurística baseada em casos para acelerar o
 \textit{Minmax-Q}, que também é uma variação do \textit{Q-Learning}, para melhorar a tomada de
-decisões. Os casos destacado para utilização no algoritmo foram o de que caso o jogador esteja com a
-bola e não exista adversário no caminho, avança para o gol; se houver um adversário bloqueando, mova
+decisões. Os casos destacados para utilização no algoritmo foram: o caso no qual o jogador esteja com a
+bola e não exista adversário no caminho, então avança para o gol; se houver um adversário bloqueando, mova
 para cima ou para baixo; se houver um aliado mais próximo do gol, passa a bola e se o adversário
 estiver com a bola e o jogador estiver próximo, fica na frente do adversário. O treinamento foi
 feito com 20000 jogos de 10 tentativas em um domínio chamado ``futebol expandido de Littman''.
@@ -176,7 +176,8 @@ modelo é capaz de ``aprender'' a realizar predições sobre o ambiente. Logo, o
 por reforço é, utilizando-se de recompensas, encontrar uma função eficaz para o agente.
 
 Uma analogia apontada por \citeonline{russell2016artificial} é a que compara o aprendizado por
-reforço com a forma que seres vivos aprendem. Animais são capazes de perceber quando especificas
+reforço com a forma que seres vivos aprendem. Animais são capazes de perceber
+quando específicas
 sensações são recompensas positivas ou negativas e essa é uma característica que facilita o
 adestramento de cães, por exemplo, no qual o cão consegue entender que fez algo positivo através de
 recompensas como petiscos ou carinho ou negativo como a repreensão em determinado tom de voz.
@@ -205,7 +206,7 @@ valor e modelo de ambiente.
     
     \item \textbf{Modelo de ambiente} é uma simulação do ambiente que permite  que sejam feitas
     interferências em como o ambiente se comportará. Modelos são usados para prever como estará o
-    ambiente sem precisar altera-lo de fato para melhor planejar as ações.
+    ambiente sem precisar alterá-lo de fato para melhor planejar as ações.
 \end{itemize}
 
 A Figura \ref{img:reinforcement} resume o funcionamento do aprendizado por reforço como o já dito.
@@ -216,7 +217,7 @@ A Figura \ref{img:reinforcement} resume o funcionamento do aprendizado por refor
 relação ao tipo de ambiente quanto ao agente:
 
 \begin{itemize}
-    \item O ambiente pode ser acessível ou inacessível. No primeiro caso o agente consegue detectar
+    \item O ambiente pode ser acessível ou inacessível. No primeiro caso, o agente consegue detectar
     o estado do ambiente através de sensores, enquanto que em ambientes inacessíveis o agente
     precisa manter e atualizar um estado interno.
     
@@ -225,9 +226,9 @@ relação ao tipo de ambiente quanto ao agente:
     
     \item Recompensas podem ser recebidas em qualquer estado ou apenas em estados terminais.
     
-    \item Recompensas podem ser valores que o modelo tenta maximizar existentes no sistema, como
-    pontuação num jogo de tênis de mesa, ou valores simbólicos que funcionam como ``dicas'' de quão
-    bem o agente está indo.
+    \item Recompensas podem ser valores existentens no sistema que o modelo tenta maximizar, como
+    pontuação num jogo de tênis de mesa, ou valores simbólicos que funcionam
+    como indicador do desempenho do agente.
     
     \item Os agentes podem ser passivos ou ativos quanto a aprendizagem. Os agentes passivos apenas
     observam o ambiente mudar e tenta entender o valor de estar em vários estados, enquanto o ativo
@@ -268,7 +269,7 @@ sem a necessidade da construção de mapas do domínio''.
 Como já explicado, estar em um ambiente Markoviano envolve um ambiente discreto com número finito de
 estados e possíveis ações.
 
-\textit{Q-Learning} utiliza uma ferramenta chamada de \textit{Q-table}, de acordo com
+\textit{Q-Learning} utiliza uma ferramenta chamada de \textit{Q-table} e, de acordo com
 \citeonline{simonini_2018}, esta ferramenta consiste em uma tabela onde cada coluna corresponde a
 uma possível ação a ser tomada e cada linha um possível estado a ser alcançado. Cada célula, então,
 corresponde ao valor de recompensa máximo esperado para o par ação-estado, aqui chamado de $Q$. Um
@@ -301,16 +302,16 @@ Onde $\alpha$ é a taxa de aprendizagem, $\gamma$ é taxa com a qual o valor de 
 tempo, $s_k$ é o estado a ser alcançado ao se tomar a ação $a_i$ e $a'$ são todas as possíveis para
 que seja calculado o valor máximo de $Q$ para o estado $s_k$.
 
-O algoritmo a ser seguido para treinar se chegar à melhor \textit{Q-Table} é descrito no
-pseudocódigo em Código \ref{cmd:alg} e é uma adaptação do algoritmo fornecido por
+O algoritmo a ser seguido para treinar e obter a melhor \textit{Q-Table} é descrito em
+pseudocódigo no Código \ref{cmd:alg} e é uma adaptação do algoritmo fornecido por
 \citeonline{simonini_2018}.
 
 \sourcecode{Algoritmo de \textit{Q-Learning}}{alg}{js}{alg.c}
 
 O critério de parada para o algoritmo pode ser adotado como a convergência dos valores da tabela ou
-o número de episódios rodados e a recompensa gerada depende do problema abordado. A utilização do
-\textit{Q-Learning} consiste na execução do treinamento, onde é calculada toda a \textit{Q-Table} e
-então a execução do algoritmo novamente, sem necessariamente atualizar a tabela e utilizando os
+o número de episódios rodados. Já a recompensa gerada depende do problema abordado. A utilização do
+\textit{Q-Learning} consiste na execução do treinamento, onde é calculada toda a
+\textit{Q-Table} para então executar algoritmo novamente, sem necessariamente atualizar a tabela, utilizando os
 valores já encontrados para decidir a ação a ser tomada.
 
 É interessante destacar aqui, que a escolha da próxima ação, no treinamento, é feita a partir de uma
